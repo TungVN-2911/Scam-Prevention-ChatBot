@@ -1,0 +1,262 @@
+[
+  {
+    "id": "CASE-001",
+    "scam_pattern": "sms_brandname_phishing",
+    "difficulty": "easy",
+    "title": "Tin nhắn ngân hàng ABC",
+    "scenario": "Ngân hàng ABC thông báo: Tài khoản của bạn sẽ bị khóa. Vui lòng truy cập https://bank-abc-verify-secure.com để xác minh trong vòng 30 phút.",
+    "signals": [
+      {
+        "id": "impersonation",
+        "text": "Tin nhắn hiển thị tên \"Ngân hàng ABC\" nhưng không thể xác minh người gửi thật",
+        "explanation": "Tên Brandname tạo cảm giác quen thuộc nhưng nội dung bất thường — đây là dấu hiệu giả mạo thương hiệu thường gặp trong lừa đảo SMS Brandname."
+      },
+      {
+        "id": "urgency",
+        "text": "Yêu cầu xử lý \"trong vòng 30 phút\"",
+        "explanation": "Tạo cảm giác khẩn cấp để nạn nhân không kịp suy nghĩ hoặc xác minh trước khi hành động."
+      },
+      {
+        "id": "suspicious_link",
+        "text": "Đường link \"bank-abc-verify-secure.com\" không phải domain chính thức của ngân hàng",
+        "explanation": "Đường link không phải domain chính thức là dấu hiệu dẫn tới website phishing để thu thập thông tin đăng nhập và OTP."
+      }
+    ],
+    "expected_signals": ["impersonation", "urgency", "suspicious_link"],
+    "source": {
+      "organization": "Cục An toàn thông tin",
+      "title": "Cách nhận biết và phòng tránh lừa đảo phát tán SMS Brandname giả mạo",
+      "url": "https://antoanthongtin.vn/tin/cach-nhan-biet-va-phong-tranh-lua-dao-phat-tan-sms-brandname-gia-mao"
+    }
+  },
+  {
+    "id": "CASE-002",
+    "scam_pattern": "authority_impersonation",
+    "difficulty": "easy",
+    "title": "Cuộc gọi tự xưng Công an",
+    "scenario": "Một người gọi điện tự xưng là cán bộ điều tra Công an, nói bạn có tên trong một đường dây rửa tiền đang bị điều tra. Người này yêu cầu bạn giữ bí mật tuyệt đối, không được kể cho ai, và phải chuyển toàn bộ tiền trong tài khoản sang một \"tài khoản tạm giữ của cơ quan điều tra\" để xác minh, nếu không sẽ bị bắt giữ ngay trong hôm nay.",
+    "signals": [
+      {
+        "id": "impersonation",
+        "text": "Tự xưng là cán bộ điều tra Công an qua điện thoại",
+        "explanation": "Cơ quan Công an, Viện kiểm sát, Tòa án không làm việc hay yêu cầu xử lý vụ án qua điện thoại."
+      },
+      {
+        "id": "fear_pressure",
+        "text": "Đe dọa sẽ bị bắt giữ ngay trong hôm nay",
+        "explanation": "Đe dọa, gây áp lực tâm lý và tạo cảm giác khẩn cấp là chiến thuật điển hình để nạn nhân không kịp xác minh."
+      },
+      {
+        "id": "money_request",
+        "text": "Yêu cầu chuyển tiền vào \"tài khoản tạm giữ của cơ quan điều tra\"",
+        "explanation": "Yêu cầu chuyển tiền để xác minh tài sản hoặc chứng minh không liên quan đến vụ án là dấu hiệu lừa đảo rõ ràng — cơ quan chức năng không thu giữ tiền qua chuyển khoản cá nhân như vậy."
+      }
+    ],
+    "expected_signals": ["impersonation", "fear_pressure", "money_request"],
+    "source": {
+      "organization": "Báo Nhân Dân",
+      "title": "Giả danh cơ quan công an, viện kiểm sát, tòa án gọi điện lừa đảo",
+      "url": "https://special.nhandan.vn/gia-danh-co-quan-cong-an-vien-kiem-soat-goi-dien-lua-dao/index.html"
+    }
+  },
+  {
+    "id": "CASE-003",
+    "scam_pattern": "fake_prize",
+    "difficulty": "easy",
+    "title": "Thông báo trúng thưởng bất ngờ",
+    "scenario": "Bạn nhận được tin nhắn: \"Chúc mừng! Số điện thoại của bạn may mắn trúng thưởng 50 triệu đồng trong chương trình tri ân khách hàng. Vui lòng chuyển phí xử lý hồ sơ 500.000đ để nhận thưởng trong hôm nay.\"",
+    "signals": [
+      {
+        "id": "unsolicited_prize",
+        "text": "Thông báo trúng thưởng dù không tham gia chương trình nào",
+        "explanation": "Thông báo trúng thưởng dù người nhận không tham gia chương trình rõ ràng là dấu hiệu cảnh báo phổ biến nhất của lừa đảo trúng thưởng."
+      },
+      {
+        "id": "upfront_payment",
+        "text": "Yêu cầu chuyển tiền trước để nhận thưởng",
+        "explanation": "Yêu cầu chuyển tiền trước để hoàn tất thủ tục nhận thưởng — phần thưởng thật không bao giờ yêu cầu người nhận trả phí trước."
+      }
+    ],
+    "expected_signals": ["unsolicited_prize", "upfront_payment"],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cao Bằng: Công an xã ngăn chặn kịp thời vụ lừa đảo trực tuyến, bảo vệ tài sản người dân",
+      "url": "https://bocongan.gov.vn/bai-viet/cao-bang-cong-an-xa-ngan-chan-kip-thoi-vu-lua-dao-truc-tuyen-bao-ve-tai-san-nguoi-dan-1773972799"
+    }
+  },
+  {
+    "id": "CASE-004",
+    "scam_pattern": "otp_phishing",
+    "difficulty": "medium",
+    "title": "Cuộc gọi báo giao dịch bất thường",
+    "scenario": "Một người gọi điện, xưng đúng họ tên đầy đủ của bạn, tự nhận là nhân viên chăm sóc khách hàng của ngân hàng. Người này nói giọng rất chuyên nghiệp, thông báo tài khoản của bạn vừa phát sinh một giao dịch bất thường ở tỉnh khác và cần xử lý ngay để tránh mất tiền. Để \"khóa giao dịch lại\", người này yêu cầu bạn đọc mã OTP vừa được gửi đến điện thoại.",
+    "signals": [
+      {
+        "id": "otp_request",
+        "text": "Yêu cầu đọc mã OTP qua điện thoại",
+        "explanation": "Yêu cầu cung cấp OTP qua điện thoại là dấu hiệu lừa đảo rõ ràng nhất — ngân hàng thật không bao giờ hỏi OTP."
+      },
+      {
+        "id": "urgency",
+        "text": "Thông báo giao dịch bất thường cần xử lý ngay",
+        "explanation": "Tạo cảm giác khẩn cấp khiến nạn nhân hành động vội vàng thay vì xác minh lại."
+      },
+      {
+        "id": "authority_claim",
+        "text": "Tự nhận là nhân viên ngân hàng qua điện thoại",
+        "explanation": "Tự xưng là ngân hàng hoặc cơ quan chức năng qua điện thoại mà không thể xác minh được là một chiến thuật tạo lòng tin giả."
+      },
+      {
+        "id": "knows_name",
+        "text": "Người gọi biết đúng họ tên đầy đủ của bạn",
+        "explanation": "Đây KHÔNG phải bằng chứng xác thực — thông tin cá nhân như họ tên có thể bị lộ từ nhiều nguồn dữ liệu khác, không chứng minh người gọi là nhân viên thật."
+      }
+    ],
+    "expected_signals": ["otp_request", "urgency", "authority_claim"],
+    "source": {
+      "organization": "Công an tỉnh Lai Châu",
+      "title": "Cảnh giác với thủ đoạn lừa đảo liên quan tới OTP",
+      "url": "https://congan.laichau.gov.vn/thu-doan-pham-toi/canh-giac-voi-thu-doan-lua-dao-lien-quan-toi-otp-3817.html"
+    }
+  },
+  {
+    "id": "CASE-005",
+    "scam_pattern": "investment_scam",
+    "difficulty": "medium",
+    "title": "Lời mời đầu tư từ nhóm chat",
+    "scenario": "Bạn được thêm vào một nhóm chat đầu tư có hơn 200 thành viên, nhiều người trong nhóm liên tục khoe ảnh chụp lợi nhuận. Admin nhóm giới thiệu một nền tảng đầu tư tiền ảo, cam kết lợi nhuận cố định 20%/tháng và \"không có rủi ro\". Bạn thử nạp một khoản nhỏ và rút thử thành công ngay lập tức, sau đó được khuyến khích nạp thêm số tiền lớn hơn để \"tăng hạn mức rút\".",
+    "signals": [
+      {
+        "id": "guaranteed_return",
+        "text": "Cam kết lợi nhuận cố định 20%/tháng, \"không rủi ro\"",
+        "explanation": "Cam kết lợi nhuận cao bất thường hoặc gần như không có rủi ro là dấu hiệu cảnh báo hàng đầu của lừa đảo đầu tư."
+      },
+      {
+        "id": "no_license_info",
+        "text": "Không có thông tin về giấy phép hay pháp nhân của nền tảng",
+        "explanation": "Không xác minh được giấy phép và pháp nhân khiến không có cơ sở pháp lý nào bảo vệ nhà đầu tư."
+      },
+      {
+        "id": "trust_building_withdrawal",
+        "text": "Cho rút thử một khoản nhỏ trước khi yêu cầu nạp thêm số tiền lớn",
+        "explanation": "Đây là chiến thuật tạo lòng tin điển hình — cho rút được một lần đầu để dụ nạn nhân nạp số tiền lớn hơn, sau đó khóa không cho rút."
+      },
+      {
+        "id": "social_proof",
+        "text": "Nhiều thành viên trong nhóm khoe lợi nhuận",
+        "explanation": "Đây KHÔNG phải bằng chứng an toàn — những tài khoản khoe lợi nhuận trong nhóm có thể do chính kẻ lừa đảo dựng lên để tạo hiệu ứng đám đông."
+      }
+    ],
+    "expected_signals": ["guaranteed_return", "no_license_info", "trust_building_withdrawal"],
+    "source": {
+      "organization": "Báo Nhân Dân",
+      "title": "Lừa đảo đầu tư chứng khoán quốc tế, tiền ảo",
+      "url": "https://special.nhandan.vn/lua-dao-dau-tu-chung-khoan-quoc-te-tien-ao/index.html"
+    }
+  },
+  {
+    "id": "CASE-006",
+    "scam_pattern": "romance_scam",
+    "difficulty": "medium",
+    "title": "Người bạn quen qua mạng xã hội",
+    "scenario": "Bạn quen một người qua mạng xã hội khoảng 3 tuần, trò chuyện rất hợp và người này rất quan tâm, hỏi han bạn mỗi ngày, nói giọng miền Nam nhẹ nhàng. Người này giới thiệu đang làm việc ở nước ngoài và chưa từng đồng ý gặp mặt trực tiếp hay gọi video dù bạn đề nghị nhiều lần. Gần đây người này nhắn tin nói đang gặp khó khăn tài chính đột xuất ở nước ngoài và cần bạn chuyển gấp một khoản tiền để giải quyết.",
+    "signals": [
+      {
+        "id": "no_meeting",
+        "text": "Chưa từng gặp mặt trực tiếp hoặc gọi video dù đã đề nghị nhiều lần",
+        "explanation": "Tránh gặp mặt hoặc xác minh danh tính là dấu hiệu cảnh báo quan trọng của lừa đảo tình cảm qua mạng."
+      },
+      {
+        "id": "overseas_excuse",
+        "text": "Tự nhận đang ở nước ngoài",
+        "explanation": "Đối phương thường đưa ra lý do đang ở nước ngoài để giải thích việc không thể gặp mặt hoặc xác minh trực tiếp."
+      },
+      {
+        "id": "money_request",
+        "text": "Yêu cầu chuyển tiền gấp để giải quyết khó khăn cá nhân",
+        "explanation": "Yêu cầu chuyển tiền để giải quyết vấn đề cá nhân là bước cuối cùng, phổ biến nhất của kịch bản lừa đảo tình cảm sau khi đã xây dựng lòng tin."
+      },
+      {
+        "id": "attentive_personality",
+        "text": "Rất quan tâm, hỏi han mỗi ngày",
+        "explanation": "Đây KHÔNG tự nó là dấu hiệu lừa đảo — sự quan tâm là cảm xúc bình thường, chỉ đáng ngờ khi đi kèm các dấu hiệu khác như tránh gặp mặt và yêu cầu tiền."
+      }
+    ],
+    "expected_signals": ["no_meeting", "overseas_excuse", "money_request"],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Ngăn chặn vụ lừa đảo qua mạng, bảo toàn tài sản cho người dân",
+      "url": ""
+    }
+  },
+  {
+    "id": "CASE-007",
+    "scam_pattern": "online_loan_app",
+    "difficulty": "hard",
+    "title": "Ứng dụng nhận quà tri ân",
+    "scenario": "Một người quen trên mạng xã hội (không phải bạn bè thân) nhắn tin giới thiệu một chương trình tri ân khách hàng của một ví điện tử, chỉ cần cài ứng dụng và làm theo hướng dẫn là nhận được quà tặng giá trị. Vì đang di chuyển và không tiện thao tác, bạn nhờ người này hướng dẫn qua cuộc gọi video và tiện thể đưa điện thoại nhờ họ bấm giúp vài bước cài đặt ứng dụng vì mạng chậm. Trong lúc đó, ứng dụng yêu cầu xác thực bằng nhận diện khuôn mặt và một mã xác nhận gửi về số điện thoại của bạn để \"hoàn tất đăng ký nhận quà\". Vài ngày sau, bạn nhận được tin nhắn thông báo có một khoản vay 15 triệu đồng vừa được giải ngân từ tài khoản của bạn mà bạn không hề đăng ký.",
+    "signals": [
+      {
+        "id": "install_for_reward",
+        "text": "Được rủ cài ứng dụng lạ để nhận quà tri ân",
+        "explanation": "Đề nghị cài ứng dụng để nhận ưu đãi là bước mở đầu điển hình của lừa đảo qua ứng dụng vay tiền online."
+      },
+      {
+        "id": "phone_handover",
+        "text": "Đưa điện thoại đã đăng nhập ứng dụng tài chính cho người khác thao tác",
+        "explanation": "Không nên đưa điện thoại đã đăng nhập tài khoản tài chính cho người khác thao tác — đây là sơ hở để kẻ gian tự thực hiện các bước tạo khoản vay."
+      },
+      {
+        "id": "face_id_otp",
+        "text": "Yêu cầu nhận diện khuôn mặt và mã xác nhận để \"hoàn tất đăng ký nhận quà\"",
+        "explanation": "Yêu cầu thực hiện nhận diện khuôn mặt hoặc lấy mã OTP cho mục đích không rõ ràng thực chất là bước xác thực khoản vay mà nạn nhân không biết."
+      },
+      {
+        "id": "unrequested_loan",
+        "text": "Xuất hiện khoản vay 15 triệu đồng mà bản thân không đăng ký",
+        "explanation": "Khoản vay phát sinh ngoài ý muốn là hậu quả trực tiếp của việc bị lợi dụng để lấy OTP và nhận diện khuôn mặt tạo khoản vay."
+      }
+    ],
+    "expected_signals": ["install_for_reward", "phone_handover", "face_id_otp", "unrequested_loan"],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cảnh giác với hành vi lợi dụng các ứng dụng vay tiền online để chiếm đoạt tài sản",
+      "url": "https://bocongan.gov.vn/bai-viet/canh-giac-voi-hanh-vi-loi-dung-cac-ung-dung-vay-tien-online-de-chiem-doat-tai-san-1763439165"
+    }
+  },
+  {
+    "id": "CASE-008",
+    "scam_pattern": "fake_business",
+    "difficulty": "hard",
+    "title": "Lô máy nông nghiệp giá rẻ",
+    "scenario": "Một tài khoản Facebook tên \"Công ty TNHH Nông Cơ Việt Thành.Official\" (gần giống nhưng không trùng khớp với tên một công ty nông cơ có tiếng mà bạn từng nghe qua) đăng bán máy cày mini với giá chỉ bằng một nửa thị trường, kèm video quay cận cảnh máy chạy thử, hình ảnh kho hàng và bản scan giấy phép kinh doanh. Nhân viên tư vấn nhắn tin rất nhiệt tình, gửi cả hợp đồng mua bán có đóng dấu để bạn yên tâm, chỉ yêu cầu đặt cọc 30% giá trị đơn hàng để giữ hàng vì \"số lượng khuyến mãi có hạn\". Khi bạn hỏi kỹ, nhân viên cho biết tài khoản nhận tiền đặt cọc là tài khoản cá nhân của \"kế toán công ty\" chứ không phải tài khoản công ty, với lý do tài khoản công ty đang bị ngân hàng tạm khóa để bảo trì.",
+    "signals": [
+      {
+        "id": "similar_but_wrong_name",
+        "text": "Tên tài khoản gần giống nhưng không trùng khớp với doanh nghiệp thật",
+        "explanation": "Tên tài khoản gần giống doanh nghiệp thật là chiến thuật giả mạo tên doanh nghiệp để lợi dụng uy tín có sẵn."
+      },
+      {
+        "id": "price_too_low",
+        "text": "Giá chỉ bằng một nửa giá thị trường",
+        "explanation": "Giá thấp hơn thị trường rất nhiều là dấu hiệu cảnh báo phổ biến nhất trong các vụ giả mạo doanh nghiệp bán hàng giá rẻ."
+      },
+      {
+        "id": "personal_account_excuse",
+        "text": "Yêu cầu chuyển tiền đặt cọc vào tài khoản cá nhân với lý do tài khoản công ty đang bảo trì",
+        "explanation": "Yêu cầu chuyển tiền đặt cọc vào tài khoản không đứng tên doanh nghiệp là dấu hiệu gần như chắc chắn của lừa đảo, dù lý do đưa ra có vẻ hợp lý."
+      },
+      {
+        "id": "documents_shown",
+        "text": "Có video chạy thử máy, hình ảnh kho hàng và bản scan giấy phép kinh doanh",
+        "explanation": "Đây KHÔNG phải bằng chứng đáng tin — video, hình ảnh và giấy tờ scan đều có thể bị sao chép hoặc làm giả để tạo lòng tin, cần xác minh trực tiếp thay vì tin vào hình ảnh."
+      }
+    ],
+    "expected_signals": ["similar_but_wrong_name", "price_too_low", "personal_account_excuse"],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Triệt phá nhóm lừa đảo trực tuyến, giả danh doanh nghiệp bán máy nông nghiệp “giá rẻ”",
+      "url": "https://bocongan.gov.vn/bai-viet/triet-pha-nhom-lua-dao-truc-tuyen-gia-danh-doanh-nghiep-ban-may-nong-nghiep-gia-re-1769512790"
+    }
+  }
+]

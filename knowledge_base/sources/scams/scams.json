@@ -1,0 +1,1114 @@
+[
+  {
+    "id": "SCAM-001",
+    "slug": "fake_prize",
+    "name": "Lừa đảo thông báo trúng thưởng và yêu cầu chuyển tiền trước",
+    "category": "financial",
+    "description": "Đối tượng thông báo cho nạn nhân rằng họ đã trúng một phần thưởng có giá trị lớn, sau đó yêu cầu chuyển tiền trước để hoàn tất thủ tục nhận thưởng.",
+    "scenario": "Nạn nhân nhận được thông báo trúng thưởng từ một người hoặc tổ chức không rõ danh tính. Để nhận phần thưởng, nạn nhân được yêu cầu chuyển một khoản tiền với lý do hoàn tất thủ tục. Nạn nhân có thể chuẩn bị thực hiện giao dịch nếu không kiểm chứng thông tin.",
+    "target": [
+      "người dùng mạng xã hội",
+      "người dân"
+    ],
+    "channels": [
+      "tin nhắn",
+      "mạng xã hội",
+      "điện thoại"
+    ],
+    "warning_signs": [
+      "Thông báo trúng thưởng dù người nhận không tham gia chương trình rõ ràng",
+      "Yêu cầu chuyển tiền trước để nhận thưởng",
+      "Người gửi không xác định được danh tính hoặc tổ chức",
+      "Yêu cầu thực hiện giao dịch gấp"
+    ],
+    "tactics": [
+      "Đánh vào tâm lý ham phần thưởng",
+      "Tạo cảm giác người nhận sắp mất cơ hội nhận thưởng",
+      "Yêu cầu thanh toán trước"
+    ],
+    "prevention": [
+      "Không chuyển tiền để nhận một phần thưởng chưa được xác minh",
+      "Kiểm tra chương trình trên website hoặc kênh chính thức của đơn vị tổ chức",
+      "Không cung cấp thông tin ngân hàng cho đối tượng không xác định"
+    ],
+    "if_victim": [
+      "Dừng giao dịch ngay nếu chưa chuyển tiền",
+      "Lưu lại tin nhắn, số điện thoại, tài khoản nhận tiền và các bằng chứng liên quan",
+      "Thông báo cho cơ quan Công an nếu phát hiện dấu hiệu lừa đảo"
+    ],
+    "severity": "high",
+    "related_patterns": [],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cao Bằng: Công an xã ngăn chặn kịp thời vụ lừa đảo trực tuyến, bảo vệ tài sản người dân",
+      "url": "https://bocongan.gov.vn/bai-viet/cao-bang-cong-an-xa-ngan-chan-kip-thoi-vu-lua-dao-truc-tuyen-bao-ve-tai-san-nguoi-dan-1773972799",
+      "date": "2026-03-20",
+      "source_id": "BOCA-CAOBANG-001"
+    }
+  },
+
+  {
+    "id": "SCAM-002",
+    "slug": "deepfake",
+    "name": "Lừa đảo sử dụng Deepfake giả mạo khuôn mặt và giọng nói",
+    "category": "impersonation",
+    "description": "Đối tượng sử dụng công nghệ Deepfake để giả mạo hình ảnh, khuôn mặt hoặc giọng nói của người quen, lãnh đạo, doanh nghiệp hoặc cơ quan chức năng nhằm tạo lòng tin và yêu cầu nạn nhân chuyển tiền hoặc cung cấp thông tin.",
+    "scenario": "Nạn nhân nhận được cuộc gọi video, hình ảnh hoặc giọng nói có vẻ giống người quen hoặc một người có thẩm quyền. Đối tượng đưa ra yêu cầu chuyển tiền, xác nhận giao dịch hoặc cung cấp thông tin.",
+    "target": [
+      "người dùng mạng xã hội",
+      "người thường xuyên giao tiếp trực tuyến",
+      "người sử dụng thanh toán trực tuyến"
+    ],
+    "channels": [
+      "video call",
+      "cuộc gọi",
+      "tin nhắn",
+      "mạng xã hội"
+    ],
+    "warning_signs": [
+      "Người quen bất ngờ yêu cầu chuyển tiền",
+      "Yêu cầu có tính khẩn cấp",
+      "Không cho người nhận thời gian xác minh",
+      "Chỉ sử dụng video hoặc giọng nói để chứng minh danh tính",
+      "Yêu cầu cung cấp thông tin cá nhân hoặc thông tin tài chính"
+    ],
+    "tactics": [
+      "Giả mạo khuôn mặt",
+      "Giả mạo giọng nói",
+      "Tạo áp lực thời gian",
+      "Giả danh người quen hoặc người có thẩm quyền"
+    ],
+    "prevention": [
+      "Không coi hình ảnh, video hoặc giọng nói là bằng chứng duy nhất để xác thực danh tính",
+      "Xác minh người gọi bằng một kênh khác",
+      "Không chuyển tiền chỉ dựa trên yêu cầu qua cuộc gọi hoặc video",
+      "Không cung cấp thông tin cá nhân khi chưa xác minh"
+    ],
+    "if_victim": [
+      "Dừng giao dịch",
+      "Xác minh lại danh tính người yêu cầu bằng kênh chính thức",
+      "Lưu lại nội dung cuộc gọi, tin nhắn và thông tin tài khoản",
+      "Nếu đã chuyển tiền, liên hệ ngay ngân hàng và cơ quan chức năng"
+    ],
+    "severity": "high",
+    "related_patterns": [
+      "fake_emergency_relative"
+    ],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Vui Tết an toàn - không lo Deepfake: Chung tay đẩy lùi lừa đảo trực tuyến",
+      "url": "https://bocongan.gov.vn/bai-viet/vui-tet-an-toan-khong-lo-deepfake-chung-tay-day-lui-lua-dao-truc-tuyen-1769684195",
+      "date": "2026-01-29",
+      "source_id": "BOCA-DEEPFAKE-001"
+    }
+  },
+
+  {
+    "id": "SCAM-003",
+    "slug": "fake_travel_service",
+    "name": "Giả mạo cơ sở lưu trú và dịch vụ du lịch giá rẻ",
+    "category": "ecommerce",
+    "description": "Đối tượng tạo website, tài khoản Facebook hoặc Fanpage giả mạo cơ sở lưu trú uy tín, sử dụng hình ảnh và thông tin của cơ sở thật để quảng cáo dịch vụ với giá hấp dẫn rồi yêu cầu khách hàng đặt cọc.",
+    "scenario": "Nạn nhân tìm kiếm dịch vụ du lịch hoặc phòng nghỉ. Họ gặp một website hoặc Fanpage có hình ảnh giống cơ sở thật, được chào giá hấp dẫn và yêu cầu chuyển tiền đặt cọc. Sau khi nhận tiền, đối tượng cắt liên lạc.",
+    "target": [
+      "khách du lịch",
+      "người đặt phòng trực tuyến"
+    ],
+    "channels": [
+      "Facebook",
+      "website giả",
+      "mạng xã hội"
+    ],
+    "warning_signs": [
+      "Giá thấp bất thường",
+      "Fanpage hoặc website có thông tin giống cơ sở thật nhưng không xác minh được",
+      "Yêu cầu chuyển tiền đặt cọc vào tài khoản cá nhân",
+      "Chỉ liên hệ qua mạng xã hội",
+      "Không thể xác nhận đặt phòng qua kênh chính thức"
+    ],
+    "tactics": [
+      "Sao chép hình ảnh của doanh nghiệp thật",
+      "Tạo Fanpage hoặc website giả",
+      "Đưa ra giá hấp dẫn",
+      "Yêu cầu đặt cọc",
+      "Cắt liên lạc sau khi nhận tiền"
+    ],
+    "prevention": [
+      "Kiểm tra thông tin cơ sở lưu trú trên website chính thức",
+      "Liên hệ trực tiếp với cơ sở để xác nhận",
+      "Không chuyển tiền chỉ dựa trên Fanpage hoặc tài khoản mạng xã hội",
+      "Cẩn trọng với mức giá thấp bất thường"
+    ],
+    "if_victim": [
+      "Lưu lại thông tin tài khoản nhận tiền và toàn bộ trao đổi",
+      "Liên hệ ngân hàng nếu đã chuyển tiền",
+      "Trình báo cơ quan Công an"
+    ],
+    "severity": "high",
+    "related_patterns": [],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cảnh báo thủ đoạn của tội phạm lừa đảo trực tuyến lợi dụng Tết Nguyên Đán Bính Ngọ 2026 và các dịp lễ hội đầu năm",
+      "url": "https://bocongan.gov.vn/bai-viet/canh-bao-thu-doan-cua-toi-pham-lua-dao-truc-tuyen-loi-dung-tet-nguyen-dan-binh-ngo-2026-va-cac-dip-le-hoi-dau-nam-1769572336",
+      "date": "2026-01-28",
+      "source_id": "BOCA-TET-TRAVEL-001"
+    }
+  },
+
+  {
+    "id": "SCAM-004",
+    "slug": "fake_tour_liquidation",
+    "name": "Giả danh khách du lịch để bán lại tour giá rẻ",
+    "category": "ecommerce",
+    "description": "Đối tượng giả danh khách du lịch đã đặt tour tại doanh nghiệp uy tín rồi đăng thông tin thanh lý tour với giá thấp để dụ người mua chuyển tiền.",
+    "scenario": "Đối tượng đăng thông tin thanh lý tour gấp với giá thấp hơn nhiều so với thị trường, kèm hóa đơn, hình ảnh và phản hồi giả để tạo lòng tin. Sau khi nạn nhân chuyển số tiền lớn, đối tượng cắt liên lạc.",
+    "target": [
+      "khách du lịch",
+      "người mua tour trực tuyến"
+    ],
+    "channels": [
+      "Facebook",
+      "mạng xã hội",
+      "website"
+    ],
+    "warning_signs": [
+      "Giá thấp hơn thị trường đáng kể",
+      "Lý do bán lại gấp",
+      "Hóa đơn hoặc phản hồi không thể xác minh",
+      "Yêu cầu chuyển tiền trực tiếp cho cá nhân"
+    ],
+    "tactics": [
+      "Tạo câu chuyện thanh lý tour",
+      "Sử dụng hình ảnh và hóa đơn giả",
+      "Có thể thực hiện giao dịch nhỏ để tạo lòng tin",
+      "Sau đó yêu cầu khoản thanh toán lớn"
+    ],
+    "prevention": [
+      "Xác minh tour trực tiếp với công ty lữ hành",
+      "Không dựa vào hóa đơn hoặc ảnh chụp do người bán cung cấp",
+      "Không chuyển tiền khi chưa xác minh được quyền sở hữu tour"
+    ],
+    "if_victim": [
+      "Dừng giao dịch nếu chưa chuyển tiền",
+      "Lưu toàn bộ bằng chứng",
+      "Liên hệ ngân hàng nếu đã chuyển tiền",
+      "Trình báo cơ quan Công an"
+    ],
+    "severity": "high",
+    "related_patterns": [],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cảnh báo thủ đoạn của tội phạm lừa đảo trực tuyến lợi dụng Tết Nguyên Đán Bính Ngọ 2026 và các dịp lễ hội đầu năm",
+      "url": "https://bocongan.gov.vn/bai-viet/canh-bao-thu-doan-cua-toi-pham-lua-dao-truc-tuyen-loi-dung-tet-nguyen-dan-binh-ngo-2026-va-cac-dip-le-hoi-dau-nam-1769572336",
+      "date": "2026-01-28",
+      "source_id": "BOCA-TET-TRAVEL-002"
+    }
+  },
+
+  {
+    "id": "SCAM-005",
+    "slug": "malicious_email",
+    "name": "Email giả mạo chứa link hoặc tệp độc hại",
+    "category": "phishing",
+    "description": "Đối tượng gửi email giả mạo nền tảng đặt phòng hoặc doanh nghiệp quen thuộc, sử dụng nội dung liên quan đến xác nhận đặt phòng, thanh toán hoặc khiếu nại để dụ người nhận mở link hoặc tệp chứa mã độc.",
+    "scenario": "Người nhận nhận được email có nội dung liên quan đến giao dịch quen thuộc. Email yêu cầu nhấp vào đường link hoặc mở tệp đính kèm. Sau khi thực hiện, thiết bị có thể bị cài mã độc hoặc dữ liệu bị đánh cắp.",
+    "target": [
+      "nhân viên doanh nghiệp",
+      "cơ sở lưu trú",
+      "người dùng email"
+    ],
+    "channels": [
+      "email"
+    ],
+    "warning_signs": [
+      "Email đến từ địa chỉ không chính thức",
+      "Yêu cầu mở file hoặc click link bất ngờ",
+      "Nội dung tạo cảm giác khẩn cấp",
+      "Thông tin giao dịch không khớp với giao dịch thực tế"
+    ],
+    "tactics": [
+      "Giả mạo nền tảng quen thuộc",
+      "Sử dụng nội dung liên quan đến giao dịch thực tế",
+      "Đính kèm mã độc",
+      "Dẫn người dùng tới website độc hại"
+    ],
+    "prevention": [
+      "Kiểm tra kỹ địa chỉ người gửi",
+      "Không mở tệp hoặc link không rõ nguồn gốc",
+      "Xác minh trực tiếp trên website hoặc ứng dụng chính thức",
+      "Không đăng nhập tài khoản qua link được gửi bất ngờ"
+    ],
+    "if_victim": [
+      "Ngắt kết nối thiết bị nếu nghi ngờ đã cài mã độc",
+      "Không tiếp tục đăng nhập tài khoản trên thiết bị nghi nhiễm",
+      "Đổi thông tin xác thực từ thiết bị an toàn",
+      "Liên hệ đơn vị liên quan nếu có tài khoản tài chính bị ảnh hưởng"
+    ],
+    "severity": "critical",
+    "related_patterns": [],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Cảnh báo thủ đoạn của tội phạm lừa đảo trực tuyến lợi dụng Tết Nguyên Đán Bính Ngọ 2026 và các dịp lễ hội đầu năm",
+      "url": "https://bocongan.gov.vn/bai-viet/canh-bao-thu-doan-cua-toi-pham-lua-dao-truc-tuyen-loi-dung-tet-nguyen-dan-binh-ngo-2026-va-cac-dip-le-hoi-dau-nam-1769572336",
+      "date": "2026-01-28",
+      "source_id": "BOCA-TET-EMAIL-001"
+    }
+  },
+
+  {
+    "id": "SCAM-006",
+    "slug": "fake_business",
+    "name": "Giả mạo doanh nghiệp bán hàng giá rẻ và yêu cầu đặt cọc",
+    "category": "ecommerce",
+    "description": "Đối tượng giả danh doanh nghiệp có uy tín bằng cách tạo tài khoản mạng xã hội gần giống tên doanh nghiệp thật, sử dụng hình ảnh sản phẩm thật và giấy phép kinh doanh giả để tạo lòng tin.",
+    "scenario": "Người mua nhìn thấy quảng cáo sản phẩm có giá thấp hơn nhiều so với thị trường. Người bán gửi hình ảnh, video, hợp đồng và giấy phép kinh doanh để tạo lòng tin, sau đó yêu cầu chuyển tiền đặt cọc vào tài khoản ngân hàng không chính chủ.",
+    "target": [
+      "người mua hàng trực tuyến",
+      "doanh nghiệp",
+      "nông dân và người mua máy móc"
+    ],
+    "channels": [
+      "Facebook",
+      "Zalo",
+      "YouTube",
+      "mạng xã hội"
+    ],
+    "warning_signs": [
+      "Giá thấp hơn thị trường rất nhiều",
+      "Tên tài khoản gần giống doanh nghiệp thật",
+      "Giấy phép kinh doanh không thể xác minh",
+      "Yêu cầu chuyển tiền đặt cọc vào tài khoản không đứng tên doanh nghiệp",
+      "Sau khi chuyển tiền không thể liên hệ người bán"
+    ],
+    "tactics": [
+      "Giả mạo tên doanh nghiệp",
+      "Sao chép hình ảnh và video sản phẩm",
+      "Làm giả giấy phép kinh doanh",
+      "Gửi hợp đồng giả",
+      "Sử dụng tài khoản ngân hàng không chính chủ",
+      "Yêu cầu đặt cọc trước"
+    ],
+    "prevention": [
+      "Kiểm tra tên doanh nghiệp và thông tin pháp lý trên nguồn chính thức",
+      "Xác minh tài khoản nhận tiền có thuộc doanh nghiệp hay không",
+      "Cảnh giác với giá thấp bất thường",
+      "Không chuyển khoản đặt cọc khi chưa xác minh người bán"
+    ],
+    "if_victim": [
+      "Liên hệ ngân hàng ngay nếu đã chuyển tiền",
+      "Lưu hợp đồng, tin nhắn, tài khoản nhận tiền và quảng cáo",
+      "Trình báo cơ quan Công an"
+    ],
+    "severity": "high",
+    "related_patterns": [
+      "online_job_collaborator",
+      "investment_scam",
+      "fake_goods_ecommerce",
+      "online_loan_app"
+    ],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Triệt phá nhóm lừa đảo trực tuyến, giả danh doanh nghiệp bán máy nông nghiệp “giá rẻ”",
+      "url": "https://bocongan.gov.vn/bai-viet/triet-pha-nhom-lua-dao-truc-tuyen-gia-danh-doanh-nghiep-ban-may-nong-nghiep-gia-re-1769512790",
+      "date": "2026-01-27",
+      "source_id": "BOCA-FAKE-BUSINESS-001"
+    }
+  },
+
+  {
+    "id": "SCAM-007",
+    "slug": "romance_scam",
+    "name": "Lừa đảo tình cảm qua mạng",
+    "category": "social_engineering",
+    "description": "Đối tượng làm quen và xây dựng mối quan hệ tình cảm qua mạng xã hội, sau đó đưa ra lý do cần tiền để thực hiện thủ tục, chi phí vận chuyển hoặc giải quyết khó khăn cá nhân.",
+    "scenario": "Nạn nhân làm quen với một người qua mạng xã hội. Sau một thời gian xây dựng quan hệ và tạo lòng tin, đối tượng nói đang ở nước ngoài hoặc gặp khó khăn và yêu cầu nạn nhân chuyển tiền.",
+    "target": [
+      "người dùng mạng xã hội",
+      "người tìm kiếm quan hệ tình cảm trực tuyến"
+    ],
+    "channels": [
+      "Facebook",
+      "Zalo",
+      "mạng xã hội"
+    ],
+    "warning_signs": [
+      "Mối quan hệ phát triển nhanh nhưng chưa gặp trực tiếp",
+      "Đối phương thường đưa ra lý do đang ở nước ngoài",
+      "Yêu cầu tiền để giải quyết vấn đề cá nhân",
+      "Yêu cầu chuyển tiền cho chi phí vận chuyển hoặc thủ tục",
+      "Tránh gặp mặt hoặc xác minh danh tính"
+    ],
+    "tactics": [
+      "Xây dựng quan hệ tình cảm",
+      "Tạo lòng tin trong thời gian dài",
+      "Đưa ra tình huống khẩn cấp",
+      "Yêu cầu chuyển tiền"
+    ],
+    "prevention": [
+      "Không chuyển tiền cho người chỉ quen qua mạng khi chưa xác minh danh tính",
+      "Không để cảm xúc thay thế việc kiểm chứng",
+      "Xác minh danh tính qua nhiều kênh"
+    ],
+    "if_victim": [
+      "Dừng chuyển tiền",
+      "Lưu lại toàn bộ lịch sử trao đổi",
+      "Lưu thông tin tài khoản đã nhận tiền",
+      "Trình báo cơ quan Công an nếu có dấu hiệu lừa đảo"
+    ],
+    "severity": "high",
+    "related_patterns": [],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Ngăn chặn vụ lừa đảo qua mạng, bảo toàn tài sản cho người dân",
+      "date": "2026-06-04",
+      "source_id": "BOCA-ROMANCE-001"
+    }
+  },
+
+  {
+    "id": "SCAM-008",
+    "slug": "social_welfare_impersonation",
+    "name": "Giả danh cán bộ để hỗ trợ làm sổ hộ nghèo",
+    "category": "government_impersonation",
+    "description": "Đối tượng tự xưng có thể hỗ trợ thủ tục an sinh xã hội như làm sổ hộ nghèo và yêu cầu người dân chuyển tiền vào tài khoản lạ.",
+    "scenario": "Người dân được người khác thông báo hoặc trực tiếp nhận yêu cầu chuyển tiền với lý do làm thủ tục sổ hộ nghèo. Khi được cảnh báo, nạn nhân vẫn có thể tin tưởng vì cho rằng đây là khoản phí thủ tục.",
+    "target": [
+      "người dân có nhu cầu hưởng chính sách an sinh xã hội",
+      "người cao tuổi",
+      "người có hoàn cảnh khó khăn"
+    ],
+    "channels": [
+      "điện thoại",
+      "mạng xã hội",
+      "người trung gian"
+    ],
+    "warning_signs": [
+      "Người lạ yêu cầu chuyển tiền cho thủ tục an sinh",
+      "Yêu cầu chuyển tiền vào tài khoản cá nhân hoặc tài khoản lạ",
+      "Không có giấy tờ hoặc thông báo chính thức",
+      "Tạo cảm giác phải chuyển tiền ngay"
+    ],
+    "tactics": [
+      "Lợi dụng chính sách an sinh xã hội",
+      "Đánh vào nhu cầu nhận hỗ trợ của người dân",
+      "Yêu cầu chuyển tiền vào tài khoản lạ"
+    ],
+    "prevention": [
+      "Không chuyển tiền cho người tự xưng hỗ trợ thủ tục nếu chưa xác minh",
+      "Xác minh trực tiếp với cơ quan nhà nước có thẩm quyền",
+      "Không cung cấp thông tin cá nhân hoặc tài khoản cho người lạ"
+    ],
+    "if_victim": [
+      "Dừng giao dịch",
+      "Thông báo cho Công an địa phương",
+      "Lưu thông tin tài khoản và người liên hệ"
+    ],
+    "severity": "high",
+    "related_patterns": [
+      "social_security_impersonation",
+      "fake_public_service"
+    ],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Hải Phòng: Cảnh báo về lừa đảo qua mạng với mục đích “làm sổ hộ nghèo”",
+      "url": "https://bocongan.gov.vn/bai-viet/hai-phong-canh-bao-ve-lua-dao-qua-mang-voi-muc-dich-lam-so-ho-ngheo-1763693578",
+      "date": "2025-11-24",
+      "source_id": "BOCA-WELFARE-001"
+    }
+  },
+
+  {
+    "id": "SCAM-009",
+    "slug": "social_security_impersonation",
+    "name": "Giả danh cán bộ BHXH để cập nhật hoặc cấp thẻ BHYT",
+    "category": "government_impersonation",
+    "description": "Đối tượng giả danh cán bộ bảo hiểm xã hội, thông báo thẻ BHYT bị lỗi, hết hạn hoặc cần cập nhật rồi yêu cầu người dân truy cập link, cung cấp thông tin hoặc chuyển tiền.",
+    "scenario": "Người dân nhận cuộc gọi thông báo thẻ BHYT có vấn đề hoặc cần chuyển đổi. Đối tượng tạo tâm lý lo lắng rồi hướng dẫn nạn nhân truy cập đường link hoặc chuyển tiền với lý do đóng phí cấp, đổi thẻ.",
+    "target": [
+      "người tham gia BHYT",
+      "người cao tuổi",
+      "người sử dụng dịch vụ BHXH"
+    ],
+    "channels": [
+      "điện thoại",
+      "tin nhắn",
+      "website giả"
+    ],
+    "warning_signs": [
+      "Thông báo thẻ BHYT bị lỗi hoặc hết hạn qua cuộc gọi không xác minh",
+      "Yêu cầu truy cập đường link lạ",
+      "Yêu cầu chuyển tiền qua điện thoại",
+      "Yêu cầu cung cấp thông tin cá nhân hoặc tài khoản"
+    ],
+    "tactics": [
+      "Giả danh cán bộ BHXH",
+      "Tạo tâm lý lo lắng về quyền lợi BHYT",
+      "Dẫn tới website hoặc đường link không rõ nguồn gốc",
+      "Yêu cầu thanh toán phí giả"
+    ],
+    "prevention": [
+      "Không cung cấp thông tin cá nhân qua cuộc gọi không xác minh",
+      "Không truy cập link lạ",
+      "Không chuyển tiền theo hướng dẫn qua điện thoại",
+      "Xác minh trực tiếp qua kênh chính thức của BHXH"
+    ],
+    "if_victim": [
+      "Dừng giao dịch",
+      "Lưu số điện thoại, tin nhắn và tài khoản liên quan",
+      "Liên hệ cơ quan BHXH chính thức để xác minh",
+      "Nếu có giao dịch tài chính, liên hệ ngân hàng"
+    ],
+    "severity": "high",
+    "related_patterns": [
+      "social_welfare_impersonation",
+      "fake_public_service"
+    ],
+    "source": {
+      "organization": "BHXH TP. Hà Nội",
+      "title": "Hà Nội cảnh báo chiêu lừa mạo danh cán bộ bảo hiểm xã hội để cấp thẻ bảo hiểm y tế",
+      "url": "https://ansinh.tapchikinhtetaichinh.vn/ha-noi-canh-bao-chieu-lua-mao-danh-can-bo-bao-hiem-xa-hoi-de-cap-the-bao-hiem-y-te-164713.html",
+      "date": "2026-08-17",
+      "source_id": "BHXH-HN-001"
+    }
+  },
+
+  {
+    "id": "SCAM-010",
+    "slug": "otp_phishing",
+    "name": "Lừa đảo lấy mã OTP thông qua website và cuộc gọi giả mạo",
+    "category": "phishing",
+    "description": "Đối tượng giả mạo ngân hàng, cơ quan nhà nước, nhà mạng hoặc ví điện tử để dụ nạn nhân nhập hoặc đọc mã OTP. OTP sau đó có thể được sử dụng để xác thực truy cập hoặc giao dịch trái phép.",
+    "scenario": "Nạn nhân nhận tin nhắn hoặc cuộc gọi thông báo tài khoản có vấn đề, cần xác minh hoặc liên quan đến vụ án. Đối tượng yêu cầu truy cập website giả hoặc đọc OTP để xác minh danh tính, đóng băng tài khoản hoặc giải quyết sự cố.",
+    "target": [
+      "người sử dụng ngân hàng số",
+      "người sử dụng ví điện tử",
+      "người dùng điện thoại"
+    ],
+    "channels": [
+      "SMS",
+      "email",
+      "website giả",
+      "điện thoại"
+    ],
+    "warning_signs": [
+      "Yêu cầu cung cấp OTP qua điện thoại",
+      "Yêu cầu nhập OTP trên website được gửi qua tin nhắn",
+      "Thông báo tài khoản có giao dịch bất thường",
+      "Tạo cảm giác khẩn cấp",
+      "Tự xưng là ngân hàng hoặc cơ quan chức năng"
+    ],
+    "tactics": [
+      "Phishing website",
+      "Giả danh ngân hàng hoặc cơ quan nhà nước",
+      "Gọi điện tạo áp lực",
+      "Thu thập OTP",
+      "Chiếm quyền SIM",
+      "Dụ cài phần mềm độc hại"
+    ],
+    "prevention": [
+      "Không cung cấp OTP cho bất kỳ người nào",
+      "Không nhập OTP trên website được gửi từ nguồn không xác minh",
+      "Tự mở ứng dụng hoặc website chính thức của ngân hàng",
+      "Không cài ứng dụng theo yêu cầu của người gọi"
+    ],
+    "if_victim": [
+      "Không cung cấp thêm OTP",
+      "Liên hệ ngay ngân hàng hoặc tổ chức tài chính qua kênh chính thức",
+      "Kiểm tra giao dịch bất thường",
+      "Đổi thông tin xác thực nếu cần",
+      "Lưu bằng chứng và trình báo nếu phát sinh giao dịch trái phép"
+    ],
+    "severity": "critical",
+    "related_patterns": [
+      "authority_impersonation",
+      "bank_impersonation",
+      "fake_public_service",
+      "qr_scam",
+      "online_loan_app"
+    ],
+    "source": {
+      "organization": "Công an tỉnh Lai Châu",
+      "title": "Cảnh giác với thủ đoạn lừa đảo liên quan tới OTP",
+      "url": "https://congan.laichau.gov.vn/thu-doan-pham-toi/canh-giac-voi-thu-doan-lua-dao-lien-quan-toi-otp-3817.html",
+      "date": "2025-11-12",
+      "source_id": "LAICHAU-OTP-001"
+    }
+  },
+
+  {
+    "id": "SCAM-011",
+    "slug": "fake_electricity_service",
+    "name": "Giả mạo điện lực để lừa đảo",
+    "category": "impersonation",
+    "description": "Đối tượng giả mạo nhân viên hoặc đơn vị điện lực để liên hệ với người dân, thông báo các vấn đề liên quan đến tiền điện hoặc dịch vụ điện và dẫn dụ nạn nhân thực hiện thanh toán hoặc cung cấp thông tin.",
+    "scenario": "Người dân nhận cuộc gọi hoặc tin nhắn tự xưng là điện lực, thông báo vấn đề liên quan đến hóa đơn hoặc dịch vụ. Đối tượng yêu cầu người dân làm theo hướng dẫn, có thể bao gồm truy cập link hoặc chuyển tiền.",
+    "target": [
+      "hộ gia đình",
+      "người sử dụng điện"
+    ],
+    "channels": [
+      "điện thoại",
+      "SMS",
+      "mạng xã hội"
+    ],
+    "warning_signs": [
+      "Người gọi tự xưng là điện lực nhưng sử dụng số cá nhân không xác minh",
+      "Yêu cầu chuyển tiền theo hướng dẫn qua điện thoại",
+      "Yêu cầu truy cập link lạ",
+      "Đe dọa ngừng cung cấp điện nếu không thực hiện ngay"
+    ],
+    "tactics": [
+      "Giả danh nhân viên điện lực",
+      "Tạo áp lực bằng nguy cơ ngừng cung cấp điện",
+      "Dẫn người dân tới kênh thanh toán hoặc website giả"
+    ],
+    "prevention": [
+      "Kiểm tra thông tin hóa đơn qua kênh chính thức",
+      "Không truy cập link lạ",
+      "Không cung cấp OTP hoặc thông tin ngân hàng",
+      "Không chuyển tiền theo yêu cầu của người gọi chưa xác minh"
+    ],
+    "if_victim": [
+      "Dừng giao dịch",
+      "Kiểm tra lại thông tin với đơn vị điện lực chính thức",
+      "Liên hệ ngân hàng nếu đã chuyển tiền",
+      "Lưu lại số điện thoại, tin nhắn và bằng chứng"
+    ],
+    "severity": "high",
+    "related_patterns": [],
+    "source": {
+      "organization": "Báo Điện tử Chính phủ / EVN",
+      "title": "EVN khuyến cáo người dân cảnh giác với chiêu trò giả mạo điện lực để lừa đảo trực tuyến",
+      "url": "https://baochinhphu.vn/evn-khuyen-cao-nguoi-dan-canh-giac-voi-chieu-tro-gia-mao-dien-luc-de-lua-dao-truc-tuyen-102250528211512856.html",
+      "source_id": "EVN-FAKE-001"
+    }
+  },
+
+  {
+    "id": "SCAM-012",
+    "slug": "sms_brandname_phishing",
+    "name": "Tin nhắn SMS Brandname giả mạo",
+    "category": "phishing",
+    "description": "Đối tượng sử dụng tên thương hiệu hoặc Brandname giả mạo để gửi SMS, tạo cảm giác tin nhắn đến từ ngân hàng, doanh nghiệp hoặc cơ quan quen thuộc và dẫn người dùng tới đường link lừa đảo.",
+    "scenario": "Nạn nhân nhận được SMS hiển thị tên thương hiệu quen thuộc. Nội dung thông báo tài khoản, giao dịch, khuyến mãi hoặc vấn đề cần xử lý và yêu cầu nhấp vào đường link.",
+    "target": [
+      "người sử dụng điện thoại",
+      "khách hàng ngân hàng",
+      "người dùng dịch vụ trực tuyến"
+    ],
+    "channels": [
+      "SMS"
+    ],
+    "warning_signs": [
+      "Tin nhắn yêu cầu nhấp link",
+      "Nội dung tạo cảm giác khẩn cấp",
+      "Đường link không phải domain chính thức",
+      "Yêu cầu đăng nhập hoặc cung cấp OTP",
+      "Tên Brandname tạo cảm giác quen thuộc nhưng nội dung bất thường"
+    ],
+    "tactics": [
+      "Giả mạo Brandname",
+      "Giả mạo thương hiệu",
+      "Dẫn tới website phishing",
+      "Thu thập thông tin đăng nhập và OTP"
+    ],
+    "prevention": [
+      "Không nhấp vào link đáng ngờ",
+      "Tự mở ứng dụng hoặc website chính thức",
+      "Kiểm tra domain trước khi đăng nhập",
+      "Không cung cấp OTP"
+    ],
+    "if_victim": [
+      "Thoát khỏi website đáng ngờ",
+      "Đổi mật khẩu nếu đã nhập thông tin",
+      "Liên hệ đơn vị cung cấp dịch vụ nếu đã cung cấp thông tin tài chính",
+      "Theo dõi giao dịch bất thường"
+    ],
+    "severity": "critical",
+    "related_patterns": [
+      "fake_delivery"
+    ],
+    "source": {
+      "organization": "Cục An toàn thông tin",
+      "title": "Cách nhận biết và phòng tránh lừa đảo phát tán SMS Brandname giả mạo",
+      "url": "https://antoanthongtin.vn/tin/cach-nhan-biet-va-phong-tranh-lua-dao-phat-tan-sms-brandname-gia-mao",
+      "source_id": "ATTT-SMS-001"
+    }
+  },
+
+  {
+    "id": "SCAM-013",
+    "slug": "authority_impersonation",
+    "name": "Giả danh Công an, Viện kiểm sát, Tòa án",
+    "category": "impersonation",
+    "description": "Kẻ gian tự xưng là Công an, Viện kiểm sát hoặc Tòa án, đe dọa nạn nhân liên quan đến một vụ án để yêu cầu chuyển tiền hoặc cung cấp thông tin cá nhân.",
+    "scenario": "Kẻ gian gọi điện hoặc liên hệ trực tuyến, tự xưng là Công an, Viện kiểm sát hoặc Tòa án và thông báo nạn nhân có liên quan đến một vụ án hoặc vấn đề pháp lý.",
+    "tactics": [
+      "Sử dụng số điện thoại hoặc thông tin hiển thị giả mạo cơ quan chức năng",
+      "Đe dọa, gây áp lực tâm lý và tạo cảm giác khẩn cấp",
+      "Yêu cầu cung cấp thông tin cá nhân, thông tin tài khoản hoặc thông tin bảo mật",
+      "Yêu cầu chuyển tiền để xác minh tài sản hoặc chứng minh không liên quan đến vụ án"
+    ],
+    "warning_signs": [
+      "Người gọi tự xưng là cơ quan tố tụng và yêu cầu xử lý ngay qua điện thoại",
+      "Đe dọa bắt giữ hoặc nói nạn nhân liên quan đến vụ án",
+      "Yêu cầu chuyển tiền hoặc cung cấp thông tin nhạy cảm",
+      "Yêu cầu giữ bí mật và không cho người khác biết"
+    ],
+    "prevention": [
+      "Giữ bình tĩnh, không làm theo yêu cầu dưới áp lực",
+      "Tự xác minh danh tính qua kênh chính thức của cơ quan",
+      "Không cung cấp OTP, mật khẩu hoặc thông tin ngân hàng",
+      "Không chuyển tiền theo yêu cầu của người gọi"
+    ],
+    "if_victim": [
+      "Dừng trao đổi và không tiếp tục chuyển tiền",
+      "Lưu số điện thoại, tin nhắn, ghi âm hoặc bằng chứng liên quan nếu có",
+      "Liên hệ ngân hàng nếu đã chuyển tiền",
+      "Thông báo cho cơ quan Công an để được hướng dẫn"
+    ],
+    "related_patterns": [
+      "bank_impersonation",
+      "otp_phishing",
+      "phishing"
+    ],
+    "source": {
+      "title": "Giả danh cơ quan công an, viện kiểm sát, tòa án gọi điện lừa đảo",
+      "url": "https://special.nhandan.vn/gia-danh-co-quan-cong-an-vien-kiem-soat-goi-dien-lua-dao/index.html",
+      "organization": "Báo Nhân Dân"
+    }
+  },
+  {
+    "id": "SCAM-014",
+    "slug": "bank_impersonation",
+    "name": "Giả danh nhân viên ngân hàng",
+    "category": "impersonation",
+    "description": "Kẻ gian giả danh nhân viên ngân hàng, xây dựng kịch bản phù hợp với từng nạn nhân rồi dẫn dụ nạn nhân cung cấp thông tin, truy cập liên kết hoặc thực hiện giao dịch.",
+    "scenario": "Kẻ gian giả danh nhân viên ngân hàng, xây dựng kịch bản phù hợp với từng nạn nhân rồi dẫn dụ nạn nhân cung cấp thông tin, truy cập liên kết hoặc thực hiện giao dịch.",
+    "tactics": [
+      "Tự xưng là nhân viên ngân hàng",
+      "Thông báo tài khoản hoặc giao dịch có vấn đề",
+      "Tạo kịch bản riêng để tăng độ tin cậy",
+      "Dẫn dụ nạn nhân cung cấp thông tin hoặc thực hiện thao tác giao dịch"
+    ],
+    "warning_signs": [
+      "Cuộc gọi bất ngờ yêu cầu xử lý vấn đề tài khoản",
+      "Yêu cầu cung cấp OTP, mật khẩu hoặc thông tin thẻ",
+      "Yêu cầu truy cập một liên kết hoặc cài ứng dụng",
+      "Thúc giục chuyển tiền hoặc thực hiện thao tác ngay"
+    ],
+    "prevention": [
+      "Không cung cấp OTP, mật khẩu và thông tin xác thực qua điện thoại",
+      "Tự gọi lại ngân hàng bằng số chính thức",
+      "Không truy cập link do người gọi cung cấp",
+      "Kiểm tra giao dịch trực tiếp trên ứng dụng ngân hàng chính thức"
+    ],
+    "if_victim": [
+      "Khóa hoặc tạm khóa tài khoản/thẻ nếu nghi ngờ thông tin đã bị lộ",
+      "Liên hệ ngân hàng ngay để yêu cầu hỗ trợ",
+      "Đổi mật khẩu và kiểm tra các giao dịch bất thường",
+      "Trình báo cơ quan Công an nếu đã bị chiếm đoạt"
+    ],
+    "related_patterns": [
+      "otp_phishing",
+      "phishing",
+      "wrong_transfer"
+    ],
+    "source": {
+      "title": "Vạch trần đường dây lừa đảo hơn 110 tỷ: Giả danh nhân viên ngân hàng",
+      "url": "https://cafef.vn/vach-tran-duong-day-lua-dao-hon-110-ty-gia-danh-nhan-vien-ngan-hang-do-ni-dong-giay-kich-ban-cho-tung-nan-nhan-co-nhom-chuyen-rua-tien-188260815100657738.chn",
+      "organization": "CafeF"
+    }
+  },
+  {
+    "id": "SCAM-015",
+    "slug": "online_job_collaborator",
+    "name": "Lừa đảo tuyển cộng tác viên online",
+    "category": "employment",
+    "description": "Kẻ gian đăng tuyển công việc online với lời hứa việc nhẹ, thu nhập cao, thường giả mạo sàn thương mại điện tử hoặc thương hiệu lớn, sau đó yêu cầu ứng tiền hoặc cung cấp thông tin tài khoản.",
+    "scenario": "Kẻ gian đăng tuyển công việc online với lời hứa việc nhẹ, thu nhập cao, thường giả mạo sàn thương mại điện tử hoặc thương hiệu lớn. Sau khi tạo lòng tin, nạn nhân bị yêu cầu ứng tiền hoặc cung cấp thông tin tài khoản.",
+    "tactics": [
+      "Quảng cáo việc nhẹ, lương cao",
+      "Giả mạo thương hiệu hoặc sàn thương mại điện tử",
+      "Yêu cầu nộp tiền tạm ứng để bắt đầu công việc",
+      "Yêu cầu thông tin tài khoản để nhận thanh toán"
+    ],
+    "warning_signs": [
+      "Thu nhập cao bất thường nhưng công việc quá dễ",
+      "Phải chuyển tiền trước khi được làm việc",
+      "Không có thông tin rõ ràng về công ty hoặc người tuyển dụng",
+      "Không có hợp đồng hoặc thỏa thuận minh bạch"
+    ],
+    "prevention": [
+      "Kiểm tra pháp nhân và thông tin liên hệ của đơn vị tuyển dụng",
+      "Không chuyển tiền để được nhận việc",
+      "Không cung cấp thông tin ngân hàng cho bên tuyển dụng không xác minh được",
+      "Tìm kiếm đánh giá và phản hồi độc lập trước khi tham gia"
+    ],
+    "if_victim": [
+      "Ngừng chuyển tiền và ngừng thực hiện nhiệm vụ",
+      "Lưu toàn bộ tin nhắn, tài khoản nhận tiền và bằng chứng giao dịch",
+      "Liên hệ ngân hàng nếu đã chuyển tiền",
+      "Trình báo cơ quan Công an nếu có dấu hiệu chiếm đoạt"
+    ],
+    "related_patterns": [
+      "fake_business",
+      "investment_scam"
+    ],
+    "source": {
+      "title": "Lừa đảo tuyển dụng cộng tác viên online",
+      "url": "https://special.nhandan.vn/lua-dao-tuyen-cong-tac-vien-online/index.html",
+      "organization": "Báo Nhân Dân"
+    }
+  },
+  {
+    "id": "SCAM-016",
+    "slug": "investment_scam",
+    "name": "Lừa đảo đầu tư chứng khoán, tiền ảo",
+    "category": "financial",
+    "description": "Kẻ gian dụ nạn nhân tham gia các sàn hoặc nền tảng đầu tư không rõ nguồn gốc, hứa hẹn lợi nhuận cao và yêu cầu chuyển tiền hoặc đóng các khoản phí.",
+    "scenario": "Kẻ gian dụ nạn nhân tham gia các sàn hoặc nền tảng đầu tư không rõ nguồn gốc, hứa hẹn lợi nhuận cao và yêu cầu chuyển tiền hoặc đóng các khoản phí.",
+    "tactics": [
+      "Hứa hẹn lợi nhuận vượt trội",
+      "Cung cấp ít hoặc không cung cấp thông tin về pháp nhân và giấy phép",
+      "Yêu cầu chuyển tiền trước dưới dạng phí đăng ký, phí tham gia hoặc tiền ký quỹ",
+      "Dẫn dụ thông qua người giới thiệu hoặc nhóm cộng đồng"
+    ],
+    "warning_signs": [
+      "Cam kết lợi nhuận cao bất thường hoặc gần như không có rủi ro",
+      "Không xác minh được giấy phép và pháp nhân",
+      "Chi phí và điều kiện giao dịch không minh bạch",
+      "Người lạ thúc giục tham gia đầu tư"
+    ],
+    "prevention": [
+      "Kiểm tra pháp nhân và tình trạng cấp phép",
+      "Không chuyển tiền vào nền tảng không xác minh được",
+      "Không tin vào cam kết lợi nhuận chắc chắn",
+      "Tham khảo nguồn độc lập hoặc chuyên gia trước khi đầu tư"
+    ],
+    "if_victim": [
+      "Không tiếp tục nạp tiền để mở khóa hoặc rút tiền",
+      "Lưu lịch sử giao dịch và toàn bộ trao đổi",
+      "Liên hệ ngân hàng nếu còn khả năng ngăn chặn giao dịch",
+      "Trình báo cơ quan chức năng"
+    ],
+    "related_patterns": [
+      "online_job_collaborator",
+      "fake_business"
+    ],
+    "source": {
+      "title": "Lừa đảo đầu tư chứng khoán quốc tế, tiền ảo",
+      "url": "https://special.nhandan.vn/lua-dao-dau-tu-chung-khoan-quoc-te-tien-ao/index.html",
+      "organization": "Báo Nhân Dân"
+    }
+  },
+  {
+    "id": "SCAM-017",
+    "slug": "fake_goods_ecommerce",
+    "name": "Hàng giả, hàng nhái qua thương mại điện tử",
+    "category": "ecommerce",
+    "description": "Người bán sử dụng sàn thương mại điện tử hoặc mạng xã hội để rao bán hàng giả, hàng nhái hoặc hàng không đúng mô tả, thường dùng giá rất thấp và tạo áp lực mua nhanh.",
+    "scenario": "Người bán sử dụng sàn thương mại điện tử hoặc mạng xã hội để rao bán hàng giả, hàng nhái hoặc hàng không đúng mô tả, thường dùng giá rất thấp và tạo áp lực mua nhanh.",
+    "tactics": [
+      "Đưa ra mức giá thấp bất thường",
+      "Thiếu thông tin về nguồn gốc và bảo hành",
+      "Tạo cảm giác khan hiếm để thúc giục mua",
+      "Sử dụng đánh giá không tự nhiên để tạo niềm tin",
+      "Yêu cầu phương thức thanh toán không an toàn"
+    ],
+    "warning_signs": [
+      "Giá thấp hơn thị trường rất nhiều",
+      "Không có thông tin rõ ràng về người bán",
+      "Đánh giá quá tích cực hoặc có dấu hiệu giả",
+      "Không có chính sách đổi trả hoặc bảo hành rõ ràng"
+    ],
+    "prevention": [
+      "Kiểm tra thông tin người bán và nguồn gốc sản phẩm",
+      "Đọc đánh giá từ nhiều nguồn",
+      "Kiểm tra chính sách bảo hành và hoàn tiền",
+      "Ưu tiên phương thức thanh toán có cơ chế bảo vệ người mua"
+    ],
+    "if_victim": [
+      "Lưu thông tin sản phẩm, người bán và giao dịch",
+      "Sử dụng cơ chế khiếu nại của sàn nếu có",
+      "Không tiếp tục chuyển tiền ngoài nền tảng",
+      "Báo cơ quan chức năng khi có dấu hiệu lừa đảo hoặc hàng giả"
+    ],
+    "related_patterns": [
+      "fake_business",
+      "wrong_transfer",
+      "fake_delivery"
+    ],
+    "source": {
+      "title": "Rao bán hàng giả hàng nhái qua sàn thương mại điện tử",
+      "url": "https://special.nhandan.vn/rao-ban-hang-gia-hang-nhai-qua-san-thuong-mai-dien-tu/index.html",
+      "organization": "Báo Nhân Dân"
+    }
+  },
+  {
+    "id": "SCAM-018",
+    "slug": "wrong_transfer",
+    "name": "Lừa đảo chuyển nhầm tiền",
+    "category": "financial",
+    "description": "Kẻ gian giả thông báo đã chuyển nhầm tiền hoặc thực sự chuyển một khoản tiền rồi tìm cách khiến nạn nhân chuyển tiền lại, truy cập link giả hoặc cung cấp thông tin bảo mật.",
+    "scenario": "Kẻ gian giả thông báo đã chuyển nhầm tiền hoặc thực sự chuyển một khoản tiền rồi tìm cách khiến nạn nhân chuyển tiền lại, truy cập link giả hoặc cung cấp thông tin bảo mật.",
+    "tactics": [
+      "Gửi SMS/email giả mạo ngân hàng",
+      "Giả danh người chuyển nhầm",
+      "Gửi biên lai chuyển khoản giả",
+      "Gửi link hoàn tiền hoặc chuyển tiền quốc tế giả",
+      "Giả chuyển khoản bằng ảnh chụp màn hình",
+      "Giả danh nhân viên thu hồi nợ sau khi chuyển tiền"
+    ],
+    "warning_signs": [
+      "Người lạ yêu cầu chuyển lại tiền ngay",
+      "Chỉ cung cấp ảnh chụp hoặc biên lai thay vì giao dịch thực tế",
+      "Yêu cầu chuyển lại sang tài khoản khác",
+      "Gửi link để hoàn tiền",
+      "Đe dọa hoặc gây áp lực nếu không chuyển"
+    ],
+    "prevention": [
+      "Không sử dụng khoản tiền lạ",
+      "Không tự chuyển tiền lại cho người lạ",
+      "Kiểm tra số dư và giao dịch thực tế trên ứng dụng ngân hàng",
+      "Liên hệ ngân hàng để xử lý việc hoàn trả",
+      "Không nhập OTP hoặc thông tin ngân hàng vào link được gửi"
+    ],
+    "if_victim": [
+      "Dừng giao dịch và không chuyển thêm tiền",
+      "Liên hệ ngân hàng ngay",
+      "Lưu bằng chứng giao dịch, tin nhắn và số điện thoại",
+      "Nếu đã cung cấp thông tin ngân hàng, yêu cầu ngân hàng hỗ trợ bảo vệ tài khoản",
+      "Trình báo Công an khi có dấu hiệu chiếm đoạt"
+    ],
+    "related_patterns": [
+      "bank_impersonation",
+      "otp_phishing",
+      "phishing",
+      "fake_goods_ecommerce"
+    ],
+    "source": {
+      "title": "Cảnh báo chiêu trò lừa đảo “chuyển nhầm tiền” và hướng xử lý để bảo vệ bản thân",
+      "url": "https://congan.khanhhoa.gov.vn/vi/canh-bao-chieu-tro-lua-dao-chuyen-nham-tien-va-huong-xu-ly-de-bao-ve-ban-than",
+      "organization": "Công an tỉnh Khánh Hòa"
+    }
+  },
+  {
+    "id": "SCAM-019",
+    "slug": "fake_public_service",
+    "name": "Website giả mạo Cổng Dịch vụ công",
+    "category": "government_impersonation",
+    "description": "Kẻ gian tạo website có giao diện giống Cổng Dịch vụ công để dụ người dân đăng nhập, cung cấp thông tin cá nhân, tài khoản ngân hàng hoặc OTP.",
+    "scenario": "Kẻ gian tạo website có giao diện giống Cổng Dịch vụ công để dụ người dân đăng nhập, cung cấp thông tin cá nhân, tài khoản ngân hàng hoặc OTP.",
+    "tactics": [
+      "Sao chép giao diện website cơ quan nhà nước",
+      "Dùng tên miền gây nhầm lẫn",
+      "Yêu cầu đăng nhập hoặc cung cấp thông tin cá nhân",
+      "Yêu cầu OTP hoặc thông tin ngân hàng",
+      "Có thể hướng dẫn cài ứng dụng hoặc phần mềm từ nguồn không rõ"
+    ],
+    "warning_signs": [
+      "Tên miền không phải địa chỉ chính thức",
+      "Yêu cầu OTP hoặc mật khẩu qua website lạ",
+      "Được gửi link qua tin nhắn hoặc mạng xã hội",
+      "Yêu cầu cài ứng dụng theo hướng dẫn của người lạ"
+    ],
+    "prevention": [
+      "Truy cập dịch vụ công từ địa chỉ chính thức do cơ quan nhà nước công bố",
+      "Kiểm tra kỹ tên miền trước khi đăng nhập",
+      "Không cung cấp OTP và mật khẩu cho website không rõ nguồn gốc",
+      "Không cài ứng dụng từ link do người lạ gửi"
+    ],
+    "if_victim": [
+      "Dừng thao tác ngay",
+      "Nếu đã nhập thông tin ngân hàng, liên hệ ngân hàng để bảo vệ tài khoản",
+      "Đổi thông tin xác thực nếu cần",
+      "Thông báo cho cơ quan Công an hoặc đơn vị chức năng"
+    ],
+    "related_patterns": [
+      "otp_phishing",
+      "phishing",
+      "authority_impersonation"
+    ],
+    "source": {
+      "title": "Cảnh giác với website giả mạo Cổng Dịch vụ công quốc gia nhằm lừa đảo, chiếm đoạt tài sản",
+      "url": "https://congan.ninhbinh.gov.vn/canh-giac-voi-website-gia-mao-cong-dich-vu-cong-quoc-gia-nham-lua-dao-chiem-doat-tai-san",
+      "organization": "Công an tỉnh Ninh Bình"
+    }
+  },
+  {
+    "id": "SCAM-020",
+    "slug": "qr_scam",
+    "name": "Lừa đảo qua mã QR",
+    "category": "technical",
+    "description": "Kẻ gian sử dụng mã QR giả trong tin nhắn, email, mạng xã hội, quảng cáo hoặc nơi công cộng để dẫn người dùng đến trang phishing, trang chứa mã độc hoặc giao dịch sai đối tượng.",
+    "scenario": "Kẻ gian sử dụng mã QR giả trong tin nhắn, email, mạng xã hội, quảng cáo hoặc nơi công cộng để dẫn người dùng đến trang phishing, trang chứa mã độc hoặc giao dịch sai đối tượng.",
+    "tactics": [
+      "Gửi QR với nội dung xác minh hoặc cập nhật tài khoản",
+      "Dán QR giả lên quảng cáo, khảo sát, vé hoặc tài liệu",
+      "Dẫn người dùng đến website giả",
+      "Dẫn đến phần mềm hoặc ứng dụng độc hại",
+      "Thay đổi thông tin người thụ hưởng trong thanh toán"
+    ],
+    "warning_signs": [
+      "QR đến từ nguồn không rõ ràng",
+      "QR yêu cầu đăng nhập hoặc xác minh tài khoản",
+      "Sau khi quét xuất hiện link lạ",
+      "Yêu cầu tải ứng dụng ngoài App Store hoặc Google Play",
+      "Thông tin người nhận không đúng với dự kiến"
+    ],
+    "prevention": [
+      "Không quét QR từ nguồn không rõ",
+      "Kiểm tra đường dẫn sau khi quét",
+      "Xác minh tên người thụ hưởng trước khi thanh toán",
+      "Chỉ cài ứng dụng từ kho chính thức",
+      "Không cung cấp OTP hoặc mật khẩu sau khi quét QR"
+    ],
+    "if_victim": [
+      "Đóng trang hoặc ứng dụng đáng ngờ",
+      "Không nhập thêm thông tin",
+      "Nếu đã cung cấp thông tin ngân hàng, liên hệ ngân hàng ngay",
+      "Nếu đã cài ứng dụng đáng ngờ, ngắt kết nối và kiểm tra thiết bị",
+      "Lưu bằng chứng và trình báo nếu có thiệt hại"
+    ],
+    "related_patterns": [
+      "phishing",
+      "otp_phishing",
+      "fake_delivery"
+    ],
+    "source": {
+      "title": "Các “chiêu trò” lừa đảo qua mã QR",
+      "url": "https://nhandan.vn/cac-chieu-tro-lua-dao-qua-ma-qr-post926223.html",
+      "organization": "Báo Nhân Dân"
+    }
+  },
+  {
+    "id": "SCAM-021",
+    "slug": "fake_delivery",
+    "name": "Giả mạo thông báo giao hàng",
+    "category": "phishing",
+    "description": "Kẻ gian gửi SMS hoặc tin nhắn thông báo đơn hàng/giao hàng có vấn đề và dẫn người nhận tới liên kết giả để thanh toán, xác minh hoặc cung cấp thông tin.",
+    "scenario": "Kẻ gian gửi SMS hoặc tin nhắn thông báo đơn hàng/giao hàng có vấn đề và dẫn người nhận tới liên kết giả để thanh toán, xác minh hoặc cung cấp thông tin.",
+    "tactics": [
+      "Giả thông báo giao hàng",
+      "Dẫn tới website thanh toán giả",
+      "Yêu cầu xác minh đơn hàng",
+      "Thu thập thông tin tài khoản hoặc thẻ"
+    ],
+    "warning_signs": [
+      "Tin nhắn về đơn hàng mà người nhận không biết",
+      "Link thanh toán hoặc xác minh không quen thuộc",
+      "Yêu cầu nhập thông tin thẻ, tài khoản hoặc OTP",
+      "Tạo áp lực phải xử lý đơn hàng ngay"
+    ],
+    "prevention": [
+      "Không bấm link trong tin nhắn giao hàng không mong đợi",
+      "Kiểm tra đơn hàng trực tiếp trên ứng dụng/website chính thức của đơn vị vận chuyển",
+      "Không cung cấp OTP hoặc thông tin thẻ",
+      "Không cài ứng dụng từ link SMS"
+    ],
+    "if_victim": [
+      "Nếu chỉ bấm link nhưng chưa nhập thông tin, đóng trang và không tiếp tục",
+      "Nếu đã nhập thông tin ngân hàng, liên hệ ngân hàng ngay",
+      "Nếu đã cài ứng dụng lạ, ngắt kết nối và kiểm tra thiết bị",
+      "Lưu lại tin nhắn và URL để báo cáo"
+    ],
+    "related_patterns": [
+      "phishing",
+      "sms_brandname_phishing",
+      "qr_scam"
+    ],
+    "source": {
+      "title": "Cảnh báo tất cả những ai nhận được tin nhắn thông báo giao hàng này: Tuyệt đối không bấm",
+      "url": "https://cafef.vn/canh-bao-tat-ca-nhung-ai-nhan-duoc-tin-nhan-thong-bao-giao-hang-nay-tuyet-doi-khong-bam-188260813181346997.chn",
+      "organization": "CafeF"
+    }
+  },
+  {
+    "id": "SCAM-022",
+    "slug": "fake_emergency_relative",
+    "name": "Giả danh người thân/cấp cứu",
+    "category": "social_engineering",
+    "description": "Kẻ gian giả danh con, người thân hoặc người quen, thông báo đang gặp tai nạn, cấp cứu hoặc vấn đề pháp lý và yêu cầu chuyển tiền gấp.",
+    "scenario": "Kẻ gian giả danh con, người thân hoặc người quen, thông báo đang gặp tai nạn, cấp cứu hoặc vấn đề pháp lý và yêu cầu chuyển tiền gấp.",
+    "tactics": [
+      "Gọi điện bất ngờ với tình huống khẩn cấp",
+      "Giả giọng hoặc sử dụng thông tin của người thân",
+      "Đưa ra yêu cầu chuyển tiền ngay",
+      "Tạo áp lực khiến nạn nhân không kịp xác minh"
+    ],
+    "warning_signs": [
+      "Thông báo tai nạn hoặc cấp cứu bất ngờ",
+      "Yêu cầu chuyển tiền trong thời gian rất ngắn",
+      "Không cho thời gian xác minh",
+      "Thông tin người gọi không nhất quán"
+    ],
+    "prevention": [
+      "Bình tĩnh và không chuyển tiền ngay",
+      "Gọi trực tiếp cho người thân bằng số đã lưu",
+      "Liên hệ người thân khác để xác minh",
+      "Không dựa vào giọng nói hoặc video call làm bằng chứng duy nhất"
+    ],
+    "if_victim": [
+      "Dừng chuyển tiền nếu chưa hoàn tất",
+      "Liên hệ ngân hàng nếu đã chuyển",
+      "Xác minh tình trạng người thân qua kênh độc lập",
+      "Lưu lại số điện thoại và bằng chứng liên quan"
+    ],
+    "related_patterns": [
+      "deepfake",
+      "authority_impersonation"
+    ],
+    "source": {
+      "title": "Liên tiếp người dân mất tiền oan vì các cuộc gọi lừa đảo con cấp cứu, người thân đang vướng vòng lao lý",
+      "url": "https://cafebiz.vn/lien-tiep-nguoi-dan-mat-tien-oan-vi-cac-cuoc-goi-lua-dao-con-cap-cuu-nguoi-than-dang-vuong-vong-lao-ly-nam-ngay-dau-hieu-don-gian-giup-lat-tay-ke-mao-danh-176230309121130492.chn",
+      "organization": "CafeBiz"
+    }
+  },
+  {
+    "id": "SCAM-023",
+    "slug": "online_loan_app",
+    "name": "Lừa đảo qua ứng dụng vay tiền online",
+    "category": "financial",
+    "description": "Kẻ gian lợi dụng các ứng dụng hoặc dịch vụ online để tiếp cận nạn nhân, dụ họ cài ứng dụng hoặc cho mượn điện thoại, sau đó tạo khoản vay, lấy OTP, nhận diện khuôn mặt hoặc chiếm quyền tài khoản.",
+    "scenario": "Kẻ gian lợi dụng các ứng dụng hoặc dịch vụ online để tiếp cận nạn nhân, dụ họ cài ứng dụng hoặc cho mượn điện thoại, sau đó tạo khoản vay, lấy OTP, nhận diện khuôn mặt hoặc chiếm quyền tài khoản.",
+    "tactics": [
+      "Đề nghị cài ứng dụng để nhận ưu đãi hoặc làm nhiệm vụ",
+      "Mượn điện thoại của nạn nhân",
+      "Tự thao tác trong ứng dụng tài chính",
+      "Thực hiện nhận diện khuôn mặt hoặc lấy OTP",
+      "Tạo khoản vay mà nạn nhân không biết",
+      "Chuyển tiền giải ngân sang tài khoản của kẻ gian"
+    ],
+    "warning_signs": [
+      "Người khác yêu cầu mượn điện thoại để đăng ký ứng dụng tài chính",
+      "Người lạ trực tiếp thao tác trên ứng dụng ngân hàng/ví điện tử",
+      "Yêu cầu đọc hoặc cung cấp OTP",
+      "Yêu cầu thực hiện nhận diện khuôn mặt cho mục đích không rõ",
+      "Xuất hiện khoản vay mà bản thân không đăng ký"
+    ],
+    "prevention": [
+      "Không đưa điện thoại đã đăng nhập tài khoản tài chính cho người khác thao tác",
+      "Không cung cấp OTP",
+      "Không thực hiện nhận diện khuôn mặt theo yêu cầu của người lạ",
+      "Kiểm tra thông báo và lịch sử giao dịch thường xuyên",
+      "Chỉ cài ứng dụng tài chính từ nguồn chính thức"
+    ],
+    "if_victim": [
+      "Liên hệ ngay đơn vị tài chính/ngân hàng để khóa hoặc bảo vệ tài khoản",
+      "Kiểm tra các khoản vay và giao dịch phát sinh",
+      "Lưu bằng chứng và thông tin ứng dụng liên quan",
+      "Thông báo ngay cho cơ quan Công an nếu xuất hiện khoản vay trái phép hoặc bị chiếm đoạt"
+    ],
+    "related_patterns": [
+      "otp_phishing",
+      "fake_business",
+      "phishing"
+    ],
+    "source": {
+      "title": "Cảnh giác với hành vi lợi dụng các ứng dụng vay tiền online để chiếm đoạt tài sản",
+      "url": "https://bocongan.gov.vn/bai-viet/canh-giac-voi-hanh-vi-loi-dung-cac-ung-dung-vay-tien-online-de-chiem-doat-tai-san-1763439165",
+      "organization": "Bộ Công an"
+    }
+  }
+]

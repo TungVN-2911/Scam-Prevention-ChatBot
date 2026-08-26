@@ -1,0 +1,118 @@
+  - name: hotline_lookup
+    description: Tìm số điện thoại, đường dây nóng hoặc kênh chính thức để báo cáo, trình báo hoặc tố giác lừa đảo.
+    patterns:
+      - hotline
+      - số điện thoại báo cáo
+      - đường dây nóng
+      - báo công an
+      - trình báo
+      - tố giác lừa đảo
+      - báo lừa đảo ở đâu
+
+  - name: victim_help
+    description: Người dùng đã trở thành nạn nhân hoặc vừa thực hiện hành động có thể khiến họ mất tiền và cần hướng dẫn xử lý ngay.
+    patterns:
+      - tôi bị lừa
+      - tôi vừa bị lừa
+      - vừa chuyển tiền
+      - tôi đã chuyển khoản
+      - tôi đưa mã OTP rồi
+      - tài khoản của tôi bị chiếm
+      - phải làm gì bây giờ
+
+  - name: warning_signs
+    description: Hỏi về các dấu hiệu, đặc điểm hoặc hành vi thường gặp của một vụ lừa đảo.
+    patterns:
+      - dấu hiệu lừa đảo
+      - nhận biết lừa đảo
+      - dấu hiệu scam
+      - có phải lừa đảo không
+      - làm sao biết là lừa đảo
+      - tôi nghi ngờ
+      - có gì đó không ổn
+
+  - name: scam_identification
+    description: Đánh giá một tình huống, tin nhắn, cuộc gọi hoặc yêu cầu cụ thể để xác định có khả năng là lừa đảo hay không.
+    patterns:
+      - trường hợp này có phải lừa đảo không
+      - người này yêu cầu tôi chuyển tiền
+      - họ gửi cho tôi tin nhắn này
+      - kiểm tra giúp tôi có phải scam không
+      - đây có phải chiêu lừa đảo không
+      - yêu cầu chuyển khoản trước
+      - yêu cầu chuyển tiền để xác minh
+      - thông báo trúng thưởng
+      - thông báo trúng đấu giá
+      - yêu cầu cung cấp mã otp
+      - gửi đường link để xác minh tài khoản
+
+  - name: scam_pattern_search
+    description: Tìm hiểu về một loại hoặc hình thức lừa đảo cụ thể.
+    patterns:
+      - lừa đảo tuyển dụng
+      - lừa đảo đầu tư
+      - lừa đảo tình cảm
+      - lừa đảo qua OTP
+      - lừa đảo giả danh công an
+      - lừa đảo mua bán online
+      - các hình thức lừa đảo
+
+  - name: prevention_advice
+    description: Hỏi cách phòng tránh, bảo vệ bản thân hoặc giảm nguy cơ trở thành nạn nhân của lừa đảo.
+    patterns:
+      - làm sao để tránh bị lừa
+      - cách phòng chống lừa đảo
+      - làm sao bảo vệ tài khoản
+      - cách tránh lừa đảo online
+      - cần lưu ý gì để không bị lừa
+
+  - name: transaction_safety
+    description: Đánh giá mức độ an toàn của một giao dịch, yêu cầu chuyển tiền hoặc thanh toán.
+    patterns:
+      - có nên chuyển khoản không
+      - người bán yêu cầu chuyển tiền trước
+      - chuyển khoản trước có an toàn không
+      - giao dịch này có an toàn không
+      - có nên cung cấp thông tin ngân hàng không
+
+  - name: account_security
+    description: Xử lý các vấn đề liên quan đến tài khoản, mật khẩu, OTP, mã xác thực hoặc thông tin ngân hàng bị lộ.
+    patterns:
+      - tôi đã cung cấp OTP
+      - bị lộ mật khẩu
+      - bị lộ thông tin ngân hàng
+      - tài khoản bị đăng nhập trái phép
+      - tài khoản bị chiếm quyền
+      - làm gì khi lộ OTP
+
+  - name: evidence_collection
+    description: Hướng dẫn thu thập, bảo quản hoặc chuẩn bị bằng chứng liên quan đến vụ lừa đảo.
+    patterns:
+      - cần giữ bằng chứng gì
+      - lưu tin nhắn lừa đảo
+      - cần chụp màn hình không
+      - bằng chứng để trình báo
+      - cần chuẩn bị gì để báo công an
+
+  - name: recovery_guidance
+    description: Hướng dẫn xử lý sau khi bị lừa, đặc biệt về việc liên hệ ngân hàng, ngăn chặn giao dịch và khả năng thu hồi tiền.
+    patterns:
+      - tiền bị lừa có lấy lại được không
+      - làm sao lấy lại tiền
+      - thu hồi tiền bị lừa
+      - chuyển tiền nhầm cho kẻ lừa đảo
+      - ngân hàng có thể hoàn tiền không
+      - sau khi bị lừa phải làm gì
+
+  - name: regulation_question
+    description: Hỏi về pháp luật, quy định, trách nhiệm hoặc quyền của nạn nhân liên quan đến hành vi lừa đảo.
+    patterns:
+      - lừa đảo bị phạt thế nào
+      - pháp luật quy định thế nào
+      - lừa đảo có bị đi tù không
+      - quyền của nạn nhân là gì
+      - quy định về tố giác lừa đảo
+
+  - name: general_question
+    description: Câu hỏi không thuộc bất kỳ intent cụ thể nào ở trên.
+    patterns: []

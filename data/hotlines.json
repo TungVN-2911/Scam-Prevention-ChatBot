@@ -1,0 +1,29 @@
+[
+  {
+    "id": "HOTLINE-001",
+    "name": "Công an (khẩn cấp)",
+    "channel_type": "phone",
+    "contact": "113",
+    "organization": "Bộ Công an",
+    "when_to_use": "Khi đang bị đe dọa trực tiếp, cần công an can thiệp khẩn cấp.",
+    "scope": "Toàn quốc"
+  },
+  {
+    "id": "HOTLINE-002",
+    "name": "Phản ánh tin nhắn rác, cuộc gọi rác, cuộc gọi có dấu hiệu lừa đảo",
+    "channel_type": "phone",
+    "contact": "156 / 5656",
+    "organization": "Bộ Thông tin và Truyền thông (Cục An toàn thông tin) phối hợp Bộ Công an",
+    "when_to_use": "Khi nhận được tin nhắn/cuộc gọi có dấu hiệu lừa đảo, giả mạo.",
+    "scope": "Toàn quốc"
+  },
+  {
+    "id": "HOTLINE-003",
+    "name": "Cổng cảnh báo an toàn thông tin Việt Nam",
+    "channel_type": "website",
+    "contact": "https://canhbao.khonggianmang.vn",
+    "organization": "Trung tâm Giám sát an toàn không gian mạng quốc gia (NCSC)",
+    "when_to_use": "Báo cáo website, số điện thoại, tài khoản mạng xã hội nghi lừa đảo.",
+    "scope": "Toàn quốc"
+  }
+]

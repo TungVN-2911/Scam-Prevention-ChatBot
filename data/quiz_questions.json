@@ -1,0 +1,522 @@
+[
+  {
+    "id": "QUIZ-scams-01",
+    "topic": "scams",
+    "question": "Một người tự xưng là cán bộ Công an gọi điện, nói bạn liên quan đến một vụ án và yêu cầu chuyển tiền để \"xác minh tài sản\". Bạn nên làm gì?",
+    "options": [
+      "Chuyển tiền ngay để tránh bị bắt giữ",
+      "Cung cấp số tài khoản ngân hàng để họ xác minh giúp",
+      "Từ chối, không cung cấp thông tin, tự liên hệ cơ quan Công an qua kênh chính thức để xác minh",
+      "Làm theo yêu cầu nhưng giữ bí mật, không nói với ai"
+    ],
+    "correct_index": 2,
+    "explanation": "Cơ quan Công an, Viện kiểm sát, Tòa án không làm việc qua điện thoại và không bao giờ yêu cầu chuyển tiền để \"xác minh tài sản\". Nên bình tĩnh, tự xác minh qua kênh chính thức thay vì làm theo yêu cầu dưới áp lực."
+  },
+  {
+    "id": "QUIZ-scams-02",
+    "topic": "scams",
+    "question": "Bạn nhận được cuộc gọi tự xưng là nhân viên ngân hàng, thông báo tài khoản có giao dịch bất thường và yêu cầu bạn đọc mã OTP để \"khóa giao dịch lại\". Bạn nên làm gì?",
+    "options": [
+      "Đọc OTP ngay vì đó là cách duy nhất để bảo vệ tài khoản",
+      "Không cung cấp OTP, tự gọi lại ngân hàng bằng số hotline chính thức để kiểm tra",
+      "Yêu cầu họ gọi lại sau 10 phút rồi mới đọc OTP",
+      "Nhờ người thân đọc giúp OTP để tránh rủi ro"
+    ],
+    "correct_index": 1,
+    "explanation": "Không bao giờ cung cấp OTP/mật khẩu qua điện thoại cho bất kỳ ai, kể cả người tự xưng là nhân viên ngân hàng. Luôn tự gọi lại ngân hàng bằng số chính thức để xác minh."
+  },
+  {
+    "id": "QUIZ-scams-03",
+    "topic": "scams",
+    "question": "Bạn nhận được cuộc gọi video từ số máy lạ nhưng hình ảnh và giọng nói giống hệt người thân, yêu cầu chuyển tiền gấp và không cho thời gian suy nghĩ. Cách xử lý đúng nhất là gì?",
+    "options": [
+      "Chuyển tiền ngay vì đã thấy rõ mặt và nghe rõ giọng người thân",
+      "Không chuyển tiền ngay, gọi lại bằng số điện thoại đã lưu của người thân để xác minh độc lập",
+      "Yêu cầu người gọi cung cấp CCCD để xác minh",
+      "Chuyển một phần nhỏ trước để thử"
+    ],
+    "correct_index": 1,
+    "explanation": "Không nên coi hình ảnh/video/giọng nói là bằng chứng duy nhất để xác thực danh tính — công nghệ Deepfake có thể giả mạo rất giống thật. Luôn xác minh qua một kênh liên lạc khác, độc lập với kênh đang liên hệ."
+  },
+  {
+    "id": "QUIZ-scams-04",
+    "topic": "scams",
+    "question": "Bạn quen một người qua mạng xã hội vài tuần, người này nói đang ở nước ngoài và cần tiền gấp để giải quyết khó khăn cá nhân. Dấu hiệu nào sau đây đáng ngờ nhất?",
+    "options": [
+      "Người đó nhắn tin bằng tiếng Việt",
+      "Mối quan hệ phát triển nhanh nhưng chưa từng gặp mặt trực tiếp, kèm yêu cầu chuyển tiền",
+      "Người đó có ảnh đại diện đẹp",
+      "Người đó chủ động nhắn tin trước"
+    ],
+    "correct_index": 1,
+    "explanation": "Mối quan hệ phát triển nhanh, đối phương thường ở xa/nước ngoài, tránh gặp mặt và yêu cầu chuyển tiền là dấu hiệu điển hình của lừa đảo tình cảm (romance scam). Không nên để cảm xúc thay thế việc kiểm chứng danh tính."
+  },
+  {
+    "id": "QUIZ-scams-05",
+    "topic": "scams",
+    "question": "Nếu bạn vô tình cung cấp OTP cho kẻ lừa đảo, việc đầu tiên cần làm là gì?",
+    "options": [
+      "Chờ xem có bị mất tiền không rồi mới xử lý",
+      "Đổi mật khẩu mạng xã hội",
+      "Liên hệ ngay ngân hàng/tổ chức tài chính qua kênh chính thức để kiểm tra và khóa giao dịch nếu cần",
+      "Tắt điện thoại trong vài giờ"
+    ],
+    "correct_index": 2,
+    "explanation": "OTP đã lộ có thể bị dùng để thực hiện giao dịch trái phép. Cần liên hệ ngay ngân hàng/dịch vụ liên quan qua kênh chính thức để kiểm tra, không chờ đợi."
+  },
+  {
+    "id": "QUIZ-scams-06",
+    "topic": "scams",
+    "question": "Một nền tảng đầu tư tiền ảo cam kết lợi nhuận cố định 20%/tháng, \"không rủi ro\", và cho rút thử một khoản nhỏ ban đầu để tạo lòng tin. Bạn nên hiểu điều này như thế nào?",
+    "options": [
+      "Đây là bằng chứng nền tảng uy tín, có thể yên tâm đầu tư lớn",
+      "Lợi nhuận cao bất thường và cam kết \"không rủi ro\" là dấu hiệu cảnh báo lừa đảo, cần kiểm tra pháp nhân/giấy phép trước khi tin",
+      "Chỉ cần nhiều người giới thiệu tham gia là an toàn",
+      "Có app đẹp là đủ để tin tưởng"
+    ],
+    "correct_index": 1,
+    "explanation": "Lợi nhuận cam kết cao bất thường, \"không rủi ro\", hoặc cho rút một khoản nhỏ ban đầu đều là chiêu tạo lòng tin thường gặp trong lừa đảo đầu tư — không phải bằng chứng an toàn. Cần kiểm tra pháp nhân, giấy phép trước khi tham gia."
+  },
+  {
+    "id": "QUIZ-scams-07",
+    "topic": "scams",
+    "question": "Có người lạ gọi điện nói đã \"chuyển nhầm\" một khoản tiền vào tài khoản của bạn và yêu cầu bạn chuyển trả lại vào một số tài khoản khác. Bạn nên làm gì?",
+    "options": [
+      "Chuyển trả ngay theo số tài khoản họ cung cấp để tránh rắc rối",
+      "Kiểm tra thực tế có tiền vào tài khoản không, không tự ý chuyển trả theo hướng dẫn của người lạ, liên hệ ngân hàng để được xử lý đúng quy trình",
+      "Yêu cầu họ gửi ảnh chụp biên lai rồi chuyển trả",
+      "Chuyển trả một phần trước"
+    ],
+    "correct_index": 1,
+    "explanation": "Không tự ý chuyển tiền lại theo yêu cầu của người lạ — đây là chiêu lừa phổ biến. Phải để ngân hàng xử lý theo đúng quy trình tra soát."
+  },
+  {
+    "id": "QUIZ-scams-08",
+    "topic": "scams",
+    "question": "Sau khi quét một mã QR dán tại nơi công cộng để thanh toán, bạn thấy tên người thụ hưởng hiển thị không đúng như dự kiến. Bạn nên làm gì?",
+    "options": [
+      "Vẫn thanh toán vì đã quét đúng mã QR",
+      "Dừng lại, không thanh toán, vì đây có thể là mã QR giả đã bị dán đè lên",
+      "Thanh toán rồi báo cáo sau",
+      "Quét lại lần 2 cho chắc rồi thanh toán"
+    ],
+    "correct_index": 1,
+    "explanation": "Luôn xác minh tên người thụ hưởng trước khi thanh toán qua QR. Nếu thông tin không khớp dự kiến, có thể mã QR đã bị làm giả hoặc dán đè — không nên tiếp tục giao dịch."
+  },
+  {
+    "id": "QUIZ-scams-09",
+    "topic": "scams",
+    "question": "Một tin tuyển \"cộng tác viên online\", việc nhẹ lương cao, yêu cầu bạn ứng tiền trước để \"nhận đơn hàng\" rồi mới được thanh toán. Đây là dấu hiệu của hình thức lừa đảo nào?",
+    "options": [
+      "Tuyển dụng hợp pháp bình thường",
+      "Lừa đảo tuyển cộng tác viên online",
+      "Chương trình khuyến mãi của sàn thương mại điện tử",
+      "Không đủ thông tin để xác định"
+    ],
+    "correct_index": 1,
+    "explanation": "Yêu cầu ứng tiền trước khi được nhận việc/nhận thanh toán là dấu hiệu điển hình của lừa đảo tuyển CTV online — công việc hợp pháp không bao giờ yêu cầu người lao động nộp tiền trước."
+  },
+  {
+    "id": "QUIZ-scams-10",
+    "topic": "scams",
+    "question": "Một người lạ đề nghị mượn điện thoại của bạn để \"đăng ký nhận ưu đãi\" trên ứng dụng tài chính. Bạn nên làm gì?",
+    "options": [
+      "Cho mượn vì chỉ mất vài phút",
+      "Từ chối — không đưa điện thoại đã đăng nhập tài khoản tài chính cho người khác thao tác",
+      "Cho mượn nhưng đứng cạnh quan sát",
+      "Cho mượn nếu người đó có vẻ đáng tin"
+    ],
+    "correct_index": 1,
+    "explanation": "Kẻ gian có thể lợi dụng việc mượn điện thoại để tự tạo khoản vay, lấy OTP hoặc thực hiện nhận diện khuôn mặt chiếm đoạt tài sản. Không đưa điện thoại đã đăng nhập tài khoản tài chính cho người khác thao tác."
+  },
+  {
+    "id": "QUIZ-prevention-01",
+    "topic": "prevention",
+    "question": "Theo quy tắc \"DỪNG - KIỂM TRA - XÁC MINH\", bước \"XÁC MINH\" đúng nghĩa là gì?",
+    "options": [
+      "Gọi lại đúng số điện thoại mà người liên hệ vừa cung cấp",
+      "Tự tìm website/app chính thức hoặc gọi đến kênh liên hệ chính thức, không dùng số/link do người đang liên hệ cung cấp",
+      "Nhắn tin hỏi lại chính tài khoản đang liên hệ",
+      "Nhờ người liên hệ gửi thêm bằng chứng qua Zalo"
+    ],
+    "correct_index": 1,
+    "explanation": "Xác minh độc lập nghĩa là không sử dụng số điện thoại hay liên kết do người đang liên hệ cung cấp — phải tự tìm kênh chính thức, vì kẻ gian có thể tự tạo ra kênh \"xác minh\" giả để đánh lừa thêm."
+  },
+  {
+    "id": "QUIZ-prevention-02",
+    "topic": "prevention",
+    "question": "Điều nào sau đây là đúng về OTP?",
+    "options": [
+      "Có thể đọc OTP cho nhân viên hỗ trợ nếu họ biết đúng tên và số điện thoại của bạn",
+      "OTP chỉ nên nhập trên website/app chính thức do bạn tự mở, không đọc cho ai qua điện thoại",
+      "Chụp màn hình OTP gửi cho người thân là an toàn",
+      "OTP không quan trọng bằng mật khẩu"
+    ],
+    "correct_index": 1,
+    "explanation": "Không đọc OTP cho người gọi, không nhập OTP trên website từ link lạ, không chụp màn hình gửi cho người khác. Biết tên/số điện thoại không chứng minh đó là nhân viên thật."
+  },
+  {
+    "id": "QUIZ-prevention-03",
+    "topic": "prevention",
+    "question": "Khi nghi ngờ một cuộc gọi video \"người thân\" là giả mạo bằng Deepfake, cách xác minh đáng tin cậy nhất là gì?",
+    "options": [
+      "Hỏi người đó tên đầy đủ của mình",
+      "Nhìn kỹ hơn vào màn hình để phát hiện điểm bất thường",
+      "Kết thúc cuộc gọi, tự gọi lại bằng số điện thoại đã lưu sẵn của người thân, hoặc hỏi người thân khác",
+      "Yêu cầu quay video thêm 1 lần nữa"
+    ],
+    "correct_index": 2,
+    "explanation": "Xác minh \"ngoài kênh\" nghĩa là dùng một kênh liên lạc khác, độc lập với cuộc gọi đang diễn ra — vì kẻ gian có thể kiểm soát toàn bộ kênh đang liên hệ."
+  },
+  {
+    "id": "QUIZ-prevention-04",
+    "topic": "prevention",
+    "question": "Dấu hiệu nào sau đây cho thấy một website có thể là giả mạo?",
+    "options": [
+      "Giao diện đẹp, có logo giống cơ quan/doanh nghiệp thật",
+      "Tên miền không đúng với tên miền chính thức hoặc có ký tự/phần mở rộng bất thường",
+      "Trang có nhiều thông tin",
+      "Trang tải nhanh"
+    ],
+    "correct_index": 1,
+    "explanation": "Giao diện đẹp không phải bằng chứng an toàn — kẻ gian có thể sao chép y hệt logo/giao diện thật. Dấu hiệu đáng tin cậy nhất là kiểm tra đúng tên miền chính thức."
+  },
+  {
+    "id": "QUIZ-prevention-05",
+    "topic": "prevention",
+    "question": "Một người nhắn tin gửi kèm ảnh chụp màn hình \"đã chuyển khoản\" cho bạn để bạn giao hàng/dịch vụ trước. Bạn nên làm gì?",
+    "options": [
+      "Tin ảnh chụp vì đã thấy rõ số tiền và nội dung",
+      "Không tin ảnh chụp giao dịch — chỉ coi là đã hoàn tất khi kiểm tra được trên hệ thống/app ngân hàng chính thức",
+      "Yêu cầu gửi thêm 1 ảnh chụp nữa để chắc chắn",
+      "Gọi điện hỏi han người đó có đáng tin không"
+    ],
+    "correct_index": 1,
+    "explanation": "Ảnh chụp biên lai/màn hình chuyển khoản có thể bị làm giả dễ dàng. Chỉ nên coi giao dịch là thật sau khi tự kiểm tra trên ứng dụng/hệ thống chính thức của ngân hàng."
+  },
+  {
+    "id": "QUIZ-prevention-06",
+    "topic": "prevention",
+    "question": "Bạn nhận được SMS có link yêu cầu \"xác minh tài khoản ngân hàng ngay để tránh bị khóa\". Bước đầu tiên nên làm là gì?",
+    "options": [
+      "Bấm vào link ngay vì sợ bị khóa tài khoản",
+      "Không bấm ngay — tự mở app/website chính thức của ngân hàng để kiểm tra thay vì dùng link được gửi",
+      "Trả lời tin nhắn hỏi thêm thông tin",
+      "Chuyển tiếp tin nhắn cho bạn bè để hỏi ý kiến"
+    ],
+    "correct_index": 1,
+    "explanation": "Nội dung tạo cảm giác khẩn cấp (\"phải xử lý ngay\") là dấu hiệu phishing điển hình. Luôn tự mở app/website chính thức thay vì bấm link được gửi qua tin nhắn."
+  },
+  {
+    "id": "QUIZ-prevention-07",
+    "topic": "prevention",
+    "question": "Trong các kỹ thuật thao túng tâm lý (social engineering), yêu cầu nào của kẻ gian là dấu hiệu cảnh báo mạnh nhất?",
+    "options": [
+      "Yêu cầu bạn giữ bí mật, không nói với người thân hoặc không tự liên hệ cơ quan khác để xác minh",
+      "Yêu cầu bạn xác nhận lại họ tên",
+      "Yêu cầu bạn chờ trong giây lát",
+      "Yêu cầu bạn nói chuyện lịch sự"
+    ],
+    "correct_index": 0,
+    "explanation": "Nếu người liên hệ cố ngăn bạn xác minh độc lập (yêu cầu giữ bí mật, không cho tắt máy, không được liên hệ người khác), đó là dấu hiệu cảnh báo rất mạnh."
+  },
+  {
+    "id": "QUIZ-prevention-08",
+    "topic": "prevention",
+    "question": "Tài khoản mạng xã hội của một người bạn thân đột nhiên nhắn tin \"cần tiền gấp\". Bạn nên làm gì trước khi chuyển tiền?",
+    "options": [
+      "Chuyển ngay vì là bạn thân, ảnh đại diện đúng người",
+      "Gọi trực tiếp bằng số điện thoại đã lưu từ trước để xác minh, không dùng thông tin liên hệ do chính tài khoản đó cung cấp",
+      "Nhắn tin hỏi lại trên cùng nền tảng đó",
+      "Chuyển một phần nhỏ trước để thử phản ứng"
+    ],
+    "correct_index": 1,
+    "explanation": "Tài khoản mạng xã hội có thể bị chiếm đoạt. Luôn xác minh bằng số điện thoại đã lưu từ trước (kênh độc lập), không dùng thông tin liên hệ do chính tài khoản đang nhắn tin cung cấp."
+  },
+  {
+    "id": "QUIZ-prevention-09",
+    "topic": "prevention",
+    "question": "\"Quy tắc 3 KHÔNG\" trong checklist xác minh trước khi hành động gồm những gì?",
+    "options": [
+      "Không nghe điện thoại lạ, không đọc tin nhắn lạ, không mở email lạ",
+      "Không chuyển tiền khi chưa xác minh, không cung cấp OTP/mật khẩu, không bấm link/cài ứng dụng khi chưa xác minh nguồn",
+      "Không dùng mạng xã hội, không mua hàng online, không đầu tư online",
+      "Không tin ai, không giúp ai, không chia sẻ gì"
+    ],
+    "correct_index": 1,
+    "explanation": "3 KHÔNG: không chuyển tiền khi chưa xác minh, không cung cấp OTP/mật khẩu, không bấm link hoặc cài ứng dụng khi chưa xác minh nguồn."
+  },
+  {
+    "id": "QUIZ-prevention-10",
+    "topic": "prevention",
+    "question": "Nếu 1 tình huống có từ 2 dấu hiệu cảnh báo trở lên (ví dụ vừa tạo áp lực khẩn cấp, vừa yêu cầu giữ bí mật), bạn nên làm gì đầu tiên?",
+    "options": [
+      "Tiếp tục trao đổi thêm để chắc chắn hơn",
+      "Dừng giao dịch, không cung cấp thêm thông tin, xác minh độc lập",
+      "Làm theo một phần yêu cầu để thử",
+      "Chặn số điện thoại rồi bỏ qua, không cần làm gì thêm"
+    ],
+    "correct_index": 1,
+    "explanation": "Khi có từ 2 dấu hiệu cảnh báo trở lên, nên dừng giao dịch ngay, không cung cấp thêm thông tin, và xác minh độc lập trước khi tiếp tục."
+  },
+  {
+    "id": "QUIZ-recovery-01",
+    "topic": "recovery",
+    "question": "Ngay sau khi phát hiện mình vừa chuyển tiền cho kẻ lừa đảo, việc cần làm ĐẦU TIÊN là gì?",
+    "options": [
+      "Đăng bài cảnh báo lên mạng xã hội trước",
+      "Dừng mọi giao dịch tiếp theo và liên hệ ngay ngân hàng/đơn vị thanh toán qua kênh chính thức",
+      "Tìm cách liên lạc lại với kẻ lừa đảo để đòi tiền",
+      "Chờ vài ngày xem có tự hoàn tiền không"
+    ],
+    "correct_index": 1,
+    "explanation": "Ưu tiên đầu tiên là hạn chế thiệt hại tiếp diễn: dừng giao dịch, liên hệ ngay ngân hàng để được hướng dẫn tra soát — càng sớm càng có cơ sở xử lý."
+  },
+  {
+    "id": "QUIZ-recovery-02",
+    "topic": "recovery",
+    "question": "Sau khi đã chuyển tiền cho kẻ lừa đảo, có người tự xưng có thể giúp \"mở khóa\" hoặc \"thu hồi\" tiền nếu bạn đóng thêm một khoản phí. Bạn nên làm gì?",
+    "options": [
+      "Đóng phí ngay vì muốn lấy lại tiền càng sớm càng tốt",
+      "Không chuyển thêm tiền với bất kỳ lý do phí xác minh/mở khóa/thu hồi/hoàn tiền nào",
+      "Thương lượng giảm phí rồi đóng",
+      "Đóng phí nếu người đó tự xưng là ngân hàng"
+    ],
+    "correct_index": 1,
+    "explanation": "Không có gì đảm bảo ngân hàng có thể thu hồi tiền, và các yêu cầu đóng thêm \"phí\" để lấy lại tiền hầu hết là lừa đảo lần hai."
+  },
+  {
+    "id": "QUIZ-recovery-03",
+    "topic": "recovery",
+    "question": "Nếu bạn lỡ chuyển nhầm tiền cho một tài khoản khác, bước đầu tiên nên làm là gì?",
+    "options": [
+      "Nhắn tin cho người nhận yêu cầu chuyển trả ngay",
+      "Lưu ảnh giao dịch, mã giao dịch/tra soát và thông báo ngay cho ngân hàng để được hướng dẫn tra soát",
+      "Đăng thông tin công khai lên mạng xã hội để tìm người nhận",
+      "Chờ vài ngày xem người nhận có tự trả không"
+    ],
+    "correct_index": 1,
+    "explanation": "Cần lưu bằng chứng giao dịch và báo ngay ngân hàng để được hướng dẫn xử lý đúng quy trình tra soát, không tự thương lượng riêng với người nhận."
+  },
+  {
+    "id": "QUIZ-recovery-04",
+    "topic": "recovery",
+    "question": "Một người lạ gọi điện nói đã chuyển nhầm tiền vào tài khoản của bạn, yêu cầu bạn chuyển trả vào một số tài khoản khác kèm link \"xác nhận hoàn tiền\". Bạn nên làm gì?",
+    "options": [
+      "Bấm link xác nhận rồi chuyển trả theo hướng dẫn",
+      "Kiểm tra thực tế trên app ngân hàng xem tiền có vào tài khoản không, không bấm link, không chuyển tiền theo hướng dẫn của người lạ, liên hệ ngân hàng",
+      "Chuyển trả ngay bằng số tiền đúng như họ nói",
+      "Quét mã QR họ gửi để hoàn tiền nhanh hơn"
+    ],
+    "correct_index": 1,
+    "explanation": "Kẻ gian có thể chưa thực sự chuyển tiền hoặc dùng chiêu này để dẫn dụ bấm link/cung cấp OTP. Luôn kiểm tra thực tế và để ngân hàng xử lý."
+  },
+  {
+    "id": "QUIZ-recovery-05",
+    "topic": "recovery",
+    "question": "Nếu bạn vừa lỡ cung cấp OTP cho một cuộc gọi đáng ngờ, ngoài liên hệ ngay ngân hàng, bạn còn nên làm gì?",
+    "options": [
+      "Không cần làm gì thêm vì đã liên hệ ngân hàng là đủ",
+      "Kiểm tra các giao dịch vừa phát sinh và xem có thay đổi số điện thoại/email/tài khoản nhận thông báo hay không",
+      "Tắt nguồn điện thoại vĩnh viễn",
+      "Đổi số điện thoại ngay lập tức"
+    ],
+    "correct_index": 1,
+    "explanation": "Ngoài liên hệ ngân hàng, cần kiểm tra giao dịch bất thường và xem có bị thay đổi thông tin nhận thông báo hay không — vì kẻ gian có thể đã chiếm quyền kiểm soát thêm."
+  },
+  {
+    "id": "QUIZ-recovery-06",
+    "topic": "recovery",
+    "question": "Khi phát hiện tài khoản mạng xã hội của mình bị chiếm đoạt, ngoài đổi mật khẩu, bạn nên làm gì để bảo vệ người khác?",
+    "options": [
+      "Xóa hẳn tài khoản ngay lập tức",
+      "Cảnh báo bạn bè/người thân rằng tài khoản có thể đang bị chiếm và yêu cầu họ không chuyển tiền/bấm link do tài khoản đó gửi",
+      "Không cần làm gì, tài khoản đó không còn là của mình nữa",
+      "Đổi tên tài khoản"
+    ],
+    "correct_index": 1,
+    "explanation": "Kẻ chiếm đoạt tài khoản thường lợi dụng để lừa chính bạn bè/người thân của nạn nhân. Cần cảnh báo ngay để tránh người khác bị lừa qua chính tài khoản của bạn."
+  },
+  {
+    "id": "QUIZ-recovery-07",
+    "topic": "recovery",
+    "question": "Nếu nghi ngờ điện thoại đang bị người lạ điều khiển từ xa (sau khi cài ứng dụng theo hướng dẫn \"hỗ trợ\"), việc nào sau đây là SAI, không nên làm?",
+    "options": [
+      "Ngắt kết nối mạng khi phù hợp",
+      "Liên hệ ngân hàng bằng một thiết bị/kênh an toàn khác",
+      "Tiếp tục đăng nhập ngân hàng ngay trên chính thiết bị đang nghi ngờ để kiểm tra",
+      "Đổi mật khẩu từ một thiết bị tin cậy khác"
+    ],
+    "correct_index": 2,
+    "explanation": "Không nên đăng nhập lại ngân hàng ngay trên thiết bị đang nghi ngờ bị kiểm soát — cần dùng thiết bị/kênh an toàn khác, đồng thời kiểm tra và loại bỏ phần mềm đáng ngờ trước."
+  },
+  {
+    "id": "QUIZ-recovery-08",
+    "topic": "recovery",
+    "question": "Khi trình báo Công an về việc đã chuyển tiền cho kẻ lừa đảo, thông tin nào KHÔNG cần thiết phải chuẩn bị?",
+    "options": [
+      "Mã giao dịch, số tài khoản người nhận, thời gian và số tiền chuyển",
+      "Số điện thoại, tài khoản mạng xã hội của đối tượng và nội dung trao đổi liên quan",
+      "Mật khẩu ứng dụng ngân hàng của chính mình",
+      "Ảnh chụp màn hình các giao dịch/trao đổi liên quan"
+    ],
+    "correct_index": 2,
+    "explanation": "Không bao giờ cần cung cấp mật khẩu ứng dụng ngân hàng của mình cho bất kỳ ai, kể cả khi trình báo Công an. Thông tin cần chuẩn bị là chi tiết giao dịch và bằng chứng liên quan tới đối tượng."
+  },
+  {
+    "id": "QUIZ-recovery-09",
+    "topic": "recovery",
+    "question": "Về khả năng thu hồi tiền sau khi bị lừa chuyển khoản, phát biểu nào đúng?",
+    "options": [
+      "Ngân hàng luôn thu hồi được 100% nếu báo trong 24 giờ",
+      "Không có gì đảm bảo chắc chắn thu hồi được, nhưng báo càng sớm càng tốt để có cơ sở xử lý",
+      "Chỉ cần trình báo Công an là chắc chắn lấy lại được tiền",
+      "Không thể làm gì được nữa sau khi đã chuyển tiền"
+    ],
+    "correct_index": 1,
+    "explanation": "Không nên hứa hẹn chắc chắn thu hồi được tiền — kết quả phụ thuộc vào tình trạng giao dịch, dòng tiền và tài khoản nhận. Báo càng sớm càng tốt luôn là nguyên tắc quan trọng nhất."
+  },
+  {
+    "id": "QUIZ-recovery-10",
+    "topic": "recovery",
+    "question": "Sau khi bạn đăng bài trên mạng xã hội kể về việc mình vừa bị lừa, có người tự xưng là \"chuyên gia an ninh mạng\" nhắn tin đề nghị giúp lấy lại tiền nếu bạn trả phí trước. Đây là gì?",
+    "options": [
+      "Một dịch vụ hỗ trợ hợp pháp, nên hợp tác ngay",
+      "Rất có thể là lừa đảo lần hai (\"lừa đảo lấy lại tiền\") — không nên tin và không chuyển thêm tiền",
+      "Cơ hội duy nhất để lấy lại tiền, phải làm ngay",
+      "Chỉ cần kiểm tra tên người đó trên mạng là đủ để tin tưởng"
+    ],
+    "correct_index": 1,
+    "explanation": "Đây là hình thức lừa đảo lần hai rất phổ biến, nhắm vào chính nạn nhân vừa bị lừa. Đã bị lừa không có nghĩa là phải trả thêm tiền để được giúp đỡ."
+  },
+  {
+    "id": "QUIZ-regulations-01",
+    "topic": "regulations",
+    "question": "Hành vi dùng thủ đoạn gian dối để chiếm đoạt tài sản của người khác qua mạng có thể bị xử lý theo điều nào của Bộ luật Hình sự?",
+    "options": [
+      "Điều 174 - Tội lừa đảo chiếm đoạt tài sản",
+      "Điều 108 - Tội phản bội Tổ quốc",
+      "Điều 141 - Tội hiếp dâm",
+      "Điều 260 - Tội vi phạm quy định về giao thông đường bộ"
+    ],
+    "correct_index": 0,
+    "explanation": "Điều 174 Bộ luật Hình sự quy định về Tội lừa đảo chiếm đoạt tài sản — căn cứ xử lý chung cho phần lớn các vụ lừa đảo, kể cả thực hiện qua mạng."
+  },
+  {
+    "id": "QUIZ-regulations-02",
+    "topic": "regulations",
+    "question": "Điều luật nào áp dụng riêng cho hành vi lừa đảo thực hiện qua mạng máy tính, mạng viễn thông (ví dụ giả mạo ngân hàng gửi link lừa đảo)?",
+    "options": [
+      "Điều 174",
+      "Điều 290 - Tội sử dụng mạng máy tính, mạng viễn thông, phương tiện điện tử thực hiện hành vi chiếm đoạt tài sản",
+      "Điều 20 Hiến pháp",
+      "Điều 8 Luật Giao thông đường bộ"
+    ],
+    "correct_index": 1,
+    "explanation": "Điều 290 Bộ luật Hình sự là điều khoản áp dụng sát nhất với các hình thức lừa đảo trực tuyến phổ biến: giả mạo tổ chức, gửi link/tin nhắn giả để dụ nạn nhân chuyển tiền hoặc cung cấp thông tin tài khoản."
+  },
+  {
+    "id": "QUIZ-regulations-03",
+    "topic": "regulations",
+    "question": "Luật nào quy định về phòng ngừa, xử lý hành vi sử dụng không gian mạng vi phạm pháp luật tại Việt Nam?",
+    "options": [
+      "Luật An ninh mạng (Luật số 24/2018/QH14)",
+      "Luật Giao thông đường bộ",
+      "Luật Đất đai",
+      "Luật Hôn nhân và Gia đình"
+    ],
+    "correct_index": 0,
+    "explanation": "Luật An ninh mạng (24/2018/QH14, hiệu lực từ 01/01/2019) là cơ sở pháp lý để lực lượng chức năng yêu cầu các nền tảng phối hợp xác minh, ngăn chặn nội dung/tài khoản liên quan tới lừa đảo trên không gian mạng."
+  },
+  {
+    "id": "QUIZ-regulations-04",
+    "topic": "regulations",
+    "question": "Vì sao dữ liệu cá nhân bị lộ/lọt (ví dụ từ 1 doanh nghiệp bị hack) lại liên quan đến việc bị lừa đảo?",
+    "options": [
+      "Không liên quan gì",
+      "Kẻ gian có thể dùng thông tin cá nhân chính xác (họ tên, SĐT, giao dịch...) để tạo kịch bản lừa đảo đáng tin hơn — đây là lý do có Luật Bảo vệ dữ liệu cá nhân",
+      "Chỉ liên quan tới việc bị spam quảng cáo",
+      "Dữ liệu cá nhân không bao giờ bị rò rỉ ở Việt Nam"
+    ],
+    "correct_index": 1,
+    "explanation": "Luật Bảo vệ dữ liệu cá nhân (91/2025/QH15) ra đời vì dữ liệu cá nhân bị lộ khiến kịch bản lừa đảo (giả danh ngân hàng, giao hàng...) trở nên đáng tin hơn khi kẻ gian biết đúng thông tin của nạn nhân."
+  },
+  {
+    "id": "QUIZ-regulations-05",
+    "topic": "regulations",
+    "question": "Nghị định 356/2025/NĐ-CP có vai trò gì?",
+    "options": [
+      "Quy định về giao thông đường bộ",
+      "Quy định chi tiết và hướng dẫn thi hành Luật Bảo vệ dữ liệu cá nhân",
+      "Thay thế hoàn toàn Bộ luật Hình sự",
+      "Quy định về thuế thu nhập cá nhân"
+    ],
+    "correct_index": 1,
+    "explanation": "Nghị định 356/2025/NĐ-CP là văn bản hướng dẫn thi hành chi tiết cho Luật Bảo vệ dữ liệu cá nhân, quy định cụ thể trách nhiệm của tổ chức/doanh nghiệp khi xử lý và để xảy ra sự cố lộ dữ liệu."
+  },
+  {
+    "id": "QUIZ-regulations-06",
+    "topic": "regulations",
+    "question": "Luật Giao dịch điện tử giúp người dân phân biệt điều gì khi gặp yêu cầu \"xác thực\" trực tuyến?",
+    "options": [
+      "Phân biệt giao dịch/kênh xác thực chính thức (chữ ký số, định danh điện tử...) với các kênh giả mạo (website giả, link lạ) thường bị lợi dụng để lừa đảo",
+      "Phân biệt các loại tiền tệ",
+      "Không liên quan gì đến phòng chống lừa đảo",
+      "Chỉ áp dụng cho doanh nghiệp, không áp dụng cho cá nhân"
+    ],
+    "correct_index": 0,
+    "explanation": "Luật Giao dịch điện tử (20/2023/QH15) quy định giá trị pháp lý của chữ ký điện tử, định danh điện tử — giúp người dân nhận ra khi nào 1 yêu cầu \"xác thực\" đến từ kênh không đúng quy định, đó là dấu hiệu đáng ngờ."
+  },
+  {
+    "id": "QUIZ-regulations-07",
+    "topic": "regulations",
+    "question": "Nếu bạn mua phải hàng giả, hàng nhái trên sàn thương mại điện tử (chưa tới mức cấu thành tội lừa đảo hình sự), bạn có căn cứ pháp lý nào để khiếu nại?",
+    "options": [
+      "Không có căn cứ nào cả",
+      "Luật Bảo vệ quyền lợi người tiêu dùng (19/2023/QH15)",
+      "Luật Hôn nhân và Gia đình",
+      "Luật Đất đai"
+    ],
+    "correct_index": 1,
+    "explanation": "Luật Bảo vệ quyền lợi người tiêu dùng quy định quyền khiếu nại, yêu cầu bồi thường của người tiêu dùng khi bị thiệt hại, kể cả trong giao dịch trên nền tảng số/sàn thương mại điện tử."
+  },
+  {
+    "id": "QUIZ-regulations-08",
+    "topic": "regulations",
+    "question": "Nghị định nào quy định trách nhiệm của thương nhân/sàn thương mại điện tử phải công bố thông tin định danh minh bạch khi bán hàng online?",
+    "options": [
+      "Nghị định 52/2013/NĐ-CP về thương mại điện tử",
+      "Nghị định về xử phạt vi phạm giao thông",
+      "Nghị định về quản lý thị trường chứng khoán",
+      "Nghị định về bảo hiểm y tế"
+    ],
+    "correct_index": 0,
+    "explanation": "Nghị định 52/2013/NĐ-CP quy định trách nhiệm của người bán/sàn thương mại điện tử phải công bố thông tin định danh, sản phẩm minh bạch — thiếu thông tin này là 1 dấu hiệu cảnh báo của lừa đảo bán hàng giả/hàng nhái."
+  },
+  {
+    "id": "QUIZ-regulations-09",
+    "topic": "regulations",
+    "question": "Theo Nghị định 85/2021/NĐ-CP (sửa đổi Nghị định 52/2013), trách nhiệm nào được bổ sung cho CHỦ SÀN thương mại điện tử?",
+    "options": [
+      "Không có trách nhiệm gì thêm",
+      "Xác thực thông tin người bán và có cơ chế ngăn chặn hàng giả, hàng nhái, hàng cấm được rao bán trên nền tảng",
+      "Chịu trách nhiệm hình sự thay cho người bán trong mọi trường hợp",
+      "Tự động hoàn tiền 100% cho mọi đơn hàng"
+    ],
+    "correct_index": 1,
+    "explanation": "Nghị định 85/2021/NĐ-CP bổ sung trách nhiệm cho chủ sàn TMĐT phải xác thực người bán và có cơ chế ngăn chặn hàng giả/hàng nhái/hàng cấm — người mua có thể khiếu nại với sàn khi phát hiện vi phạm."
+  },
+  {
+    "id": "QUIZ-regulations-10",
+    "topic": "regulations",
+    "question": "Hành vi mua bán trái phép thông tin tài khoản ngân hàng bị đánh cắp (ví dụ sau 1 vụ phishing) có thể bị xử lý theo điều nào?",
+    "options": [
+      "Điều 174",
+      "Điều 291 - Tội thu thập, tàng trữ, trao đổi, mua bán, công khai hóa trái phép thông tin về tài khoản ngân hàng",
+      "Điều 108",
+      "Không có điều luật nào quy định"
+    ],
+    "correct_index": 1,
+    "explanation": "Điều 291 Bộ luật Hình sự áp dụng riêng cho hành vi mua bán, trao đổi trái phép thông tin tài khoản/thẻ ngân hàng — thường xuất hiện ở giai đoạn sau của các vụ lừa đảo OTP, phishing."
+  }
+]

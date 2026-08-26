@@ -1,0 +1,37 @@
+[
+  {
+    "id": "PENDING-0001",
+    "text": "Tôi vừa chuyển tiền vì có người gọi báo có 1 kiện hàng của tôi bị giữ ở hải quan, yêu cầu đóng phí để được nhận hàng.",
+    "reported_at": "2026-08-25T03:16:28.537697+00:00",
+    "top_score": 0.813,
+    "status": "pending_review"
+  },
+  {
+    "id": "PENDING-0002",
+    "text": "Lừa đảo đầu tư tiền ảo hoạt động như thế nào?",
+    "reported_at": "2026-08-26T03:43:58.984445+00:00",
+    "top_score": 0.0,
+    "status": "pending_review"
+  },
+  {
+    "id": "PENDING-0003",
+    "text": "Lừa đảo đầu tư tiền ảo hoạt động như thế nào?",
+    "reported_at": "2026-08-26T04:07:48.970467+00:00",
+    "top_score": 0.0,
+    "status": "pending_review"
+  },
+  {
+    "id": "PENDING-0004",
+    "text": "Lừa đảo đầu tư tiền ảo hoạt động như thế nào?",
+    "reported_at": "2026-08-26T04:11:31.808151+00:00",
+    "top_score": 0.0,
+    "status": "pending_review"
+  },
+  {
+    "id": "PENDING-0005",
+    "text": "Lừa đảo đầu tư tiền ảo hoạt động như thế nào?",
+    "reported_at": "2026-08-26T07:42:29.238897+00:00",
+    "top_score": 0.0,
+    "status": "pending_review"
+  }
+]
