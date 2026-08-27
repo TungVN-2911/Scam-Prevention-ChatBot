@@ -39,11 +39,11 @@ def test_score_signals_empty_expected_does_not_crash():
     assert result == {"correct_count": 0, "total_expected": 0, "percentage": 0, "xp": 20}
 
 
-def test_list_cases_returns_eight_cases():
+def test_list_cases_returns_sixteen_cases():
     response = client.get("/api/detective/cases")
     assert response.status_code == 200
     data = response.json()
-    assert len(data) == 8
+    assert len(data) == 16
     assert all("expected_signals" not in c for c in data)
 
 

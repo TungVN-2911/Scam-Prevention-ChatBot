@@ -85,12 +85,14 @@ def append_message(session_id: str, role: str, content: str, sources: Optional[l
         conn.commit()
 
 
-def list_sessions() -> list[dict]:
+def list_sessions(limit: int = 20) -> list[dict]:
     """Chi liet ke cac phien DA CO tin nhan - phien moi tao nhung chua chat
-    se khong hien trong danh sach, tranh nham voi nut "Cuoc tro chuyen moi"."""
+    se khong hien trong danh sach, tranh nham voi nut "Cuoc tro chuyen moi".
+    Gioi han so luong tra ve (moi nhat truoc) de sidebar khong phinh to vo han
+    theo thoi gian su dung."""
     with _connection() as conn:
         rows = conn.execute(
-            "SELECT s.session_id, s.updated_at, "
+            "SELECT TOP (?) s.session_id, s.updated_at, "
             "(SELECT TOP 1 content FROM chat_messages m "
             " WHERE m.session_id = s.session_id AND m.role = 'user' "
             " ORDER BY m.id ASC) AS first_message, "
@@ -100,7 +102,8 @@ def list_sessions() -> list[dict]:
             # Sap xep theo id tu tang cua chat_messages (don dieu tuyet doi) thay vi
             # updated_at, vi cac phien tao lien tiep co the bi trung timestamp do
             # do phan giai dong ho SQL Server.
-            "ORDER BY last_message_id DESC"
+            "ORDER BY last_message_id DESC",
+            limit,
         ).fetchall()
 
     sessions = []

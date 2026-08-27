@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import cases, chat, detective, learning_progress, quiz, scam_of_day, session
+from app.api.routes import chat, detective, learning_progress, quiz, scam_of_day, session
 
 app = FastAPI(
     title="Scam-Prevention-ChatBot API",
@@ -17,7 +17,6 @@ app.add_middleware(
 )
 
 app.include_router(chat.router, prefix="/api", tags=["chat"])
-app.include_router(cases.router, prefix="/api", tags=["cases"])
 app.include_router(quiz.router, prefix="/api", tags=["quiz"])
 app.include_router(scam_of_day.router, prefix="/api", tags=["scam_of_day"])
 app.include_router(detective.router, prefix="/api", tags=["detective"])

@@ -19,17 +19,6 @@ class ScamPattern(BaseModel):
     related_patterns: list[str] = Field(default_factory=list)
     source: dict = Field(default_factory=dict)
     
-class ScamCase(BaseModel):
-    id: str
-    scam_type: str
-    title: str
-    reported_at: str
-    status: str
-    channel: str
-    amount_lost_vnd: int = 0
-    summary: str
-    actions_taken: list[str] = Field(default_factory=list)
-    
 class Hotline(BaseModel):
     id: str
     name: str

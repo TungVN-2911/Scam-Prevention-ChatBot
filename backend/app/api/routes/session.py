@@ -48,8 +48,8 @@ def start_session(request: StartSessionRequest):
 
 
 @router.get("/sessions", response_model=list[SessionSummary])
-def list_sessions():
-    return session_store.list_sessions()
+def list_sessions(limit: int = 20):
+    return session_store.list_sessions(limit)
 
 
 @router.get("/session/{session_id}", response_model=SessionState)

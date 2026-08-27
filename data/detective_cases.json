@@ -184,9 +184,9 @@
     ],
     "expected_signals": ["no_meeting", "overseas_excuse", "money_request"],
     "source": {
-      "organization": "Bộ Công an",
-      "title": "Ngăn chặn vụ lừa đảo qua mạng, bảo toàn tài sản cho người dân",
-      "url": ""
+      "organization": "Báo Nhân Dân",
+      "title": "Lừa đảo tình cảm",
+      "url": "https://special.nhandan.vn/lua-dao-tinh-cam/index.html"
     }
   },
   {
@@ -257,6 +257,256 @@
       "organization": "Bộ Công an",
       "title": "Triệt phá nhóm lừa đảo trực tuyến, giả danh doanh nghiệp bán máy nông nghiệp “giá rẻ”",
       "url": "https://bocongan.gov.vn/bai-viet/triet-pha-nhom-lua-dao-truc-tuyen-gia-danh-doanh-nghiep-ban-may-nong-nghiep-gia-re-1769512790"
+    }
+  },
+  {
+    "id": "CASE-009",
+    "scam_pattern": "bank_impersonation",
+    "difficulty": "easy",
+    "title": "Cuộc gọi xử lý giao dịch bất thường",
+    "scenario": "Bạn nhận được cuộc gọi từ một số lạ, người gọi tự xưng là nhân viên chăm sóc khách hàng của ngân hàng bạn đang sử dụng, thông báo tài khoản của bạn đang có 1 giao dịch bất thường cần xử lý ngay. Người này gửi qua Zalo 1 đường link và yêu cầu bạn truy cập để \"xác minh và khóa giao dịch lại\", đồng thời liên tục thúc giục bạn làm ngay vì \"chỉ còn vài phút\".",
+    "signals": [
+      {
+        "id": "authority_claim",
+        "text": "Tự xưng là nhân viên ngân hàng qua điện thoại",
+        "explanation": "Cuộc gọi bất ngờ yêu cầu xử lý vấn đề tài khoản là dấu hiệu cảnh báo phổ biến của giả danh nhân viên ngân hàng."
+      },
+      {
+        "id": "suspicious_link",
+        "text": "Yêu cầu truy cập đường link được gửi qua Zalo để \"xác minh\"",
+        "explanation": "Yêu cầu truy cập một liên kết hoặc cài ứng dụng theo hướng dẫn của người gọi là dấu hiệu dẫn tới website phishing."
+      },
+      {
+        "id": "urgency",
+        "text": "Liên tục thúc giục xử lý ngay vì \"chỉ còn vài phút\"",
+        "explanation": "Thúc giục chuyển tiền hoặc thực hiện thao tác ngay là chiến thuật tạo áp lực để nạn nhân không kịp xác minh."
+      }
+    ],
+    "expected_signals": ["authority_claim", "suspicious_link", "urgency"],
+    "source": {
+      "organization": "CafeF",
+      "title": "Vạch trần đường dây lừa đảo hơn 110 tỷ: Giả danh nhân viên ngân hàng",
+      "url": "https://cafef.vn/vach-tran-duong-day-lua-dao-hon-110-ty-gia-danh-nhan-vien-ngan-hang-do-ni-dong-giay-kich-ban-cho-tung-nan-nhan-co-nhom-chuyen-rua-tien-188260815100657738.chn"
+    }
+  },
+  {
+    "id": "CASE-010",
+    "scam_pattern": "deepfake",
+    "difficulty": "medium",
+    "title": "Cuộc gọi video từ con trai",
+    "scenario": "Bạn nhận được cuộc gọi video từ tài khoản Zalo của con trai đang du học, hình ảnh và giọng nói giống hệt con bạn. Con bạn nói đang gặp sự cố khẩn cấp cần tiền gấp để giải quyết; camera hơi mờ và giật lag nên bạn không nhìn rõ mặt hoàn toàn, nhưng giọng nói rất giống. Con bạn nói không có thời gian giải thích thêm và cúp máy ngay sau khi đọc số tài khoản cần chuyển.",
+    "signals": [
+      {
+        "id": "video_as_only_proof",
+        "text": "Chỉ dựa vào hình ảnh/giọng nói qua cuộc gọi video để xác nhận danh tính",
+        "explanation": "Không nên coi hình ảnh, video hoặc giọng nói là bằng chứng duy nhất để xác thực danh tính — công nghệ Deepfake có thể giả mạo rất giống thật."
+      },
+      {
+        "id": "no_verification_time",
+        "text": "Nói không có thời gian giải thích thêm, cúp máy ngay",
+        "explanation": "Không cho người nhận thời gian xác minh là dấu hiệu cảnh báo mạnh, đặc biệt khi đi kèm yêu cầu chuyển tiền."
+      },
+      {
+        "id": "money_request",
+        "text": "Yêu cầu chuyển tiền ngay cho \"sự cố khẩn cấp\"",
+        "explanation": "Người quen bất ngờ yêu cầu chuyển tiền là dấu hiệu cần xác minh qua một kênh liên lạc độc lập trước khi hành động."
+      },
+      {
+        "id": "blurry_video",
+        "text": "Camera mờ, giật lag khiến khó nhìn rõ mặt",
+        "explanation": "Đây KHÔNG tự nó là dấu hiệu lừa đảo — chất lượng mạng kém là chuyện bình thường, chỉ đáng ngờ khi đi kèm các dấu hiệu khác như trên."
+      }
+    ],
+    "expected_signals": ["video_as_only_proof", "no_verification_time", "money_request"],
+    "source": {
+      "organization": "Bộ Công an",
+      "title": "Vui Tết an toàn - không lo Deepfake: Chung tay đẩy lùi lừa đảo trực tuyến",
+      "url": "https://bocongan.gov.vn/bai-viet/vui-tet-an-toan-khong-lo-deepfake-chung-tay-day-lui-lua-dao-truc-tuyen-1769684195"
+    }
+  },
+  {
+    "id": "CASE-011",
+    "scam_pattern": "wrong_transfer",
+    "difficulty": "easy",
+    "title": "Tin nhắn báo chuyển nhầm tiền",
+    "scenario": "Bạn nhận được tin nhắn từ 1 số lạ nói đã chuyển nhầm 5 triệu đồng vào tài khoản của bạn, kèm theo 1 ảnh chụp màn hình giao dịch chuyển khoản thành công. Người này yêu cầu bạn chuyển trả lại số tiền đó vào 1 số tài khoản khác ngay trong hôm nay, nếu không sẽ báo công an vì bạn \"chiếm giữ tài sản người khác\".",
+    "signals": [
+      {
+        "id": "screenshot_not_real",
+        "text": "Chỉ gửi ảnh chụp màn hình, không phải giao dịch thực tế xuất hiện trên tài khoản bạn",
+        "explanation": "Chỉ cung cấp ảnh chụp hoặc biên lai thay vì giao dịch thực tế là dấu hiệu lừa đảo chuyển nhầm tiền phổ biến — ảnh có thể bị làm giả dễ dàng."
+      },
+      {
+        "id": "different_account",
+        "text": "Yêu cầu chuyển trả vào 1 số tài khoản khác, không phải tài khoản đã \"chuyển nhầm\"",
+        "explanation": "Yêu cầu chuyển lại sang tài khoản khác (không phải tài khoản gốc) là dấu hiệu rất đáng ngờ, thường gặp trong chiêu lừa chuyển nhầm tiền."
+      },
+      {
+        "id": "threat_pressure",
+        "text": "Đe dọa báo công an nếu không chuyển trả ngay trong hôm nay",
+        "explanation": "Đe dọa hoặc gây áp lực nếu không chuyển là chiến thuật thường gặp để buộc nạn nhân hành động vội vàng, không kịp xác minh qua ngân hàng."
+      }
+    ],
+    "expected_signals": ["screenshot_not_real", "different_account", "threat_pressure"],
+    "source": {
+      "organization": "Công an tỉnh Khánh Hòa",
+      "title": "Cảnh báo chiêu trò lừa đảo “chuyển nhầm tiền” và hướng xử lý để bảo vệ bản thân",
+      "url": "https://congan.khanhhoa.gov.vn/vi/canh-bao-chieu-tro-lua-dao-chuyen-nham-tien-va-huong-xu-ly-de-bao-ve-ban-than"
+    }
+  },
+  {
+    "id": "CASE-012",
+    "scam_pattern": "qr_scam",
+    "difficulty": "easy",
+    "title": "Mã QR dán tại bãi giữ xe",
+    "scenario": "Bạn đến 1 bãi giữ xe và thấy tấm biển dán mã QR để \"thanh toán phí gửi xe không tiền mặt\". Sau khi quét mã, điện thoại mở ra 1 trang yêu cầu bạn đăng nhập tài khoản ngân hàng để \"xác minh trước khi thanh toán\", thay vì mở thẳng ứng dụng ngân hàng như bình thường.",
+    "signals": [
+      {
+        "id": "qr_unverified_source",
+        "text": "Mã QR dán tại nơi công cộng, không rõ ai đã dán",
+        "explanation": "QR đến từ nguồn không rõ ràng là dấu hiệu cảnh báo đầu tiên cần lưu ý với mọi mã QR ở nơi công cộng như bãi xe, quán ăn, sự kiện."
+      },
+      {
+        "id": "login_required",
+        "text": "Yêu cầu đăng nhập tài khoản ngân hàng để \"xác minh trước khi thanh toán\"",
+        "explanation": "QR yêu cầu đăng nhập hoặc xác minh tài khoản không phải là quy trình thanh toán QR bình thường — đây là dấu hiệu dẫn tới trang phishing."
+      }
+    ],
+    "expected_signals": ["qr_unverified_source", "login_required"],
+    "source": {
+      "organization": "Báo Nhân Dân",
+      "title": "Các “chiêu trò” lừa đảo qua mã QR",
+      "url": "https://nhandan.vn/cac-chieu-tro-lua-dao-qua-ma-qr-post926223.html"
+    }
+  },
+  {
+    "id": "CASE-013",
+    "scam_pattern": "fake_delivery",
+    "difficulty": "easy",
+    "title": "Tin nhắn báo lỗi giao hàng",
+    "scenario": "Bạn nhận được tin nhắn SMS: \"Đơn hàng của bạn đang gặp sự cố giao hàng, vui lòng truy cập link để cập nhật lại địa chỉ và thanh toán phí phát sinh: bit.ly/xyz123\". Bạn không nhớ mình có đặt đơn hàng nào gần đây.",
+    "signals": [
+      {
+        "id": "unknown_order",
+        "text": "Tin nhắn về 1 đơn hàng mà bạn không nhớ đã đặt",
+        "explanation": "Tin nhắn về đơn hàng mà người nhận không biết là dấu hiệu cảnh báo rõ ràng nhất của lừa đảo giả mạo thông báo giao hàng."
+      },
+      {
+        "id": "unfamiliar_link",
+        "text": "Link cập nhật/thanh toán là link rút gọn lạ, không phải trang của đơn vị vận chuyển",
+        "explanation": "Link thanh toán hoặc xác minh không quen thuộc là dấu hiệu dẫn tới website giả mạo để thu thập thông tin thẻ/tài khoản."
+      }
+    ],
+    "expected_signals": ["unknown_order", "unfamiliar_link"],
+    "source": {
+      "organization": "CafeF",
+      "title": "Cảnh báo tất cả những ai nhận được tin nhắn thông báo giao hàng này: Tuyệt đối không bấm",
+      "url": "https://cafef.vn/canh-bao-tat-ca-nhung-ai-nhan-duoc-tin-nhan-thong-bao-giao-hang-nay-tuyet-doi-khong-bam-188260813181346997.chn"
+    }
+  },
+  {
+    "id": "CASE-014",
+    "scam_pattern": "fake_emergency_relative",
+    "difficulty": "medium",
+    "title": "Cuộc gọi báo con cấp cứu",
+    "scenario": "Bạn nhận được cuộc gọi điện thoại (không phải video) từ 1 người tự xưng là bạn học của con bạn, nói con bạn vừa bị tai nạn giao thông và đang cấp cứu tại 1 bệnh viện, cần chuyển ngay 20 triệu đồng để \"đóng tạm ứng viện phí\" vì bác sĩ không thể xử lý nếu chưa có tiền. Người gọi nói rất gấp, không cho bạn thời gian gọi hỏi lại con vì \"đang trong phòng cấp cứu, không có sóng\". Khi bạn hỏi tên bệnh viện, người này trả lời không rõ ràng, lúc đầu nói 1 tên rồi sau đổi sang tên khác.",
+    "signals": [
+      {
+        "id": "unverified_accident",
+        "text": "Thông báo tai nạn/cấp cứu bất ngờ qua điện thoại, không có cách nào xác minh",
+        "explanation": "Thông báo tai nạn hoặc cấp cứu bất ngờ là kịch bản kinh điển để tạo hoảng loạn, cần xác minh trước khi tin và hành động."
+      },
+      {
+        "id": "prevents_verification",
+        "text": "Ngăn không cho bạn gọi hỏi lại con với lý do \"không có sóng\"",
+        "explanation": "Không cho thời gian xác minh, đặc biệt là chủ động ngăn cản bạn liên hệ người thân, là dấu hiệu cảnh báo rất mạnh."
+      },
+      {
+        "id": "inconsistent_info",
+        "text": "Thông tin tên bệnh viện không nhất quán, đổi tên giữa chừng",
+        "explanation": "Thông tin người gọi không nhất quán là dấu hiệu rõ ràng của một kịch bản bịa đặt, không có thật."
+      },
+      {
+        "id": "classmate_caller",
+        "text": "Người gọi tự nhận là bạn học, không phải người trong gia đình",
+        "explanation": "Đây KHÔNG tự nó là dấu hiệu lừa đảo — người báo tin hộ hoàn toàn có thể là bạn bè thật. Điều cần nghi ngờ là việc không thể xác minh được thông tin, không phải mối quan hệ với người gọi."
+      }
+    ],
+    "expected_signals": ["unverified_accident", "prevents_verification", "inconsistent_info"],
+    "source": {
+      "organization": "CafeBiz",
+      "title": "Liên tiếp người dân mất tiền oan vì các cuộc gọi lừa đảo con cấp cứu, người thân đang vướng vòng lao lý",
+      "url": "https://cafebiz.vn/lien-tiep-nguoi-dan-mat-tien-oan-vi-cac-cuoc-goi-lua-dao-con-cap-cuu-nguoi-than-dang-vuong-vong-lao-ly-nam-ngay-dau-hieu-don-gian-giup-lat-tay-ke-mao-danh-176230309121130492.chn"
+    }
+  },
+  {
+    "id": "CASE-015",
+    "scam_pattern": "online_job_collaborator",
+    "difficulty": "medium",
+    "title": "Tuyển cộng tác viên xử lý đơn hàng",
+    "scenario": "Bạn thấy 1 bài đăng tuyển \"Cộng tác viên xử lý đơn hàng online cho sàn thương mại điện tử lớn\", mô tả công việc chỉ cần \"đặt đơn ảo\", thu nhập 500 nghìn - 2 triệu đồng/ngày, không cần kinh nghiệm. Sau khi nhắn tin, người tuyển dụng gửi 1 link Telegram để \"nhận nhiệm vụ\", yêu cầu bạn tự bỏ tiền mua đơn hàng ảo trước rồi sẽ được hoàn tiền kèm hoa hồng ngay sau đó. 2 đơn hàng nhỏ đầu tiên bạn được hoàn tiền đúng như hứa, khiến bạn tin tưởng và chuẩn bị nhận đơn hàng lớn hơn.",
+    "signals": [
+      {
+        "id": "unrealistic_income",
+        "text": "Thu nhập 500 nghìn - 2 triệu/ngày cho công việc chỉ \"đặt đơn ảo\"",
+        "explanation": "Thu nhập cao bất thường nhưng công việc quá dễ là dấu hiệu điển hình của lừa đảo tuyển cộng tác viên online."
+      },
+      {
+        "id": "pay_before_work",
+        "text": "Yêu cầu tự bỏ tiền mua đơn hàng ảo trước khi được hoàn tiền",
+        "explanation": "Phải chuyển tiền trước khi được nhận việc/nhận thanh toán — công việc hợp pháp không bao giờ yêu cầu người lao động nộp tiền trước."
+      },
+      {
+        "id": "no_company_info",
+        "text": "Không có thông tin công ty rõ ràng, chỉ liên hệ qua Telegram",
+        "explanation": "Không có thông tin rõ ràng về công ty hoặc người tuyển dụng, không có hợp đồng minh bạch là dấu hiệu cảnh báo quan trọng."
+      },
+      {
+        "id": "small_orders_refunded",
+        "text": "2 đơn hàng nhỏ đầu tiên được hoàn tiền đúng hẹn",
+        "explanation": "Đây KHÔNG phải bằng chứng an toàn — hoàn tiền các đơn nhỏ ban đầu là chiến thuật tạo lòng tin kinh điển để dụ nạn nhân bỏ số tiền lớn hơn vào các đơn sau."
+      }
+    ],
+    "expected_signals": ["unrealistic_income", "pay_before_work", "no_company_info"],
+    "source": {
+      "organization": "Báo Nhân Dân",
+      "title": "Lừa đảo tuyển dụng cộng tác viên online",
+      "url": "https://special.nhandan.vn/lua-dao-tuyen-cong-tac-vien-online/index.html"
+    }
+  },
+  {
+    "id": "CASE-016",
+    "scam_pattern": "fake_goods_ecommerce",
+    "difficulty": "hard",
+    "title": "Điện thoại thanh lý giá rẻ",
+    "scenario": "Bạn tìm mua 1 chiếc điện thoại đời mới trên 1 group Facebook mua bán, thấy 1 bài đăng bán với giá chỉ bằng 60% giá thị trường, lý do đưa ra là \"thanh lý hàng lỗi mẫu mã, máy mới 100% chưa active\". Bài đăng có hơn 200 lượt bình luận khen ngợi, nhiều người nói đã mua và nhận hàng đúng mô tả. Trang cá nhân người bán mới lập được 3 tháng, không có bài đăng nào khác ngoài các sản phẩm điện tử giá rẻ. Người bán yêu cầu chuyển khoản 50% trước, phần còn lại \"thanh toán khi nhận hàng\", và không có chính sách đổi trả nếu máy lỗi vì \"hàng thanh lý miễn đổi trả\".",
+    "signals": [
+      {
+        "id": "price_too_low",
+        "text": "Giá chỉ bằng 60% giá thị trường cho máy \"mới 100%\"",
+        "explanation": "Giá thấp hơn thị trường rất nhiều là dấu hiệu cảnh báo hàng đầu của hàng giả/hàng nhái/lừa đảo khi mua hàng qua mạng xã hội hoặc sàn thương mại điện tử."
+      },
+      {
+        "id": "new_account_no_history",
+        "text": "Trang cá nhân người bán mới lập 3 tháng, không có lịch sử bán hàng khác",
+        "explanation": "Không có thông tin rõ ràng về người bán là dấu hiệu cần xác minh kỹ trước khi đặt cọc bất kỳ khoản tiền nào."
+      },
+      {
+        "id": "no_return_policy",
+        "text": "Không có chính sách đổi trả nếu máy lỗi",
+        "explanation": "Không có chính sách đổi trả hoặc bảo hành rõ ràng là dấu hiệu rủi ro cao khi mua hàng online, đặc biệt với mặt hàng giá trị lớn."
+      },
+      {
+        "id": "positive_comments",
+        "text": "Bài đăng có hơn 200 bình luận khen ngợi, nói đã nhận hàng đúng mô tả",
+        "explanation": "Đây KHÔNG phải bằng chứng đáng tin — bình luận khen ngợi có thể được mua hoặc dùng tài khoản ảo để tạo lòng tin, không thay thế được việc xác minh người bán thật."
+      }
+    ],
+    "expected_signals": ["price_too_low", "new_account_no_history", "no_return_policy"],
+    "source": {
+      "organization": "Báo Nhân Dân",
+      "title": "Rao bán hàng giả hàng nhái qua sàn thương mại điện tử",
+      "url": "https://special.nhandan.vn/rao-ban-hang-gia-hang-nhai-qua-san-thuong-mai-dien-tu/index.html"
     }
   }
 ]

@@ -1,18 +1,6 @@
 from app.scam_connector.mock_connector import MockScamConnector
 
 
-def test_get_case_found():
-    connector = MockScamConnector()
-    case = connector.get_case("CASE-001")
-    assert case is not None
-    assert case.scam_type == "otp_phishing"
-
-
-def test_get_case_not_found():
-    connector = MockScamConnector()
-    assert connector.get_case("CASE-999") is None
-
-
 def test_search_patterns_returns_all_when_no_query():
     connector = MockScamConnector()
     assert len(connector.search_patterns()) == 23

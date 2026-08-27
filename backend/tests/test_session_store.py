@@ -65,6 +65,16 @@ def test_list_sessions_most_recently_updated_first():
     assert ids_in_order.index(newer_id) < ids_in_order.index(older_id)
 
 
+def test_list_sessions_respects_limit():
+    for i in range(3):
+        session_id = session_store.create_session()
+        session_store.append_message(session_id, "user", f"limit test {i}", [])
+
+    sessions = session_store.list_sessions(limit=2)
+
+    assert len(sessions) == 2
+
+
 def test_delete_session_if_empty_removes_session_without_messages():
     session_id = session_store.create_session()
 
