@@ -5,13 +5,56 @@ from api_client import (
     list_remote_sessions,
     load_remote_learning_progress,
     load_remote_session,
+    login,
+    register,
 )
 from chat_page import render_chat
 from detective_page import render_detective
 from quiz_page import render_quiz
 from scam_of_day_page import render_scam_of_day
 
+# set_page_config PHAI la lenh Streamlit dau tien duoc goi trong script, kem
+# ca truoc man hinh login - goi sau se crash voi StreamlitAPIException.
 st.set_page_config(page_title="Trợ lý phòng, chống lừa đảo trực tuyến", page_icon="🛡️")
+
+if "access_token" not in st.session_state:
+    st.title("🔐 Đăng nhập")
+    login_tab, register_tab = st.tabs(["Đăng nhập", "Đăng ký"])
+
+    with login_tab:
+        with st.form("login_form"):
+            username = st.text_input("Tên đăng nhập")
+            password = st.text_input("Mật khẩu", type="password")
+            submitted = st.form_submit_button("Đăng nhập")
+        if submitted:
+            if not username or not password:
+                st.error("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.")
+            else:
+                try:
+                    token, role = login(username, password)
+                    st.session_state.access_token = token
+                    st.session_state.username = username
+                    st.session_state.user_role = role
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"Đăng nhập thất bại: {e}")
+
+    with register_tab:
+        with st.form("register_form"):
+            new_username = st.text_input("Tên đăng nhập mới")
+            new_password = st.text_input("Mật khẩu mới", type="password")
+            register_submitted = st.form_submit_button("Đăng ký")
+        if register_submitted:
+            if not new_username or not new_password:
+                st.error("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.")
+            else:
+                try:
+                    register(new_username, new_password)
+                    st.success("Đăng ký thành công. Chuyển sang tab Đăng nhập để tiếp tục.")
+                except Exception as e:
+                    st.error(f"Đăng ký thất bại: {e}")
+
+    st.stop()  # Dừng thực thi nếu chưa đăng nhập
 
 MODE_LABELS = {
     "chat": "💬 Chat",
@@ -115,6 +158,12 @@ with st.sidebar:
 
     st.divider()
     st.metric("⭐ Tổng XP", st.session_state.total_xp)
+
+    st.divider()
+    st.caption(f"Đăng nhập: **{st.session_state.username}** ({st.session_state.user_role})")
+    if st.button("🚪 Đăng xuất", use_container_width=True):
+        st.session_state.clear()
+        st.rerun()
 
 
 if st.session_state.app_mode == "quiz":

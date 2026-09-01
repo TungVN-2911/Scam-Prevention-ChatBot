@@ -4,9 +4,33 @@ Streamlit - cac module *_page.py goi ham o day roi tu render UI."""
 import os
 
 import requests
+import streamlit as st
 
 BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8000")
 
+# --- Login -------------------------------------------------------------------
+def _auth_headers() -> dict:
+    token = st.session_state.get("access_token")
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
+def login(username: str, password: str) -> tuple[str, str]:
+    response = requests.post(
+        f"{BACKEND_URL}/api/login",
+        json={"username": username, "password": password},
+        timeout=15,
+    )
+    response.raise_for_status()
+    data = response.json()
+    return data["access_token"], data["role"]
+
+
+def register(username: str, password: str) -> None:
+    response = requests.post(
+        f"{BACKEND_URL}/api/register",
+        json={"username": username, "password": password},
+        timeout=15,
+    )
+    response.raise_for_status()
 
 # --- Chat -------------------------------------------------------------------
 
@@ -14,6 +38,7 @@ def post_chat_message(message: str, history: list[dict]) -> dict:
     response = requests.post(
         f"{BACKEND_URL}/api/chat",
         json={"message": message, "history": history},
+        headers=_auth_headers(),
         timeout=60,
     )
     response.raise_for_status()
@@ -29,6 +54,7 @@ def create_remote_session_with_first_message(content: str, sources: list[str]) -
         response = requests.post(
             f"{BACKEND_URL}/api/session/start",
             json={"content": content, "sources": sources},
+            headers=_auth_headers(),
             timeout=15,
         )
         response.raise_for_status()
@@ -39,7 +65,7 @@ def create_remote_session_with_first_message(content: str, sources: list[str]) -
 
 def load_remote_session(session_id: str) -> dict | None:
     try:
-        response = requests.get(f"{BACKEND_URL}/api/session/{session_id}", timeout=15)
+        response = requests.get(f"{BACKEND_URL}/api/session/{session_id}", headers=_auth_headers(), timeout=15)
         if response.status_code == 404:
             return None
         response.raise_for_status()
@@ -55,6 +81,7 @@ def save_remote_message(session_id: str | None, role: str, content: str, sources
         requests.post(
             f"{BACKEND_URL}/api/session/{session_id}/messages",
             json={"role": role, "content": content, "sources": sources},
+            headers=_auth_headers(),
             timeout=15,
         )
     except requests.RequestException:
@@ -63,7 +90,7 @@ def save_remote_message(session_id: str | None, role: str, content: str, sources
 
 def list_remote_sessions() -> list[dict]:
     try:
-        response = requests.get(f"{BACKEND_URL}/api/sessions", timeout=15)
+        response = requests.get(f"{BACKEND_URL}/api/sessions", headers=_auth_headers(), timeout=15)
         response.raise_for_status()
         return response.json()
     except requests.RequestException:
@@ -74,7 +101,7 @@ def delete_remote_session_if_empty(session_id: str | None) -> None:
     if not session_id:
         return
     try:
-        requests.delete(f"{BACKEND_URL}/api/session/{session_id}", timeout=15)
+        requests.delete(f"{BACKEND_URL}/api/session/{session_id}", headers=_auth_headers(), timeout=15)
     except requests.RequestException:
         pass
 
@@ -83,7 +110,7 @@ def delete_remote_session_if_empty(session_id: str | None) -> None:
 
 def load_remote_learning_progress() -> dict | None:
     try:
-        response = requests.get(f"{BACKEND_URL}/api/learning-progress", timeout=15)
+        response = requests.get(f"{BACKEND_URL}/api/learning-progress", headers=_auth_headers(), timeout=15)
         response.raise_for_status()
         return response.json()
     except requests.RequestException:
@@ -95,7 +122,7 @@ def add_remote_xp(delta: int) -> int | None:
     Tra ve tong XP moi neu thanh cong, None neu that bai - goi noi dung
     KHONG duoc tu y coi nhu da luu thanh cong khi nhan None."""
     try:
-        response = requests.post(f"{BACKEND_URL}/api/learning-progress/xp", json={"delta": delta}, timeout=15)
+        response = requests.post(f"{BACKEND_URL}/api/learning-progress/xp", headers=_auth_headers(), json={"delta": delta}, timeout=15)
         response.raise_for_status()
         return response.json()["xp"]
     except requests.RequestException:
@@ -105,7 +132,7 @@ def add_remote_xp(delta: int) -> int | None:
 # --- Quiz ---------------------------------------------------------------------
 
 def load_quiz(topic: str) -> list[dict]:
-    response = requests.get(f"{BACKEND_URL}/api/quiz", params={"topic": topic}, timeout=30)
+    response = requests.get(f"{BACKEND_URL}/api/quiz", params={"topic": topic}, headers=_auth_headers(), timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -123,6 +150,7 @@ def record_remote_quiz_attempt(
                 "xp_earned": xp_earned,
                 "answers": answers,
             },
+            headers=_auth_headers(),
             timeout=15,
         )
     except requests.RequestException:
@@ -131,7 +159,7 @@ def record_remote_quiz_attempt(
 
 def load_remote_quiz_attempts() -> list[dict]:
     try:
-        response = requests.get(f"{BACKEND_URL}/api/learning-progress/quiz-attempts", timeout=15)
+        response = requests.get(f"{BACKEND_URL}/api/learning-progress/quiz-attempts", headers=_auth_headers(), timeout=15)
         response.raise_for_status()
         return response.json()
     except requests.RequestException:
@@ -141,7 +169,7 @@ def load_remote_quiz_attempts() -> list[dict]:
 # --- Scam of the Day ----------------------------------------------------------
 
 def load_scam_of_day() -> dict:
-    response = requests.get(f"{BACKEND_URL}/api/scam-of-day", timeout=30)
+    response = requests.get(f"{BACKEND_URL}/api/scam-of-day", headers=_auth_headers(), timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -149,13 +177,13 @@ def load_scam_of_day() -> dict:
 # --- Scam Detective -------------------------------------------------------------
 
 def load_detective_cases() -> list[dict]:
-    response = requests.get(f"{BACKEND_URL}/api/detective/cases", timeout=30)
+    response = requests.get(f"{BACKEND_URL}/api/detective/cases", headers=_auth_headers(), timeout=30)
     response.raise_for_status()
     return response.json()
 
 
 def load_detective_case(case_id: str) -> dict:
-    response = requests.get(f"{BACKEND_URL}/api/detective/cases/{case_id}", timeout=30)
+    response = requests.get(f"{BACKEND_URL}/api/detective/cases/{case_id}", headers=_auth_headers(), timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -163,6 +191,7 @@ def load_detective_case(case_id: str) -> dict:
 def submit_detective_case(case_id: str, selected_signal_ids: list[str]) -> dict:
     response = requests.post(
         f"{BACKEND_URL}/api/detective/cases/{case_id}/submit",
+        headers=_auth_headers(),
         json={"selected_signal_ids": selected_signal_ids},
         timeout=30,
     )
@@ -181,6 +210,7 @@ def record_remote_detective_attempt(case_id: str, correct_count: int, total_expe
                 "xp_earned": xp_earned,
                 "result": result,
             },
+            headers=_auth_headers(),
             timeout=15,
         )
     except requests.RequestException:
@@ -189,7 +219,7 @@ def record_remote_detective_attempt(case_id: str, correct_count: int, total_expe
 
 def load_remote_detective_attempts() -> list[dict]:
     try:
-        response = requests.get(f"{BACKEND_URL}/api/learning-progress/detective-attempts", timeout=15)
+        response = requests.get(f"{BACKEND_URL}/api/learning-progress/detective-attempts", headers=_auth_headers(), timeout=15)
         response.raise_for_status()
         return response.json()
     except requests.RequestException:

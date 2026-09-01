@@ -115,6 +115,27 @@ def test_create_session_with_message_two_calls_produce_different_sessions():
     assert session_store.get_session(second_id)["messages"][0]["content"] == "Tin nhắn B"
 
 
+def test_list_sessions_filters_by_username_when_provided():
+    owner = f"owner-{uuid.uuid4()}"
+    other = f"other-{uuid.uuid4()}"
+    session_id = session_store.create_session_with_message("user", "Xin chào", [], owner)
+
+    owner_sessions = [s["session_id"] for s in session_store.list_sessions(username=owner)]
+    other_sessions = [s["session_id"] for s in session_store.list_sessions(username=other)]
+
+    assert session_id in owner_sessions
+    assert session_id not in other_sessions
+
+
+def test_get_session_denies_access_to_another_users_session():
+    owner = f"owner-{uuid.uuid4()}"
+    other = f"other-{uuid.uuid4()}"
+    session_id = session_store.create_session_with_message("user", "Xin chào", [], owner)
+
+    assert session_store.get_session(session_id, owner) is not None
+    assert session_store.get_session(session_id, other) is None
+
+
 def test_create_session_with_message_then_append_assistant_message():
     session_id = session_store.create_session_with_message("user", "Xin chào", [])
     session_store.append_message(session_id, "assistant", "Chào bạn", ["data/hotlines.json"])

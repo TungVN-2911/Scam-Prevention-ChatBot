@@ -17,18 +17,20 @@ def _connection():
         conn.close()
 
 
-def create_session() -> str:
+def create_session(username: Optional[str] = None) -> str:
     session_id = str(uuid.uuid4())
     with _connection() as conn:
         conn.execute(
-            "INSERT INTO chat_sessions (session_id) VALUES (?)",
-            session_id,
+            "INSERT INTO chat_sessions (session_id, username) VALUES (?, ?)",
+            session_id, username,
         )
         conn.commit()
     return session_id
 
 
-def create_session_with_message(role: str, content: str, sources: Optional[list[str]] = None) -> str:
+def create_session_with_message(
+    role: str, content: str, sources: Optional[list[str]] = None, username: Optional[str] = None
+) -> str:
     """Tao session moi VA luu tin nhan dau tien trong cung 1 transaction.
     pyodbc mac dinh autocommit=False nen chi commit() 1 lan o cuoi la du de
     dat tinh atomic (khong can them transaction framework moi): neu co loi
@@ -36,8 +38,8 @@ def create_session_with_message(role: str, content: str, sources: Optional[list[
     session_id = str(uuid.uuid4())
     with _connection() as conn:
         conn.execute(
-            "INSERT INTO chat_sessions (session_id) VALUES (?)",
-            session_id,
+            "INSERT INTO chat_sessions (session_id, username) VALUES (?, ?)",
+            session_id, username,
         )
         conn.execute(
             "INSERT INTO chat_messages (session_id, role, content, sources_json) VALUES (?, ?, ?, ?)",
@@ -47,12 +49,17 @@ def create_session_with_message(role: str, content: str, sources: Optional[list[
     return session_id
 
 
-def get_session(session_id: str) -> Optional[dict]:
+def get_session(session_id: str, username: Optional[str] = None) -> Optional[dict]:
+    """Neu truyen username, chi tra ve session thuoc dung user do (session cua
+    nguoi khac hoac session chua gan username nao se coi nhu khong ton tai -
+    tranh 1 user doc duoc noi dung chat cua user khac qua session_id)."""
     with _connection() as conn:
         row = conn.execute(
-            "SELECT session_id FROM chat_sessions WHERE session_id = ?", session_id
+            "SELECT session_id, username FROM chat_sessions WHERE session_id = ?", session_id
         ).fetchone()
         if row is None:
+            return None
+        if username is not None and row.username != username:
             return None
 
         rows = conn.execute(
@@ -85,11 +92,12 @@ def append_message(session_id: str, role: str, content: str, sources: Optional[l
         conn.commit()
 
 
-def list_sessions(limit: int = 20) -> list[dict]:
+def list_sessions(limit: int = 20, username: Optional[str] = None) -> list[dict]:
     """Chi liet ke cac phien DA CO tin nhan - phien moi tao nhung chua chat
     se khong hien trong danh sach, tranh nham voi nut "Cuoc tro chuyen moi".
     Gioi han so luong tra ve (moi nhat truoc) de sidebar khong phinh to vo han
-    theo thoi gian su dung."""
+    theo thoi gian su dung. Neu truyen username, chi liet ke phien cua dung
+    user do (moi nguoi chi thay cuoc tro chuyen cua chinh minh)."""
     with _connection() as conn:
         rows = conn.execute(
             "SELECT TOP (?) s.session_id, s.updated_at, "
@@ -99,11 +107,12 @@ def list_sessions(limit: int = 20) -> list[dict]:
             "(SELECT MAX(m.id) FROM chat_messages m WHERE m.session_id = s.session_id) AS last_message_id "
             "FROM chat_sessions s "
             "WHERE EXISTS (SELECT 1 FROM chat_messages m WHERE m.session_id = s.session_id) "
+            "AND (? IS NULL OR s.username = ?) "
             # Sap xep theo id tu tang cua chat_messages (don dieu tuyet doi) thay vi
             # updated_at, vi cac phien tao lien tiep co the bi trung timestamp do
             # do phan giai dong ho SQL Server.
             "ORDER BY last_message_id DESC",
-            limit,
+            limit, username, username,
         ).fetchall()
 
     sessions = []
@@ -117,13 +126,15 @@ def list_sessions(limit: int = 20) -> list[dict]:
     return sessions
 
 
-def delete_session_if_empty(session_id: str) -> None:
+def delete_session_if_empty(session_id: str, username: Optional[str] = None) -> None:
     """Xoa han phien khoi DB neu chua co tin nhan nao - dung khi nguoi dung
-    roi khoi 1 phien moi tao ma chua chat, tranh tich luy phien rac."""
+    roi khoi 1 phien moi tao ma chua chat, tranh tich luy phien rac. Neu
+    truyen username, chi xoa duoc phien cua dung user do."""
     with _connection() as conn:
         conn.execute(
             "DELETE FROM chat_sessions WHERE session_id = ? "
-            "AND NOT EXISTS (SELECT 1 FROM chat_messages WHERE session_id = ?)",
-            session_id, session_id,
+            "AND NOT EXISTS (SELECT 1 FROM chat_messages WHERE session_id = ?) "
+            "AND (? IS NULL OR username = ?)",
+            session_id, session_id, username, username,
         )
         conn.commit()

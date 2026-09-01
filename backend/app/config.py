@@ -15,5 +15,6 @@ class Settings(BaseSettings):
     ollama_host: str = "http://localhost:11434"
     ollama_embed_model: str = "nomic-embed-text"
     sql_server_connection_string: str = ""
+    jwt_secret_key: str = ""
 
 settings = Settings()    

@@ -91,6 +91,30 @@ CREATE TABLE learning_progress (
     created_at  DATETIME2     NOT NULL DEFAULT SYSUTCDATETIME(),
     updated_at  DATETIME2     NOT NULL DEFAULT SYSUTCDATETIME()
 );
+
+CREATE TABLE quiz_attempts (
+    id                INT IDENTITY(1,1) PRIMARY KEY,
+    user_key          VARCHAR(64)     NOT NULL,
+    topic             VARCHAR(64)     NOT NULL,
+    correct_count     INT             NOT NULL,
+    total_questions   INT             NOT NULL,
+    xp_earned         INT             NOT NULL,
+    answers_json      NVARCHAR(MAX)   NULL,
+    created_at        DATETIME2       NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_quiz_attempts_user_key ON quiz_attempts(user_key);
+
+CREATE TABLE detective_attempts (
+    id                INT IDENTITY(1,1) PRIMARY KEY,
+    user_key          VARCHAR(64)     NOT NULL,
+    case_id           VARCHAR(64)     NOT NULL,
+    correct_count     INT             NOT NULL,
+    total_expected    INT             NOT NULL,
+    xp_earned         INT             NOT NULL,
+    result_json       NVARCHAR(MAX)   NULL,
+    created_at        DATETIME2       NOT NULL DEFAULT SYSUTCDATETIME()
+);
+CREATE INDEX IX_detective_attempts_user_key ON detective_attempts(user_key);
 ```
 
 ### 3. Ingest knowledge base vào Pinecone (chạy 1 lần)
