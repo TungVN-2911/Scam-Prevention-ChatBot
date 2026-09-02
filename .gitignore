@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# File tom tat/on tap ca nhan cho thuyet trinh - khong commit, tu cap nhat lai khi can.
+docs/summary.md
