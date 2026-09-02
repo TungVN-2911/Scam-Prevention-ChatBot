@@ -38,7 +38,6 @@ def test_create_user_default_role_is_user():
 
 
 def test_password_is_hashed_not_stored_in_plaintext():
-    """Ho tro rai rac neu ai do lo doi verify_user sang so sanh chuoi truc tiep."""
     username = f"test-{uuid.uuid4()}"
     password = "mat-khau-can-hash"
     user_store.create_user(username, password)

@@ -49,7 +49,6 @@ class SubmitResponse(BaseModel):
 
 
 def score_signals(expected_signals: list[str], selected_signal_ids: list[str]) -> dict:
-    """Chấm điểm thuần deterministic: tỉ lệ dấu hiệu đúng tìm được / tổng dấu hiệu cần tìm."""
     total = len(expected_signals)
     correct = len(set(expected_signals) & set(selected_signal_ids))
     percentage = round(correct / total * 100) if total else 0

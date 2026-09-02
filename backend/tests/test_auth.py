@@ -20,7 +20,9 @@ def test_create_access_token_round_trip():
 
     user = get_current_user(f"Bearer {token}")
 
-    assert user == {"username": username, "role": "admin"}
+    assert user["username"] == username
+    assert user["role"] == "admin"
+    assert user["token"] == token
 
 
 def test_get_current_user_rejects_missing_bearer_prefix():

@@ -1,12 +1,5 @@
-"""Tao user thu cong (dung cho tai khoan admin dau tien - khong co route
-dang ky cong khai cho role admin de tranh tu leo thang quyen).
-
-Cach chay (tu thu muc backend/scripts):
-    python create_user.py <username> <password> [role]
-
-Vi du:
-    python create_user.py tung mat_khau_cua_toi admin
-"""
+# Tao user thu cong - dung cho admin dau tien vi khong co route dang ky cong
+# khai cho role admin (tranh tu leo thang quyen).
 import sys
 from pathlib import Path
 

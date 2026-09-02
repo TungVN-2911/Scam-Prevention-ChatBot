@@ -1,6 +1,7 @@
 import streamlit as st
 
 from api_client import (
+    ApiError,
     delete_remote_session_if_empty,
     list_remote_sessions,
     load_remote_learning_progress,
@@ -13,8 +14,7 @@ from detective_page import render_detective
 from quiz_page import render_quiz
 from scam_of_day_page import render_scam_of_day
 
-# set_page_config PHAI la lenh Streamlit dau tien duoc goi trong script, kem
-# ca truoc man hinh login - goi sau se crash voi StreamlitAPIException.
+# PHAI la lenh Streamlit dau tien trong script (ke ca truoc man hinh login).
 st.set_page_config(page_title="Trợ lý phòng, chống lừa đảo trực tuyến", page_icon="🛡️")
 
 if "access_token" not in st.session_state:
@@ -36,7 +36,7 @@ if "access_token" not in st.session_state:
                     st.session_state.username = username
                     st.session_state.user_role = role
                     st.rerun()
-                except Exception as e:
+                except ApiError as e:
                     st.error(f"Đăng nhập thất bại: {e}")
 
     with register_tab:
@@ -51,10 +51,10 @@ if "access_token" not in st.session_state:
                 try:
                     register(new_username, new_password)
                     st.success("Đăng ký thành công. Chuyển sang tab Đăng nhập để tiếp tục.")
-                except Exception as e:
+                except ApiError as e:
                     st.error(f"Đăng ký thất bại: {e}")
 
-    st.stop()  # Dừng thực thi nếu chưa đăng nhập
+    st.stop()
 
 MODE_LABELS = {
     "chat": "💬 Chat",
@@ -65,10 +65,6 @@ MODE_LABELS = {
 
 
 def switch_to_session(session_id: str, messages: list) -> None:
-    """Chuyen sang 1 conversation session khac. KHONG dung toi total_xp -
-    Learning Progress doc lap hoan toan voi conversation session."""
-    # Neu phien dang roi khoi chua co tin nhan nao, xoa han de khong tich luy
-    # phien rac trong DB (backend chi xoa that neu phien do rong).
     if not st.session_state.get("messages"):
         delete_remote_session_if_empty(st.session_state.get("session_id"))
 
@@ -85,10 +81,7 @@ if "quiz_stage" not in st.session_state:
 if "detective_stage" not in st.session_state:
     st.session_state.detective_stage = "select_case"
 
-# --- Conversation session (lazy creation) ---------------------------------
-# Mo app KHONG tao conversation session trong DB. Chi khoi phuc phien cu neu
-# URL co san session_id hop le; neu khong, giu session_id = None cho toi khi
-# user thuc su gui tin nhan dau tien (xem chat_page.send_message()).
+# session_id = None cho toi khi user gui tin nhan dau tien (lazy creation).
 if "session_id" not in st.session_state:
     url_session_id = st.query_params.get("session_id")
     restored = load_remote_session(url_session_id) if url_session_id else None
@@ -99,12 +92,8 @@ if "session_id" not in st.session_state:
         st.session_state.session_id = None
         st.session_state.messages = []
         if url_session_id:
-            # session_id trong URL da khong con hop le (VD phien da bi don).
             del st.query_params["session_id"]
 
-# --- Learning Progress (XP) -------------------------------------------------
-# Hoan toan doc lap voi conversation session o tren: luon load/tao ngay khi
-# mo app, khong phu thuoc session_id/tin nhan dau tien/New Chat.
 if "total_xp" not in st.session_state:
     progress = load_remote_learning_progress()
     st.session_state.total_xp = progress["xp"] if progress else 0
@@ -134,11 +123,7 @@ with st.sidebar:
     st.divider()
     st.markdown("### 💬 Cuộc trò chuyện")
     if st.button("➕ Cuộc trò chuyện mới", use_container_width=True):
-        # Chi reset conversation state cuc bo - KHONG tao session trong DB o
-        # day, va KHONG dung toi total_xp (Learning Progress doc lap, giu
-        # nguyen). Session chi thuc su duoc tao khi user gui tin nhan dau
-        # tien (chat_page.send_message()).
-        delete_remote_session_if_empty(st.session_state.session_id)  # lop bao ve neu phien cu con dang rong
+        delete_remote_session_if_empty(st.session_state.session_id)
         st.session_state.session_id = None
         st.session_state.messages = []
         if "session_id" in st.query_params:

@@ -16,5 +16,6 @@ class Settings(BaseSettings):
     ollama_embed_model: str = "nomic-embed-text"
     sql_server_connection_string: str = ""
     jwt_secret_key: str = ""
+    mcp_server_url: str = "http://127.0.0.1:8020/mcp"
 
 settings = Settings()    

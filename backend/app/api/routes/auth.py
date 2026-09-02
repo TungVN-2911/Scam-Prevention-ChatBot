@@ -28,9 +28,7 @@ def login(request: LoginRequest):
 
 @router.post("/register", status_code=204)
 def register(request: RegisterRequest):
-    """Tu dang ky luon gan role co dinh la 'user' - khong nhan role tu client
-    de tranh tu leo thang quyen thanh admin. Muon tao admin, dung script
-    backend/scripts/create_user.py."""
+    # Role luon la "user" - khong nhan tu client de tranh tu leo thang quyen.
     username = request.username.strip()
     if not username or not request.password:
         raise HTTPException(status_code=400, detail="Tên đăng nhập và mật khẩu không được để trống")

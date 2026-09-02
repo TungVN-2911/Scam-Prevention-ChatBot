@@ -22,4 +22,5 @@ def get_current_user(authorization: str | None = Header(default=None)) -> dict:
         payload = jwt.decode(token, settings.jwt_secret_key, algorithms=[ALGORITHM])
     except jwt.PyJWTError:
         raise HTTPException(status_code=401, detail="Token không hợp lệ hoặc đã hết hạn")
-    return {"username": payload.get("sub"), "role": payload.get("role")}    
+    # 'token' giu JWT nguyen van de forward sang MCP Server (MCP tu verify lai).
+    return {"username": payload.get("sub"), "role": payload.get("role"), "token": token}

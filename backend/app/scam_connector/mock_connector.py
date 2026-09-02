@@ -4,7 +4,7 @@ from pathlib import Path
 
 from app.scam_connector.models import ScamPattern, Hotline
 
-from app.config import DATA_DIR, KNOWLEDGE_BASE_DIR, REPO_ROOT
+from app.config import DATA_DIR, KNOWLEDGE_BASE_DIR
 
 def _load_json(path: Path) -> list[dict]:
     with open(path, encoding="utf-8") as f:

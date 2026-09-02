@@ -6,8 +6,6 @@ import pyodbc
 
 from app.config import settings
 
-# Chua co authentication, chi co 1 nguoi dung duy nhat -> dung 1 hang so co
-# dinh lam khoa, khong can he thong user/login phuc tap.
 ANONYMOUS_USER_KEY = "anonymous_user"
 
 
@@ -21,8 +19,6 @@ def _connection():
 
 
 def get_or_create_learning_progress(user_key: str = ANONYMOUS_USER_KEY) -> dict:
-    """Tra ve tien do hoc tap (hien tai chi gom XP); tao ban ghi mac dinh
-    neu chua ton tai. Doc lap hoan toan voi conversation session."""
     with _connection() as conn:
         row = conn.execute(
             "SELECT xp FROM learning_progress WHERE user_key = ?", user_key
@@ -57,8 +53,6 @@ def record_quiz_attempt(
 
 
 def list_quiz_attempts(user_key: str = ANONYMOUS_USER_KEY, limit: int = 10) -> list[dict]:
-    """Bao gom ca dap an da chon (answers) de frontend co the tai lai dung
-    bo cau hoi tinh (theo topic) va hien lai giai thich cho lan lam bai truoc."""
     with _connection() as conn:
         rows = conn.execute(
             "SELECT TOP (?) id, topic, correct_count, total_questions, xp_earned, created_at, answers_json "
@@ -87,9 +81,7 @@ def record_detective_attempt(
     result: Optional[dict] = None,
     user_key: str = ANONYMOUS_USER_KEY,
 ) -> None:
-    """result gom selected_signal_ids/expected_signals/explanations - luu san
-    vi GET /detective/cases/{id} co chu y khong tra ve dap an de tranh spoil
-    truoc khi lam bai, nen khong the tai lai duoc tu dong nhu Quiz."""
+    # Luu san ca dap an vi GET /detective/cases/{id} khong tra ve dap an (chong spoil).
     with _connection() as conn:
         conn.execute(
             "INSERT INTO detective_attempts "
@@ -123,9 +115,7 @@ def list_detective_attempts(user_key: str = ANONYMOUS_USER_KEY, limit: int = 10)
 
 
 def add_xp(amount: int, user_key: str = ANONYMOUS_USER_KEY) -> int:
-    """Cong don XP bang 1 UPDATE nguyen tu (khong doc-tinh-ghi rieng le de
-    tranh race condition). Neu ban ghi chua ton tai (hiem, vi app start da
-    goi get_or_create_learning_progress truoc), tu tao voi gia tri ban dau."""
+    # UPDATE nguyen tu (khong doc-tinh-ghi rieng le) de tranh race condition.
     with _connection() as conn:
         cursor = conn.execute(
             "UPDATE learning_progress SET xp = xp + ?, updated_at = SYSUTCDATETIME() "

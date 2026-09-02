@@ -1,8 +1,14 @@
 import json
 import logging
+from contextlib import AsyncExitStack, asynccontextmanager
 from datetime import datetime, timezone
 from typing import Optional
-from app.config import DATA_DIR
+
+import httpx
+from mcp import ClientSession
+from mcp.client.streamable_http import streamable_http_client
+
+from app.config import DATA_DIR, settings
 from app.llm_gateway.base import LLMGateway
 from app.llm_gateway.gemini_gateway import GeminiGateway
 from app.rag_engine.retrieval import PineconeRetriever
@@ -36,26 +42,40 @@ class ChatOrchestrator:
         self._retriever = retriever or PineconeRetriever()
         self._connector = MockScamConnector()  
         
-    def handle_message(self, message: str, history: list = None) -> dict:
+    async def handle_message(self, message: str, history: list = None, token: str | None = None) -> dict:
+        # token: JWT that cua user dang dang nhap, forward nguyen van sang MCP Server.
         intent = self._intents.detect(message)
-        
+
         if intent.name == "hotline_lookup":
             reply = self._format_hotlines()
             sources = ["data/hotlines.json"]
         else:
-            reply, sources = self._answer_with_rag(message=message, history = history or [], intent_name=intent.name)
-        return {"reply": reply, "intent": intent.name, "sources": sources}            
-        
+            reply, sources = await self._answer_with_rag(
+                message=message, history=history or [], intent_name=intent.name, token=token
+            )
+        return {"reply": reply, "intent": intent.name, "sources": sources}
+
     def _format_hotlines(self) -> str:
         hotlines = self._connector.list_hotlines()
         lines = [f"- {h.name}: {h.contact} ({h.organization})" for h in hotlines]
         return "Các kênh báo cáo/trình báo lừa đảo chính thức:\n" + "\n".join(lines)
-    
-    # victim_help duoc them theo Huong B: cau mo ta tinh huong tu nhien ("toi nhan duoc
-    # tin nhan yeu cau chuyen tien...") rat de roi vao victim_help hon la scam_identification.
+
+    # victim_help nam trong nhom nay vi mo ta tinh huong tu nhien de roi vao
+    # intent nay hon la scam_identification.
     _SCAM_MATCH_INTENTS = ("scam_identification", "scam_pattern_search", "victim_help")
 
-    def _answer_with_rag(self, message: str, history: list, intent_name: str) -> tuple[str, list[str]]:
+    @asynccontextmanager
+    async def _mcp_session(self, token: str):
+        # MCP Server tu verify JWT va tu quyet dinh quyen - khong gui role o day.
+        http_client = httpx.AsyncClient(headers={"Authorization": f"Bearer {token}"})
+        async with streamable_http_client(settings.mcp_server_url, http_client=http_client) as (read, write):
+            async with ClientSession(read, write) as session:
+                await session.initialize()
+                yield session
+
+    async def _answer_with_rag(
+        self, message: str, history: list, intent_name: str, token: str | None = None
+    ) -> tuple[str, list[str]]:
         category = _INTENT_TO_CATEGORY.get(intent_name)
         try:
             matches = self._retriever.query(message, top_k=5, category=category)
@@ -67,13 +87,11 @@ class ChatOrchestrator:
 
         prompt = message
         if intent_name in self._SCAM_MATCH_INTENTS:
-            # scam_identification/scam_pattern_search da dung category="scams" nen tai su
-            # dung luon "matches" cho buoc phan loai. Rieng victim_help dung category=
-            # "recovery" cho cau tra loi chinh, nen can truy van THEM 1 lan rieng vao
-            # category="scams" chi de phuc vu buoc phan loai nay.
+            # victim_help dung category "recovery" cho cau tra loi chinh nen
+            # can truy van rieng sang "scams" chi de phuc vu buoc phan loai.
             scam_matches = matches if category == "scams" else self._query_scams(message)
 
-            is_known = self._is_known_scam(message, self._join_texts(scam_matches)) if scam_matches else False
+            is_known = await self._is_known_scam(message, self._join_texts(scam_matches)) if scam_matches else False
             if not is_known:
                 top_score = scam_matches[0].get("score", 0.0) if scam_matches else 0.0
                 self._save_unknown_situation(message, top_score)
@@ -84,8 +102,20 @@ class ChatOrchestrator:
                     "tac an toan chung phu hop.)"
                 )
 
+        tool_calls: list[str] = []
         try:
-            reply = self._llm.generate(prompt=prompt, context=context, history=history)
+            async with AsyncExitStack() as stack:
+                mcp_session = None
+                if token:
+                    try:
+                        mcp_session = await stack.enter_async_context(self._mcp_session(token))
+                    except Exception:
+                        logger.exception("Khong ket noi duoc MCP Server, tra loi khong dung tool")
+
+                reply = await self._llm.generate(
+                    prompt=prompt, context=context, history=history,
+                    mcp_session=mcp_session, tool_calls=tool_calls,
+                )
         except Exception:
             logger.exception("Loi khi goi Gemini API")
             reply = (
@@ -94,6 +124,7 @@ class ChatOrchestrator:
             )
 
         source = sorted({m["source"] for m in matches if m.get("source")})
+        source += [f"mcp:{name}" for name in dict.fromkeys(tool_calls)]
         return reply, source
 
     def _query_scams(self, message: str) -> list[dict]:
@@ -107,7 +138,7 @@ class ChatOrchestrator:
     def _join_texts(matches: list[dict]) -> str:
         return "\n\n".join(m.get("text", "") for m in matches if m.get("text"))
 
-    def _is_known_scam(self, message: str, context: str) -> bool:
+    async def _is_known_scam(self, message: str, context: str) -> bool:
         verdict_prompt = (
             "Duoi day la 1 tinh huong nguoi dung nghi ngo va cac hinh thuc lua dao gan nghia nhat tim duoc "
             "trong co so du lieu (co the khong thuc su lien quan). CHI tra loi dung 1 tu duy nhat, khong "
@@ -116,7 +147,8 @@ class ChatOrchestrator:
             f"Tinh huong: {message}"
         )
         try:
-            verdict_raw = self._llm.generate(prompt=verdict_prompt, context=context).strip().upper()
+            verdict_response = await self._llm.generate(prompt=verdict_prompt, context=context)
+            verdict_raw = verdict_response.strip().upper()
         except Exception:
             logger.exception("Loi khi goi Gemini API (phan loai) trong chat")
             return True

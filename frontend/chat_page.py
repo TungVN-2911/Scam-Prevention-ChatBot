@@ -1,9 +1,6 @@
-"""Man hinh chat chinh: lich su hoi thoai, cau hoi goi y, gui tin nhan."""
-
-import requests
 import streamlit as st
 
-from api_client import create_remote_session_with_first_message, post_chat_message, save_remote_message
+from api_client import ApiError, create_remote_session_with_first_message, post_chat_message, save_remote_message
 
 SUGGESTED_QUESTIONS = [
     "Dấu hiệu nhận biết lừa đảo giả danh Công an là gì?",
@@ -14,17 +11,13 @@ SUGGESTED_QUESTIONS = [
 
 
 def send_message(user_text: str) -> None:
-    """Gửi user_text tới backend; hiển thị tin nhắn user ngay lập tức và spinner khi đang chờ trả lời."""
     if not user_text.strip():
-        return  # khong tao session/luu tin nhan cho noi dung rong
+        return
 
     history_payload = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
     st.session_state.messages.append({"role": "user", "content": user_text, "sources": []})
 
     if st.session_state.session_id is None:
-        # Lazy creation: day la tin nhan dau tien cua phien nay - tao session
-        # va luu tin nhan dau tien trong 1 buoc atomic (xem session_store.
-        # create_session_with_message).
         new_session_id = create_remote_session_with_first_message(user_text, [])
         st.session_state.session_id = new_session_id
         if new_session_id:
@@ -40,8 +33,8 @@ def send_message(user_text: str) -> None:
             try:
                 data = post_chat_message(user_text, history_payload)
                 reply, sources = data["reply"], data.get("sources", [])
-            except requests.RequestException as exc:
-                reply, sources = f"Không thể kết nối tới backend. Chi tiết lỗi: {exc}", []
+            except ApiError as exc:
+                reply, sources = str(exc), []
         st.markdown(reply)
         if sources:
             st.caption("📚 Nguồn: " + ", ".join(sources))

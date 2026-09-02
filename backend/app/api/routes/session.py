@@ -40,8 +40,6 @@ def create_session(user: dict = Depends(get_current_user)):
 
 @router.post("/session/start", response_model=SessionCreateResponse)
 def start_session(request: StartSessionRequest, user: dict = Depends(get_current_user)):
-    """Tao session lazy: chi goi khi user gui tin nhan dau tien that su.
-    Tu choi tao session cho noi dung rong (quy tac 5)."""
     if not request.content.strip():
         raise HTTPException(status_code=400, detail="Không thể tạo phiên với tin nhắn rỗng")
     session_id = session_store.create_session_with_message(

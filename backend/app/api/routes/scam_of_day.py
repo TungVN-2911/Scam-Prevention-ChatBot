@@ -27,8 +27,7 @@ def _is_displayable(pattern: ScamPattern) -> bool:
 
 
 def pick_pattern_for_date(patterns: list[ScamPattern], target_date: date_cls) -> Optional[ScamPattern]:
-    """Chọn pattern theo ngày một cách deterministic: cùng ngày -> cùng pattern.
-    Nếu pattern được chọn thiếu thông tin để hiển thị, lần lượt fallback sang pattern kế tiếp."""
+    # Deterministic theo ngay; fallback sang pattern ke tiep neu thieu du lieu hien thi.
     if not patterns:
         return None
     start_index = target_date.toordinal() % len(patterns)

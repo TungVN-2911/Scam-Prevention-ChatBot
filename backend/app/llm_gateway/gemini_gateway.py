@@ -1,4 +1,5 @@
 from google import genai
+
 from app.config import settings
 from app.llm_gateway.audit_log import log_call
   
@@ -294,7 +295,12 @@ class GeminiGateway:
         self.model = model
         self._client = genai.Client(api_key=settings.gemini_api_key) if settings.gemini_api_key else None
         
-    def generate(self, prompt: str, context: str = "", history: list=None) -> str:
+    async def generate(
+        self, prompt: str, context: str = "", history: list = None, mcp_session=None,
+        tool_calls: list[str] | None = None,
+    ) -> str:
+        # mcp_session: SDK google-genai tu goi session.list_tools()/call_tool()
+        # that qua MCP (Automatic Function Calling) - chi client.aio ho tro.
         if self._client is None:
             return (
                 "Chưa cấu hình GEMINI_API_KEY nên chưa thể trả lời bằng AI. "
@@ -305,15 +311,25 @@ class GeminiGateway:
           lines = []
           for turn in history[-6:]:
             role = "Người dùng" if turn.role == "user" else "Trợ lý"
-            lines.append(f"{role}: {turn.content}") 
-          history_text = "Lịch sử hội thoại gần đây:\n" + "\n".join(lines) + "\n\n"    
+            lines.append(f"{role}: {turn.content}")
+          history_text = "Lịch sử hội thoại gần đây:\n" + "\n".join(lines) + "\n\n"
         full_prompt = (
         f"{_SYSTEM_PROMPT_}\n\n"
         f"{history_text}"
         f"Ngữ cảnh:\n{context}\n\n"
         f"Câu hỏi hiện tại: {prompt}"
         )
-        response = self._client.models.generate_content(model=self.model, contents=full_prompt)
+        # PHAI la dict, KHONG duoc types.GenerateContentConfig(...): SDK deepcopy
+        # config vo dieu kien, crash "cannot pickle '_asyncio.Task'" tren ClientSession.
+        config = {"tools": [mcp_session]} if mcp_session is not None else None
+        response = await self._client.aio.models.generate_content(
+            model=self.model, contents=full_prompt, config=config
+        )
         text = response.text or ""
+        if tool_calls is not None:
+            for content in response.automatic_function_calling_history or []:
+                for part in content.parts or []:
+                    if part.function_call is not None and part.function_call.name:
+                        tool_calls.append(part.function_call.name)
         log_call(prompt=prompt, context=context, response=text)
         return text

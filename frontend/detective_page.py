@@ -1,11 +1,9 @@
-"""Man hinh Scam Detective: chon case, lam bai, xem ket qua + lich su."""
-
 from datetime import datetime
 
-import requests
 import streamlit as st
 
 from api_client import (
+    ApiError,
     add_remote_xp,
     load_detective_case,
     load_detective_cases,
@@ -24,8 +22,6 @@ def start_detective_case(case_id: str) -> None:
 
 
 def render_detective_signal_review(signals: list[dict], selected_ids, expected_ids, explanations: dict) -> None:
-    """Hien trang thai (dung/thieu/thua) + giai thich cho tung dau hieu -
-    dung chung cho man ket qua vua nop VA man xem lai lich su."""
     selected = set(selected_ids)
     expected = set(expected_ids)
     for signal in signals:
@@ -54,16 +50,16 @@ def render_detective() -> None:
         st.write("Chọn 1 case để luyện tập nhận diện dấu hiệu lừa đảo:")
         try:
             cases = load_detective_cases()
-        except requests.RequestException as exc:
-            st.error(f"Không thể tải danh sách case. Chi tiết lỗi: {exc}")
+        except ApiError as exc:
+            st.error(str(exc))
             return
         for case in cases:
             label = f"{DIFFICULTY_LABELS.get(case['difficulty'], case['difficulty'])} — {case['title']}"
             if st.button(label, key=f"case_{case['id']}", use_container_width=True):
                 try:
                     start_detective_case(case["id"])
-                except requests.RequestException as exc:
-                    st.error(f"Không thể tải case. Chi tiết lỗi: {exc}")
+                except ApiError as exc:
+                    st.error(str(exc))
                 else:
                     st.rerun()
 
@@ -93,9 +89,9 @@ def render_detective() -> None:
                     if attempt["case_id"] not in case_cache:
                         try:
                             case_cache[attempt["case_id"]] = load_detective_case(attempt["case_id"])
-                        except requests.RequestException as exc:
+                        except ApiError as exc:
                             case_cache[attempt["case_id"]] = None
-                            st.error(f"Không thể tải lại case để xem giải thích. Chi tiết lỗi: {exc}")
+                            st.error(str(exc))
                     case_detail = case_cache[attempt["case_id"]]
                     if case_detail is not None:
                         st.markdown(case_detail["scenario"])
@@ -124,14 +120,11 @@ def render_detective() -> None:
         if submitted:
             try:
                 result = submit_detective_case(case["id"], selected)
-            except requests.RequestException as exc:
-                st.error(f"Không thể chấm điểm. Chi tiết lỗi: {exc}")
+            except ApiError as exc:
+                st.error(str(exc))
             else:
                 st.session_state.detective_result = result
                 st.session_state.detective_selected = selected
-                # XP thuoc Learning Progress, doc lap voi conversation session -
-                # persist ngay lap tuc, KHONG cho vao session_state truoc khi
-                # biet chac da luu thanh cong (database la source of truth).
                 new_total_xp = add_remote_xp(result["xp"])
                 record_remote_detective_attempt(
                     case["id"],
@@ -182,8 +175,8 @@ def render_detective() -> None:
             if st.button("➡️ Case tiếp theo", use_container_width=True):
                 try:
                     cases = load_detective_cases()
-                except requests.RequestException as exc:
-                    st.error(f"Không thể tải case tiếp theo. Chi tiết lỗi: {exc}")
+                except ApiError as exc:
+                    st.error(str(exc))
                 else:
                     ids = [c["id"] for c in cases]
                     current_index = ids.index(case["id"]) if case["id"] in ids else -1

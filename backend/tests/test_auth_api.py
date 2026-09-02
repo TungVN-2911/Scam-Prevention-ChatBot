@@ -37,8 +37,7 @@ def test_register_duplicate_username_returns_409():
 
 
 def test_register_cannot_self_assign_admin_role():
-    """register() luon gan cung 'user' du client co gui them field 'role' hay khong -
-    day la kiem tra chong leo thang quyen."""
+    # RegisterRequest khong khai bao 'role' nen field nay bi Pydantic am tham bo qua.
     username = f"test-{uuid.uuid4()}"
 
     client.post("/api/register", json={"username": username, "password": "mat-khau-123", "role": "admin"})

@@ -1,9 +1,6 @@
-"""Man hinh Scam of the Day."""
-
-import requests
 import streamlit as st
 
-from api_client import load_detective_cases, load_scam_of_day
+from api_client import ApiError, load_detective_cases, load_scam_of_day
 from detective_page import start_detective_case
 
 
@@ -11,8 +8,8 @@ def render_scam_of_day() -> None:
     st.header("🛡️ Scam of the Day")
     try:
         data = load_scam_of_day()
-    except requests.RequestException as exc:
-        st.error(f"Không thể tải dữ liệu. Chi tiết lỗi: {exc}")
+    except ApiError as exc:
+        st.error(str(exc))
         return
 
     pattern = data["pattern"]
@@ -40,8 +37,8 @@ def render_scam_of_day() -> None:
         if st.button("🎯 Thử thách Scam Detective", use_container_width=True):
             try:
                 cases = load_detective_cases()
-            except requests.RequestException as exc:
-                st.error(f"Không thể tải Scam Detective. Chi tiết lỗi: {exc}")
+            except ApiError as exc:
+                st.error(str(exc))
             else:
                 matching = next((c for c in cases if c["scam_pattern"] == pattern["slug"]), None)
                 st.session_state.app_mode = "detective"

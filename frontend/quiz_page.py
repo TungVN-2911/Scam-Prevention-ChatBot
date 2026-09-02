@@ -1,11 +1,8 @@
-"""Man hinh Quiz: chon chu de, lam bai, xem ket qua + lich su lam bai."""
-
 from datetime import datetime
 
-import requests
 import streamlit as st
 
-from api_client import add_remote_xp, load_quiz, load_remote_quiz_attempts, record_remote_quiz_attempt
+from api_client import ApiError, add_remote_xp, load_quiz, load_remote_quiz_attempts, record_remote_quiz_attempt
 
 TOPIC_LABELS = {
     "scams": "🎭 Nhận diện lừa đảo",
@@ -16,9 +13,7 @@ TOPIC_LABELS = {
 
 
 def render_quiz_answer_review(questions: list[dict], answers: dict) -> None:
-    """Hien giai thich cho cac cau tra loi sai - dung chung cho man ket qua
-    vua nop bai VA man xem lai lich su (du lieu cau hoi la file tinh nen
-    tai lai theo topic luon giong het luc lam bai)."""
+    # Dung chung cho man ket qua vua nop VA xem lai lich su - cau hoi la du lieu tinh.
     wrong_questions = [(i, q) for i, q in enumerate(questions) if answers.get(q["id"]) != q["correct_index"]]
     if wrong_questions:
         st.markdown("### Giải thích các câu trả lời sai")
@@ -44,8 +39,8 @@ def render_quiz() -> None:
                 if st.button(label, key=f"topic_{topic_key}", use_container_width=True):
                     try:
                         questions = load_quiz(topic_key)
-                    except requests.RequestException as exc:
-                        st.error(f"Không thể tải câu hỏi. Chi tiết lỗi: {exc}")
+                    except ApiError as exc:
+                        st.error(str(exc))
                     else:
                         st.session_state.quiz_topic = topic_key
                         st.session_state.quiz_questions = questions
@@ -74,9 +69,9 @@ def render_quiz() -> None:
                     if attempt["topic"] not in quiz_cache:
                         try:
                             quiz_cache[attempt["topic"]] = load_quiz(attempt["topic"])
-                        except requests.RequestException as exc:
+                        except ApiError as exc:
                             quiz_cache[attempt["topic"]] = None
-                            st.error(f"Không thể tải lại câu hỏi để xem giải thích. Chi tiết lỗi: {exc}")
+                            st.error(str(exc))
                     questions = quiz_cache[attempt["topic"]]
                     if questions is not None:
                         render_quiz_answer_review(questions, attempt["answers"])
@@ -104,8 +99,6 @@ def render_quiz() -> None:
             if unanswered:
                 st.warning("Bạn chưa trả lời câu: " + ", ".join(map(str, unanswered)))
             else:
-                # Tinh XP theo cung bac thang voi Scam Detective (100/75/50/20 theo %
-                # dung), luu XP vao Learning Progress - doc lap voi conversation session.
                 correct_count = sum(1 for q in questions if st.session_state.quiz_answers.get(q["id"]) == q["correct_index"])
                 percentage = round(correct_count / len(questions) * 100)
                 if percentage >= 100:

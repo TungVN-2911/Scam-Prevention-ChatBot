@@ -4,7 +4,6 @@ import yaml
 from app.core.vietnamese_text import normalized, strip_diacritics
 from dataclasses import dataclass
 
-#__file__ de lay duong dan den file goi no
 _INTENTS_PATH_ = Path(__file__).resolve().parent / "intents.yaml"
 
 @dataclass
