@@ -15,8 +15,28 @@ from api_client import (
 DIFFICULTY_LABELS = {"easy": "🟢 Dễ", "medium": "🟡 Trung bình", "hard": "🔴 Khó"}
 
 
+def _get_cached_detective_cases() -> list[dict]:
+    if "_detective_cases_cache" not in st.session_state:
+        st.session_state._detective_cases_cache = load_detective_cases()
+    return st.session_state._detective_cases_cache
+
+
+def _get_cached_detective_attempts() -> list[dict]:
+    if "_detective_attempts_cache" not in st.session_state:
+        st.session_state._detective_attempts_cache = load_remote_detective_attempts()
+    return st.session_state._detective_attempts_cache
+
+
+def _get_cached_detective_case_detail(case_id: str) -> dict:
+    # Case (scenario/signals) la du lieu tinh, khong bao gio doi -> cache vinh vien trong session.
+    cache = st.session_state.setdefault("_detective_case_detail_cache", {})
+    if case_id not in cache:
+        cache[case_id] = load_detective_case(case_id)
+    return cache[case_id]
+
+
 def start_detective_case(case_id: str) -> None:
-    st.session_state.detective_case = load_detective_case(case_id)
+    st.session_state.detective_case = _get_cached_detective_case_detail(case_id)
     st.session_state.detective_stage = "case"
     st.session_state.detective_result = None
 
@@ -49,7 +69,7 @@ def render_detective() -> None:
             st.info(note)
         st.write("Chọn 1 case để luyện tập nhận diện dấu hiệu lừa đảo:")
         try:
-            cases = load_detective_cases()
+            cases = _get_cached_detective_cases()
         except ApiError as exc:
             st.error(str(exc))
             return
@@ -64,13 +84,12 @@ def render_detective() -> None:
                     st.rerun()
 
         st.divider()
-        st.markdown("#### 📜 Lịch sử làm case gần đây")
-        attempts = load_remote_detective_attempts()
+        st.markdown("#### 📜 Lịch sử")
+        attempts = _get_cached_detective_attempts()
         if not attempts:
             st.caption("Chưa có lượt làm case nào.")
         else:
             case_lookup = {c["id"]: c for c in cases}
-            case_cache: dict[str, dict | None] = {}
             for attempt in attempts:
                 case_summary = case_lookup.get(attempt["case_id"])
                 title = case_summary["title"] if case_summary else attempt["case_id"]
@@ -86,13 +105,11 @@ def render_detective() -> None:
                     f"(+{attempt['xp_earned']} XP) · {time_str}"
                 )
                 with st.expander(summary):
-                    if attempt["case_id"] not in case_cache:
-                        try:
-                            case_cache[attempt["case_id"]] = load_detective_case(attempt["case_id"])
-                        except ApiError as exc:
-                            case_cache[attempt["case_id"]] = None
-                            st.error(str(exc))
-                    case_detail = case_cache[attempt["case_id"]]
+                    try:
+                        case_detail = _get_cached_detective_case_detail(attempt["case_id"])
+                    except ApiError as exc:
+                        case_detail = None
+                        st.error(str(exc))
                     if case_detail is not None:
                         st.markdown(case_detail["scenario"])
                         result = attempt["result"]
@@ -137,6 +154,7 @@ def render_detective() -> None:
                         "explanations": result["explanations"],
                     },
                 )
+                st.session_state.pop("_detective_attempts_cache", None)
                 if new_total_xp is not None:
                     st.session_state.total_xp = new_total_xp
                     st.session_state.detective_xp_save_failed = False
@@ -172,9 +190,9 @@ def render_detective() -> None:
 
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("➡️ Case tiếp theo", use_container_width=True):
+            if st.button("➡️ Tiếp theo", use_container_width=True):
                 try:
-                    cases = load_detective_cases()
+                    cases = _get_cached_detective_cases()
                 except ApiError as exc:
                     st.error(str(exc))
                 else:
@@ -184,6 +202,6 @@ def render_detective() -> None:
                     start_detective_case(next_id)
                     st.rerun()
         with col2:
-            if st.button("🔁 Chọn case khác", use_container_width=True):
+            if st.button("🔁 Case khác", use_container_width=True):
                 st.session_state.detective_stage = "select_case"
                 st.rerun()

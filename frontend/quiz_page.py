@@ -12,6 +12,20 @@ TOPIC_LABELS = {
 }
 
 
+def _get_cached_quiz_attempts() -> list[dict]:
+    if "_quiz_attempts_cache" not in st.session_state:
+        st.session_state._quiz_attempts_cache = load_remote_quiz_attempts()
+    return st.session_state._quiz_attempts_cache
+
+
+def _get_cached_quiz_questions(topic: str) -> list[dict]:
+    # Cau hoi la du lieu tinh, khong bao gio doi -> cache vinh vien trong session, khong can invalidate.
+    cache = st.session_state.setdefault("_quiz_questions_cache", {})
+    if topic not in cache:
+        cache[topic] = load_quiz(topic)
+    return cache[topic]
+
+
 def render_quiz_answer_review(questions: list[dict], answers: dict) -> None:
     # Dung chung cho man ket qua vua nop VA xem lai lich su - cau hoi la du lieu tinh.
     wrong_questions = [(i, q) for i, q in enumerate(questions) if answers.get(q["id"]) != q["correct_index"]]
@@ -38,7 +52,7 @@ def render_quiz() -> None:
             with cols[i % 2]:
                 if st.button(label, key=f"topic_{topic_key}", use_container_width=True):
                     try:
-                        questions = load_quiz(topic_key)
+                        questions = _get_cached_quiz_questions(topic_key)
                     except ApiError as exc:
                         st.error(str(exc))
                     else:
@@ -49,12 +63,11 @@ def render_quiz() -> None:
                         st.rerun()
 
         st.divider()
-        st.markdown("#### 📜 Lịch sử làm bài gần đây")
-        attempts = load_remote_quiz_attempts()
+        st.markdown("#### 📜 Lịch sử")
+        attempts = _get_cached_quiz_attempts()
         if not attempts:
             st.caption("Chưa có lượt làm bài nào.")
         else:
-            quiz_cache: dict[str, list[dict] | None] = {}
             for attempt in attempts:
                 topic_label = TOPIC_LABELS.get(attempt["topic"], attempt["topic"])
                 try:
@@ -66,13 +79,11 @@ def render_quiz() -> None:
                     f"(+{attempt['xp_earned']} XP) · {time_str}"
                 )
                 with st.expander(summary):
-                    if attempt["topic"] not in quiz_cache:
-                        try:
-                            quiz_cache[attempt["topic"]] = load_quiz(attempt["topic"])
-                        except ApiError as exc:
-                            quiz_cache[attempt["topic"]] = None
-                            st.error(str(exc))
-                    questions = quiz_cache[attempt["topic"]]
+                    try:
+                        questions = _get_cached_quiz_questions(attempt["topic"])
+                    except ApiError as exc:
+                        questions = None
+                        st.error(str(exc))
                     if questions is not None:
                         render_quiz_answer_review(questions, attempt["answers"])
 
@@ -114,6 +125,7 @@ def render_quiz() -> None:
                 record_remote_quiz_attempt(
                     st.session_state.quiz_topic, correct_count, len(questions), xp, st.session_state.quiz_answers
                 )
+                st.session_state.pop("_quiz_attempts_cache", None)
                 st.session_state.quiz_correct_count = correct_count
                 st.session_state.quiz_last_xp = xp
                 if new_total_xp is not None:
@@ -145,13 +157,13 @@ def render_quiz() -> None:
 
         col1, col2 = st.columns(2)
         with col1:
-            if st.button("🔄 Làm lại chủ đề này", use_container_width=True):
+            if st.button("🔄 Làm lại", use_container_width=True):
                 for q in questions:
                     st.session_state.pop(f"answer_{q['id']}", None)
                 st.session_state.quiz_answers = {}
                 st.session_state.quiz_stage = "in_progress"
                 st.rerun()
         with col2:
-            if st.button("📚 Chọn chủ đề khác", use_container_width=True):
+            if st.button("📚 Đổi chủ đề", use_container_width=True):
                 st.session_state.quiz_stage = "select_topic"
                 st.rerun()

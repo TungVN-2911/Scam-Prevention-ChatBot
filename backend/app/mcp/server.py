@@ -81,4 +81,7 @@ def view_pending_reports(ctx: Context) -> list[dict]:
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
 
 if __name__ == "__main__":
-    server.run(transport="streamable-http", host="127.0.0.1", port=8020)
+    try:
+        server.run(transport="streamable-http", host="127.0.0.1", port=8020)
+    except KeyboardInterrupt:
+        pass

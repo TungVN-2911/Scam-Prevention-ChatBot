@@ -291,7 +291,7 @@ KHÔNG BAO GIỜ HY SINH TÍNH CHÍNH XÁC ĐỂ TẠO RA MỘT CÂU TRẢ LỜI
 """
 
 class GeminiGateway:
-    def __init__(self, model: str = "gemini-3.6-flash"):
+    def __init__(self, model: str = "gemini-3.5-flash-lite"):
         self.model = model
         self._client = genai.Client(api_key=settings.gemini_api_key) if settings.gemini_api_key else None
         

@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import auth, chat, detective, learning_progress, quiz, scam_of_day, session
+from app.api.routes import auth, chat, detective, learning_progress, quiz, scam_of_day, session, speech
 
 app = FastAPI(
     title="Scam-Prevention-ChatBot API",
@@ -23,6 +23,7 @@ app.include_router(scam_of_day.router, prefix="/api", tags=["scam_of_day"])
 app.include_router(detective.router, prefix="/api", tags=["detective"])
 app.include_router(session.router, prefix="/api", tags=["session"])
 app.include_router(learning_progress.router, prefix="/api", tags=["learning_progress"])
+app.include_router(speech.router, prefix="/api", tags=["speech"])
 
 @app.get("/health")
 def health():

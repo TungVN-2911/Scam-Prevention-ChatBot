@@ -69,6 +69,20 @@ def post_chat_message(message: str, history: list[dict]) -> dict:
     return response.json()
 
 
+def transcribe_audio(audio_bytes: bytes) -> str:
+    try:
+        response = requests.post(
+            f"{BACKEND_URL}/api/speech-to-text",
+            files={"audio": ("recording.wav", audio_bytes, "audio/wav")},
+            headers=_auth_headers(),
+            timeout=60,
+        )
+        response.raise_for_status()
+    except requests.RequestException as exc:
+        _raise_friendly(exc, "Không thể chuyển giọng nói thành văn bản. Vui lòng thử lại.")
+    return response.json()["text"]
+
+
 # --- Conversation session (lazy creation) ------------------------------------
 
 def create_remote_session_with_first_message(content: str, sources: list[str]) -> str | None:

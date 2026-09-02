@@ -1,6 +1,12 @@
 import streamlit as st
 
-from api_client import ApiError, create_remote_session_with_first_message, post_chat_message, save_remote_message
+from api_client import (
+    ApiError,
+    create_remote_session_with_first_message,
+    post_chat_message,
+    save_remote_message,
+    transcribe_audio,
+)
 
 SUGGESTED_QUESTIONS = [
     "Dấu hiệu nhận biết lừa đảo giả danh Công an là gì?",
@@ -17,6 +23,9 @@ def send_message(user_text: str) -> None:
     history_payload = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
     st.session_state.messages.append({"role": "user", "content": user_text, "sources": []})
 
+    with st.chat_message("user"):
+        st.markdown(user_text)
+
     if st.session_state.session_id is None:
         new_session_id = create_remote_session_with_first_message(user_text, [])
         st.session_state.session_id = new_session_id
@@ -24,9 +33,7 @@ def send_message(user_text: str) -> None:
             st.query_params["session_id"] = new_session_id
     else:
         save_remote_message(st.session_state.session_id, "user", user_text, [])
-
-    with st.chat_message("user"):
-        st.markdown(user_text)
+    st.session_state.pop("_sessions_cache", None)
 
     with st.chat_message("assistant"):
         with st.spinner("Đang tìm câu trả lời..."):
@@ -52,14 +59,33 @@ def render_chat() -> None:
 
     pending_question = None
     if not st.session_state.messages:
-        st.caption("💡 Câu hỏi gợi ý:")
+        st.caption("💡 Gợi ý:")
         cols = st.columns(2)
         for i, question in enumerate(SUGGESTED_QUESTIONS):
             with cols[i % 2]:
                 if st.button(question, key=f"suggested_{i}", use_container_width=True):
                     pending_question = question
 
-    typed_question = st.chat_input("Nhập câu hỏi của bạn...")
+    prompt = st.chat_input("Nhập câu hỏi hoặc bấm mic để ghi âm...", accept_audio=True)
+    typed_question = prompt.text if prompt and prompt.text else None
+    if prompt and prompt.audio:
+        try:
+            st.session_state.voice_draft = transcribe_audio(prompt.audio.read())
+        except ApiError as exc:
+            st.error(str(exc))
+
+    if "voice_draft" in st.session_state:
+        st.text_area("📝 Kiểm tra trước khi gửi:", key="voice_draft")
+        col1, col2 = st.columns(2)
+        with col1:
+            send_voice_draft = st.button("✅ Gửi", use_container_width=True)
+        with col2:
+            cancel_voice_draft = st.button("❌ Hủy", use_container_width=True)
+        if send_voice_draft:
+            pending_question = st.session_state.pop("voice_draft")
+        elif cancel_voice_draft:
+            st.session_state.pop("voice_draft", None)
+            st.rerun()
 
     if pending_question:
         send_message(pending_question)
