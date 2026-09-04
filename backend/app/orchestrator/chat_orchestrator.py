@@ -1,14 +1,13 @@
-import json
 import logging
 from contextlib import AsyncExitStack, asynccontextmanager
-from datetime import datetime, timezone
 from typing import Optional
 
 import httpx
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 
-from app.config import DATA_DIR, settings
+from app import pending_reports_store
+from app.config import settings
 from app.llm_gateway.base import LLMGateway
 from app.llm_gateway.gemini_gateway import GeminiGateway
 from app.rag_engine.retrieval import PineconeRetriever
@@ -150,33 +149,19 @@ class ChatOrchestrator:
             verdict_response = await self._llm.generate(prompt=verdict_prompt, context=context)
             verdict_raw = verdict_response.strip().upper()
         except Exception:
+            # Fail-safe: loi goi API thi coi nhu "chua chac chan la da biet", KHONG phai nguoc lai -
+            # tranh Gemini khang dinh nham 1 tinh huong moi la hinh thuc da biet chi vi buoc kiem tra loi.
             logger.exception("Loi khi goi Gemini API (phan loai) trong chat")
-            return True
+            return False
 
         if "CHUA_BIET" in verdict_raw:
             return False
         if "KHOP" in verdict_raw:
             return True
-        
+
+        # Verdict khong ro rang: cung ap dung fail-safe nhu tren, khong mac dinh "da biet".
         logger.warning("Verdict Gemini khong ro rang trong chat: %r", verdict_raw)
-        return True
+        return False
 
     def _save_unknown_situation(self, text: str, score: float) -> None:
-        path = DATA_DIR / "pending_reports.json"
-        try:
-            reports = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
-        except Exception:
-            logger.exception("Loi khi doc pending_reports.json, bat dau lai tu danh sach rong")
-            reports = []
-
-        reports.append({
-            "id": f"PENDING-{len(reports) + 1:04d}",
-            "text": text,
-            "reported_at": datetime.now(timezone.utc).isoformat(),
-            "top_score": round(score, 3),
-            "status": "pending_review",
-        })
-        try:
-            path.write_text(json.dumps(reports, ensure_ascii=False, indent=2), encoding="utf-8")
-        except Exception:
-            logger.exception("Loi khi ghi pending_reports.json")
+        pending_reports_store.add(text, score)

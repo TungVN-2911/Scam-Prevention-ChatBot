@@ -1,9 +1,10 @@
 from datetime import date as date_cls
 from typing import Optional
 
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
+from app.auth import get_current_user
 from app.scam_connector.mock_connector import MockScamConnector
 from app.scam_connector.models import ScamPattern
 
@@ -39,7 +40,10 @@ def pick_pattern_for_date(patterns: list[ScamPattern], target_date: date_cls) ->
 
 
 @router.get("/scam-of-day", response_model=ScamOfDayResponse)
-def get_scam_of_day(date: Optional[str] = Query(default=None, description="YYYY-MM-DD, mặc định là hôm nay")):
+def get_scam_of_day(
+    date: Optional[str] = Query(default=None, description="YYYY-MM-DD, mặc định là hôm nay"),
+    user: dict = Depends(get_current_user),
+):
     target_date = date_cls.fromisoformat(date) if date else date_cls.today()
     pattern = pick_pattern_for_date(_connector.search_patterns(), target_date)
     if pattern is None:

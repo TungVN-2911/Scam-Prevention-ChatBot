@@ -1,8 +1,9 @@
 import json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
+from app.auth import get_current_user
 from app.config import DATA_DIR
 
 router = APIRouter()
@@ -22,12 +23,12 @@ class QuizQuestion(BaseModel):
 
 
 @router.get("/quiz/topics", response_model=list[str])
-def list_topics():
+def list_topics(user: dict = Depends(get_current_user)):
     return _TOPICS
 
 
 @router.get("/quiz", response_model=list[QuizQuestion])
-def get_quiz(topic: str):
+def get_quiz(topic: str, user: dict = Depends(get_current_user)):
     questions = [q for q in _QUESTIONS if q["topic"] == topic]
     if not questions:
         raise HTTPException(status_code=404, detail="Không tìm thấy chủ đề này")

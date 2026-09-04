@@ -13,6 +13,7 @@ from api_client import (
     login,
     register,
 )
+from admin_page import render_admin
 from chat_page import render_chat
 from detective_page import render_detective
 from quiz_page import render_quiz
@@ -114,6 +115,8 @@ MODE_LABELS = {
     "detective": "🕵️ Scam Detective",
     "quiz": "🎯 Quiz",
 }
+if st.session_state.user_role == "admin":
+    MODE_LABELS["admin"] = "🔐 Duyệt báo cáo"
 
 
 def _get_cached_sessions() -> list:
@@ -260,5 +263,7 @@ elif st.session_state.app_mode == "scam_of_day":
     render_scam_of_day()
 elif st.session_state.app_mode == "detective":
     render_detective()
+elif st.session_state.app_mode == "admin" and st.session_state.user_role == "admin":
+    render_admin()
 else:
     render_chat()

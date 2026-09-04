@@ -1,8 +1,9 @@
 import json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
+from app.auth import get_current_user
 from app.config import DATA_DIR
 
 router = APIRouter()
@@ -64,7 +65,7 @@ def score_signals(expected_signals: list[str], selected_signal_ids: list[str]) -
 
 
 @router.get("/detective/cases", response_model=list[DetectiveCaseSummary])
-def list_cases():
+def list_cases(user: dict = Depends(get_current_user)):
     return [
         {"id": c["id"], "difficulty": c["difficulty"], "title": c["title"], "scam_pattern": c["scam_pattern"]}
         for c in _CASES
@@ -72,7 +73,7 @@ def list_cases():
 
 
 @router.get("/detective/cases/{case_id}", response_model=DetectiveCase)
-def get_case(case_id: str):
+def get_case(case_id: str, user: dict = Depends(get_current_user)):
     case = _CASES_BY_ID.get(case_id)
     if case is None:
         raise HTTPException(status_code=404, detail="Không tìm thấy case này")
@@ -88,7 +89,7 @@ def get_case(case_id: str):
 
 
 @router.post("/detective/cases/{case_id}/submit", response_model=SubmitResponse)
-def submit_case(case_id: str, request: SubmitRequest):
+def submit_case(case_id: str, request: SubmitRequest, user: dict = Depends(get_current_user)):
     case = _CASES_BY_ID.get(case_id)
     if case is None:
         raise HTTPException(status_code=404, detail="Không tìm thấy case này")

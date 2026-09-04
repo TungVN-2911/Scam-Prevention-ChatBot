@@ -1,13 +1,13 @@
 import io
-import json
 import logging
 import sys
 
 import jwt
 from mcp.server.mcpserver import Context, MCPServer
 
+from app import pending_reports_store
 from app.auth import ALGORITHM
-from app.config import DATA_DIR, settings
+from app.config import settings
 from app.scam_connector.mock_connector import MockScamConnector
 
 server = MCPServer("scam-prevention-tools")
@@ -32,7 +32,7 @@ def _log_decision(tool_name: str, user_id: str | None, role: str, decision: str,
 
 ROLE_TOOLS: dict[str, set[str]] = {
     "user": {"search_scam_patterns", "list_hotlines"},
-    "admin": {"search_scam_patterns", "list_hotlines", "view_pending_reports"},
+    "admin": {"search_scam_patterns", "list_hotlines", "summarize_pending_reports"},
 }
 
 def _authorize(ctx: Context, tool_name: str) -> dict:
@@ -75,10 +75,27 @@ def list_hotlines(ctx: Context) -> list[dict]:
     return [p.model_dump() for p in _connector.list_hotlines()]
 
 @server.tool()
-def view_pending_reports(ctx: Context) -> list[dict]:
-    _authorize(ctx, "view_pending_reports")
-    path = DATA_DIR / "pending_reports.json"
-    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+def summarize_pending_reports(ctx: Context) -> list[dict]:
+    """Lay danh sach cac tinh huong lua dao moi nguoi dung bao cao ma he thong
+    chua xac dinh khop voi hinh thuc nao da biet, dang cho admin xem xet. Moi
+    report co field "count" - so lan tinh huong nay (sau khi chuan hoa) da
+    duoc bao cao, dung de danh gia muc do pho bien/uu tien khi tong hop. Dung
+    de tong hop/phan loai xu huong khi admin hoi (vd: gom nhom theo chu de,
+    danh gia cai nao khan cap/pho bien nen xem truoc). Chi de THAM KHAO - KHONG
+    dung de tu dong duyet/tu choi bao cao, viec do phai lam qua trang quan tri rieng."""
+    _authorize(ctx, "summarize_pending_reports")
+    reports = pending_reports_store.list_all()
+    return [
+        {
+            "id": r["id"],
+            "text": r["text"],
+            "top_score": r["top_score"],
+            "reported_at": r["reported_at"],
+            "count": r.get("count", 1),
+        }
+        for r in reports
+        if r["status"] == "pending_review"
+    ]
 
 if __name__ == "__main__":
     try:

@@ -34,7 +34,7 @@ async def main(username: str, role: str) -> None:
             calls = [
                 ("search_scam_patterns", {"query": ""}),
                 ("list_hotlines", {}),
-                ("view_pending_reports", {}),
+                ("summarize_pending_reports", {}),
             ]
             for tool_name, arguments in calls:
                 try:

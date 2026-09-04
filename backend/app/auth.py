@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, timezone
-from fastapi import HTTPException, Header
+from fastapi import Depends, HTTPException, Header
 import jwt
 from app.config import settings
 
@@ -24,3 +24,10 @@ def get_current_user(authorization: str | None = Header(default=None)) -> dict:
         raise HTTPException(status_code=401, detail="Token không hợp lệ hoặc đã hết hạn")
     # 'token' giu JWT nguyen van de forward sang MCP Server (MCP tu verify lai).
     return {"username": payload.get("sub"), "role": payload.get("role"), "token": token}
+
+
+def require_admin(user: dict = Depends(get_current_user)) -> dict:
+    # Deny-by-default cho route quan tri: chi kiem tra identity (get_current_user) la chua du.
+    if user["role"] != "admin":
+        raise HTTPException(status_code=403, detail="Chỉ admin mới có quyền thực hiện thao tác này")
+    return user

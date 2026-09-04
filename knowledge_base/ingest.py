@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
 
 from app.config import KNOWLEDGE_BASE_DIR
-from app.rag_engine.chunking import chunk_markdown
+from app.rag_engine.chunking import chunk_markdown, chunk_scam_pattern
 from app.rag_engine.retrieval import PineconeRetriever
 
 SOURCES_DIR = KNOWLEDGE_BASE_DIR / "sources"
@@ -26,19 +26,7 @@ def load_scam_pattern_chunks() -> tuple[list[str], list[str], list[dict]]:
     patterns = json.loads((SOURCES_DIR / "scams" / "scams.json").read_text(encoding="utf-8"))
     ids, texts, metadata = [], [], []
     for pattern in patterns:
-        parts = [
-            f"# {pattern['name']}",
-            f"Loại: {pattern.get('category', '')}",
-            f"Kịch bản: {pattern.get('scenario', '')}"
-        ]      
-        if pattern.get("warning_signs"):
-            parts.append("Dấu hiệu cảnh báo: " + "; ".join(pattern["warning_signs"]))
-        if pattern.get("prevention"):
-            parts.append("Cách phòng ngừa: " + "; ".join(pattern["prevention"]))
-        if pattern.get("if_victim"):
-            parts.append("Nếu đã là nạn nhân: " + "; ".join(pattern["if_victim"]))
-            
-        text = "\n".join(parts)
+        text = chunk_scam_pattern(pattern)
         ids.append(f"scams_{pattern['slug']}")
         texts.append(text)
         metadata.append({"category": "scams", "source": "scams/scams.json", "text": text})

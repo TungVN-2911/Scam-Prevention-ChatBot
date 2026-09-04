@@ -273,3 +273,40 @@ def load_remote_detective_attempts() -> list[dict]:
         return response.json()
     except requests.RequestException:
         return []
+
+
+# --- Admin: duyệt pending report ----------------------------------------------
+
+def load_pending_reports() -> list[dict]:
+    try:
+        response = requests.get(f"{BACKEND_URL}/api/admin/pending-reports", headers=_auth_headers(), timeout=15)
+        response.raise_for_status()
+    except requests.RequestException as exc:
+        _raise_friendly(exc, "Không thể tải danh sách báo cáo. Vui lòng thử lại sau.")
+    return response.json()
+
+
+def reject_pending_report(report_id: str, reason: str) -> None:
+    try:
+        response = requests.post(
+            f"{BACKEND_URL}/api/admin/pending-reports/{report_id}/reject",
+            json={"reason": reason},
+            headers=_auth_headers(),
+            timeout=15,
+        )
+        response.raise_for_status()
+    except requests.RequestException as exc:
+        _raise_friendly(exc, "Không thể từ chối báo cáo này. Vui lòng thử lại sau.")
+
+
+def approve_pending_report(report_id: str, pattern: dict) -> None:
+    try:
+        response = requests.post(
+            f"{BACKEND_URL}/api/admin/pending-reports/{report_id}/approve",
+            json=pattern,
+            headers=_auth_headers(),
+            timeout=30,
+        )
+        response.raise_for_status()
+    except requests.RequestException as exc:
+        _raise_friendly(exc, "Không thể duyệt báo cáo này. Vui lòng thử lại sau.")

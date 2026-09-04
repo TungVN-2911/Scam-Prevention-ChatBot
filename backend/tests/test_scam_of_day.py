@@ -1,8 +1,18 @@
 from datetime import date
 
+from fastapi.testclient import TestClient
+
 from app.api.routes.scam_of_day import pick_pattern_for_date
+from app.main import app
 from app.scam_connector.mock_connector import MockScamConnector
 from app.scam_connector.models import ScamPattern
+
+client = TestClient(app)
+
+
+def test_get_scam_of_day_requires_auth():
+    response = client.get("/api/scam-of-day")
+    assert response.status_code == 401
 
 
 def _make_pattern(id_, **overrides) -> ScamPattern:

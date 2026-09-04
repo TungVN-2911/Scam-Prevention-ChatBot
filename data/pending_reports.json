@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "PENDING-0001",
+    "text": "cách phòng chống lừa đảo đầu tư tiền ảo",
+    "reported_at": "2026-09-04T03:57:35.849727+00:00",
+    "top_score": 0.0,
+    "status": "pending_review",
+    "count": 2
+  },
+  {
+    "id": "PENDING-0002",
+    "text": "Tôi nhận được email nói tài khoản ví điện tử của tôi bị khoá vì nghi rửa tiền, yêu cầu tôi xác minh bằng cách quét mã QR trong email. Người này yêu cầu tôi chuyển tiền phí xác minh.",
+    "reported_at": "2026-09-04T03:08:38.505294+00:00",
+    "top_score": 0.0,
+    "status": "pending_review"
+  }
+]
